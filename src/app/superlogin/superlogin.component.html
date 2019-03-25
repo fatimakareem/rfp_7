@@ -1,0 +1,51 @@
+<!-- <app-header></app-header> -->
+<app-loader></app-loader>
+<div class="login-form-1-img" style="margin-top: -15px">
+    <div class="container">
+        <div class="login-form-1-center">
+            <form  class="login-form-1 sh-signup-form-fix sh">
+                <div class="login-form-1-header">
+                    <h3>Sign In to Your Account</h3>
+                </div>
+                <div class="card-content mrgn-20-0-0">
+                    <div class="form-group label-floating">
+                        <mat-form-field>
+                            <input matInput type="text" id="username" #username placeholder="Username"
+                                required />
+                           
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group label-floating" style="margin-top: -17px">
+                        <mat-form-field>
+                            <input matInput type="password" id="password" [type]="hide ? 'password' : 'text'"
+                               #password placeholder="Password" required />
+                            <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                            
+                        </mat-form-field>
+                    </div>
+                    <div class="form-group">
+                    <div class="checkbox col-sm-6 padding-0">
+                        <label>
+                            <input type="checkbox" value="" name="remember" checked> Keep me logged in
+                        </label>
+                    </div>
+                    
+                            <app-recapcha></app-recapcha>
+                        <!-- <div class="error-block" *ngIf="isequal==false">
+                            <span>*Please Enter Valid Answer</span>
+                        </div> -->
+                   
+                    </div>
+                    
+                    <div class="form-footer ">
+                        <div class="form-group text-center">
+                            <button type="submit" class="btn btn-rose btn-fill btn-wd sh-signin-btn" (click)="onLogin($event,username.value,password.value)">Signin
+                            </button>
+                        </div>
+                       
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

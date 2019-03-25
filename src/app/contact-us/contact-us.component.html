@@ -1,0 +1,75 @@
+<section id="contact">
+  <div class="text-center">
+    <h2>Get in Touch with us</h2>
+    <p>If you feel any kind of queries, Please feel free to Contact Us. Just leave a
+      Message, Our customer support person will contact you.</p>
+  </div>
+  <div class="contact-section">
+    <div class="container">
+      <form name="form" role="form"  [formGroup]="form" (ngSubmit)="onSubmit(
+        form.controls.name.value, form.controls.email.value, form.controls.phone.value, form.controls.message.value)"
+        class="sh-signup-form-fix sh-edit-profile mb-60px edit-profile">
+        <div class="col-sm-6 col-md-6">
+          <div class="form-group label-floating">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder=" Name" type="text" name="name" maxlength="25" formControlName="name" required>
+              <mat-error *ngIf="form.controls.name.valid == false"><strong>Name cannot be empty or invalid</strong></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group label-floating">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder=" Email" type="email" name="email" formControlName="email" required>
+              <mat-error *ngIf="form.controls.email.valid == false"><strong>E-mail cannot be invalid</strong></mat-error>
+            </mat-form-field>
+          </div>
+          <div class="form-group label-floating">
+            <mat-form-field class="example-full-width">
+              <input matInput placeholder=" Mobile No." type="text" required name="phone" [textMask]="{mask: phoneMask}"
+                formControlName="phone">
+              <mat-error *ngIf="form.controls.phone.valid == false"><strong>Phone No. cannot be empty or invalid</strong></mat-error>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+          <div class="form-group">
+            <mat-form-field class="example-full-width">
+              <textarea matInput placeholder=" Message." formControlName="message" required></textarea>
+              <mat-error *ngIf="form.controls.message.valid == false"><strong>Message cannot be empty or invalid</strong></mat-error>
+            </mat-form-field>
+          </div>
+          <div>
+            <button type="submit" (click)="fun_send_message()" class="btn btn-primary" [disabled]="!form.valid"><i
+                class="fa fa-paper-plane" aria-hidden="true" title="Send Message"></i>Send Message</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+<section id="contact-map">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-8">
+        <iframe width="100%" height="350" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=5050%20Quorum%20Drive%20Suite%20700%20Dallas%2C%20TX%2075254&key=AIzaSyBcVkwSRC2BW9c3FsFmhM61fM1c3goI9_4"
+          allowfullscreen></iframe>
+      </div>
+      <div class="col-md-4">
+        <div class="contact-address">
+
+          
+         
+
+          <h2>RFPGurus</h2>
+          <h5 > 14681 Midway Rd Ste 200
+            Addison TX 75001</h5>
+          <h2> Establish Contact</h2>
+          <h5 class="phone-contact">
+            <i class="fa fa-envelope-o"></i>&nbsp;&nbsp;<span>Email: </span> contact AT RFPGurus DOT com<br>
+            <i class="fa fa-phone"></i>&nbsp;&nbsp; <span>Voice: </span>  +1-214-302-7330<br>
+            <i class="fa fa-fax"></i>&nbsp;&nbsp; <span>Fax: </span> +1 (469) 250-6600
+          </h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

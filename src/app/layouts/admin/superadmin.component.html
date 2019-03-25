@@ -1,0 +1,56 @@
+<app-header></app-header>
+<div class="wrapper" style="overflow: hidden ;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="navbar-minimize sidebarToggle">
+        <button (click)="w3_open()" class="btn btn-round btn-white btn-fill btn-just-icon" id="minimizeSidebar">
+          <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+          <i class="material-icons visible-on-sidebar-mini">view_list</i>
+          <div class="ripple-container"></div>
+        </button>
+        <strong>Sidebar</strong>
+      </div>
+      <div class="sidebar custom " id="mySidebar">
+          
+        <!-- <app-supersiderbar></app-supersiderbar> -->
+        <div class="sidebar-holder w3-animate-left" id="side">
+          <div class="sidebar-admin">
+            <div class="user-sidebar">
+                <div class="col-sm-12 text-right padding-0 sidebar-close-btn"><button class="btn btn-close" (click)="w3_close()">X</button></div> 
+              <div class=" col-sm-12">
+                  <div class="admin-img tab-text-center">
+                    <img src="../../../assets/img/faces/marc.jpg" class="img-responsive" alt="img">
+                    </div>
+              </div>
+              <ul class="col-sm-12">
+                <li><a routerLink="/admin-panel" >
+                    <i class="fa fa-dashboard"></i>Dashboard</a>
+                </li> <li><a routerLink="/add-rfp" >
+                  <i class="fas fa-file-alt"></i>Add New RFP</a>
+              </li><li><a routerLink="/log-detail" >
+                <i class="fas fa-info-circle"></i>Log Detail</a>
+            </li>
+                <li><a routerLink="/">
+                    <i class="fa fa-home"></i>Home</a>
+                </li>
+                <li>
+                  <a (click)="logout()">
+                    <i class="fas fa-sign-out-alt"></i>Sign out</a>
+                </li>
+
+              </ul>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="sup-adm-dashboard">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-footer">
+    <app-footer-cmp></app-footer-cmp>
+  </div>
+</div>

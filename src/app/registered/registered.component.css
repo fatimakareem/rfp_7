@@ -1,0 +1,21 @@
+
+
+a{color:#1062a5}a:focus,a:hover{color:#c00!important;text-decoration:underline!important}
+.card .card-title {
+    font-size: 24px;
+    line-height: 19px;
+}
+.signup-main .card .card-header.card-header-icon i {
+margin-right: 5px;
+}
+.signup-main .card .card-header h4 {
+    display: inline;
+}
+.main-content {
+    padding: 10px 0 0;
+}
+.sh-signup-form-fix .mat-input-element {
+    font-size: 24px;
+    color: #000;
+    padding-bottom: 8px;
+}

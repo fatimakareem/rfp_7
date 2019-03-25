@@ -1,0 +1,37 @@
+<app-loader></app-loader>
+<div class="wrapper">
+  <section class="about-1">
+    <div class="container">
+      <div class="main-text">
+        <p class="large"><strong>RFPGurus Blog</strong>
+          A Blog about Government Contracting, Procurement, Purchasing, RFPs, Bids &amp; Tenders
+        </p>
+      </div>
+    </div>
+  </section>
+  <div class="blog-holder">
+    <div class="container">
+      <section class="blog" *ngFor="let record of blog">
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="img-holder">
+              <img src="https://apis.rfpgurus.com{{record.image}}" alt="">
+            </div>
+          </div>
+          <div class="col-sm-8">
+            <div class="desc">
+              <h3 clalss="mb-0">{{record.title}}</h3>
+              <small> <i  class="material-icons vertical-align-middle">access_time</i> {{record.publish_date |
+                date}}</small>
+              <hr />
+              <p class="record-desc">
+                {{record.description }}
+              </p>
+              <button (click)="sendid(record.id)" class="btn btn-rose">Read More<i class="material-icons">bubble_chart</i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

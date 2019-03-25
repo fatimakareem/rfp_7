@@ -1,0 +1,27 @@
+<app-header></app-header>
+<div class="wrapper" style="overflow: hidden ;">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="navbar-minimize sidebarToggle">
+        <button class="btn btn-round btn-white btn-fill btn-just-icon" (click)="w3_open()" id="minimizeSidebar">
+          <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+          <i class="material-icons visible-on-sidebar-mini">view_list</i>
+          <div class="ripple-container"></div>
+        </button>
+        <strong>Sidebar</strong>
+      </div>
+      <div class="col-lg-2 col-md-2 col-sm-3 col-xs-6 w3-animate-left user-panel" id="mySidebar">
+        <div class="sidebar custom">
+            <div class="col-sm-12 text-right padding-0 sidebar-close-btn"><button class="btn btn-close" (click)="w3_close()">X</button></div>  
+          <app-sidebar-cmp></app-sidebar-cmp>
+        </div>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 sh-main-panel-admin">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  <div class="dashboard-footer">
+    <app-footer-cmp></app-footer-cmp>
+  </div>
+</div>

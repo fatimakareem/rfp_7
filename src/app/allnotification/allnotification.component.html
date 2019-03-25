@@ -1,0 +1,56 @@
+<div class="row margin-0">
+  <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 center-admin-form" id="display_advance">
+
+    <div class="col-md-5 page-title">
+      <span>Notifications</span>
+
+    </div>
+    <div class="col-sm-12 text-center" *ngIf="notificate.length == 0">
+      <i class="fa fa-exclamation-triangle"></i>
+      <h3 class="text-center">No Notifications Found</h3>
+    </div>
+    <div class="col-md-5  sh-notification-div sh" *ngIf="notificate.length != 0">
+      <div class="card">
+        <div *ngFor="let item of notificate">
+         
+          <div class="heart-main-div" *ngIf="item.read == false">
+            <div class="heart-contact sh-del-watchlist">
+              <a class="heart-heading" [routerLink]="['/rfp']"[queryParams]="{query:item.target}" (click)="move()">
+                {{item.type_of_notification}}
+              </a>
+              <span class="sh-del " (click)="deletenofication(item?.id)">
+                <i class="fas fa-trash-alt"></i>
+              </span>
+              <div class="heart-detail plan-detail">
+                <h5 class="curser-pointer" (click)="single(item.target);updatenofication(item.id);move()">
+                  {{item.description}}</h5>
+              </div>
+
+            </div>
+          </div>
+
+
+          <div class="heart-main-div sh-notification-seen" *ngIf="item.read == true">
+            <div class="heart-contact sh-del-watchlist ">
+              <a class="heart-heading" [routerLink]="['/rfp/', item.target]">
+                {{item.type_of_notification}}
+              </a>
+              <span class="sh-del " (click)="deletenofication(item?.id)">
+                <i class="fas fa-trash-alt"></i>
+              </span>
+
+              <div class="heart-detail plan-detail ">
+                <h5 (click)="single(item.target);updatenofication(item?.id)"> {{item.description}}</h5>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center" *ngIf="notificate">
+          <button class="btn btn-rose btn-fill btn-wd add-payment" (click)="deleteallnotification()">Clear All
+            Notifications </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

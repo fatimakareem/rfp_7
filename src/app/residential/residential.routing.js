@@ -1,0 +1,1 @@
+"use strict";Object.defineProperty(exports,"__esModule",{value:!0});var residential_component_1=require("./residential.component");exports.ResidentialRoutes=[{path:"",children:[{path:"",component:residential_component_1.DialogOverviewExample},{path:"",component:residential_component_1.DialogOverviewExample}]}];

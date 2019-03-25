@@ -1,0 +1,46 @@
+<div class="sidebar-holder side-bar-component" id="side">
+    <div class="sidebar-admin">
+
+        <div class="user-sidebar">
+
+            <ul>
+                <li><a routerLink="/Preferences" routerLinkActive="active-route">
+                        <i class="far fa-newspaper"></i>RFP Preferences</a>
+                </li>
+
+                <li><a routerLink="/notifications" routerLinkActive="active-route">
+                        <i class="fa fa-bell"></i>Bid Notifications</a>
+                </li>
+
+                <li><a routerLink="/my-watchlist" routerLinkActive="active-route">
+                        <i class="fa fa-heart"></i>My Watchlist</a>
+                </li>
+
+                <li><a routerLink="/profile" routerLinkActive="active-route">
+                    <i class="fa fa-pencil"></i>Profile</a>
+                </li>
+                <li><a routerLink="/purchase-history" routerLinkActive="active-route">
+                    <i class="fa fa-history"></i>Subscription</a>
+                </li>
+
+                <li><a routerLink="/payment" routerLinkActive="active-route">
+                        <i class="fa fa-money"></i>Payment Methods</a>
+                </li>
+                <li><a routerLink="/change-password" routerLinkActive="active-route">
+                    <i class="fas fa-key"></i>Change Password</a>
+                </li>
+                <li>
+                        <a routerLink="/contact-us">
+                          <i class="fa fa-comment"></i>
+                          Feedback</a>
+                      </li>
+
+                <li><a (click)="logout()">
+                        <i class="fas fa-sign-out-alt"></i>Sign out</a>
+                </li>
+
+            </ul>
+
+        </div>
+    </div>
+</div>

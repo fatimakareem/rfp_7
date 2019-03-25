@@ -1,0 +1,340 @@
+<app-loader></app-loader>
+
+<div class="main-panel add-rfp">
+  <div class="main-content custom">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-10 mg-0-auto">
+          <div class="page-title">
+            <div class="col-sm-12 m-10-0">
+              <span>Add New RFP</span>
+            </div>
+          </div>
+          <form class="col-sm-12 sh-signup-form-fix edit-rfp-form" *ngIf="governmentbidsusers">
+
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group">
+                <mat-form-field>
+                  <input matInput placeholder="Title" name="title" [(ngModel)]="title" required />
+
+                </mat-form-field>
+              </div>
+            </div>
+
+            <!-- <div class="col-md-6 col-sm-6">
+            <div class="input-group">
+
+              <mat-form-field>
+                <input matInput placeholder="RFP Key" name="rfpkey" [(ngModel)]="rfpkey" />
+
+              </mat-form-field>
+            </div>
+          </div> -->
+
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group">
+                <mat-form-field>
+
+                  <mat-select name="states" placeholder="State" [(ngModel)]="states" (change)="select_state()">
+                    <input class="inp" type="text" [(ngModel)]="statsearch" [ngModelOptions]="{standalone: true}"
+                      class="search-allstates" placeholder="Search By State">
+                    <i class="fa fa-search " area-hidden="true"></i>
+
+                    <mat-option *ngFor="let item of Statess | filter:statsearch" [value]="item.state">{{item.state}}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group ">
+                  <mat-form-field class="example-chip-list" *ngIf="agency">
+                      <mat-chip-list #chipList>
+                        <mat-chip [selectable]="selectable" [removable]="removable" (removed)="remove(agency, $event)" >
+                          {{agency}}
+    
+                        </mat-chip>
+                        
+                        <input [matChipInputFor]="chipList" [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                          [matChipInputAddOnBlur]="addOnBlur">
+                      </mat-chip-list>
+                    </mat-form-field>
+                <mat-form-field>
+                  <mat-select [(ngModel)]="agency" name="agency" placeholder="Select Agency" [(ngModel)]="agency">
+                    <input class="inp" type="text" [(ngModel)]="agensearch" [ngModelOptions]="{standalone: true}"
+                      class="search-allstates" placeholder="Search By Agency">
+                    <i class="fa fa-search " area-hidden="true"></i>
+                    <button class="btn btn-primary mg-0" (click)="acgeny_check()">Others</button>
+                    <input class="inp" type="text" class="search-allstates" placeholder="Agency" name="agency"
+                      [(ngModel)]="agency" *ngIf="agency_show==true" />
+                    <mat-option *ngFor="let item of agen | filter:agensearch" [value]="item.agencies">{{item.agencies}}
+                    </mat-option>
+
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group">
+                <mat-form-field>
+                  <input matInput placeholder="Old Category" name="oldcategory" [(ngModel)]="oldcategory" required
+                    (change)="select_oldcat()" />
+
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 ">
+
+              <div class="input-group ">
+                  <mat-form-field *ngIf="hide==true">
+                  <mat-chip-list #chipList>
+                      <mat-chip  [selectable]="selectable" *ngIf="hide==true" >
+                          {{category}}
+                      </mat-chip>
+                      <mat-chip *ngFor="let list of category" [selectable]="selectable" [removable]="removable" (removed)="remove(list, $event)">
+                          {{list}}
+                          <i class="fa fa-remove" (click)="remove(list, $event)"></i>
+                          
+                      </mat-chip>
+                      <input [matChipInputFor]="chipList" 
+                          [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                          [matChipInputAddOnBlur]="addOnBlur">
+                  </mat-chip-list></mat-form-field>
+                <mat-form-field>
+                  <mat-select [(ngModel)]="category" name="category" placeholder="Select Category"
+                    (change)="subcategory(updatedcategory.value)" #updatedcategory multiple>
+                    <input class="inp" type="text" [(ngModel)]="catsearch" [ngModelOptions]="{standalone: true}"
+                      placeholder="Search By Category" class="search-allstates">
+                    <i class="fa fa-search " area-hidden="true"></i>
+                    <button class="btn btn-primary mg-0" (click)="cat_check()">Others</button>
+                    <input class="inp" type="text" class="search-allstates" placeholder="Type Category" name="category"
+                      [(ngModel)]="category" #updatedcategory (change)="subcategory(updatedcategory.value)"
+                      *ngIf="category_show==true" />
+                    <mat-option *ngFor="let catitem of cat | filter:catsearch" [value]="catitem.category_name">
+                      {{catitem.category_name}}</mat-option>
+
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+
+            </div>
+
+
+            <div class="col-md-6 col-sm-6">
+
+              <div class="input-group ">
+                  <mat-form-field class="example-chip-list" *ngIf="hide==true">
+                      <mat-chip-list #chipList>
+                          <mat-chip  [selectable]="selectable" *ngIf="hide==true" >
+                              {{subcat}}
+                             
+                              
+                          </mat-chip>
+                          <mat-chip *ngFor="let list of subcat" [selectable]="selectable" [removable]="removable" (removed)="remove(list, $event)">
+                              {{list}}
+                              <i class="fa fa-remove" (click)="remove1(list, $event)"></i>
+                              
+                          </mat-chip>
+                          <input [matChipInputFor]="chipList" 
+                              [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                              [matChipInputAddOnBlur]="addOnBlur">
+                      </mat-chip-list>
+                  </mat-form-field>
+                <mat-form-field class="category-edit-rfp">
+
+                  <mat-select [(ngModel)]="subcat" name="subcat" placeholder="Select Sub Category" multiple>
+                    <input class="inp" type="text" [(ngModel)]="subcatsearch" [ngModelOptions]="{standalone: true}"
+                      placeholder="Search By Sub Category" class="search-allstates">
+                    <i class="fa fa-search " area-hidden="true"></i>
+                    <button class="btn btn-primary mg-0" (click)="subchk()">Others</button>
+                    <input class="inp" type="text" class="search-allstates" placeholder="Sub Category" name="subcat"
+                      [(ngModel)]="subcat" *ngIf="subcate_show==true" />
+                    <mat-option *ngFor="let catitem of sub_categories | filter:subcatsearch"
+                      [value]="catitem.subcategory_name">{{catitem.subcategory_name}}</mat-option>
+
+                  </mat-select>
+                </mat-form-field>
+
+              </div>
+
+
+            </div>
+
+            <!-- <div class="col-md-6 col-sm-6">
+            <div class="input-group">
+
+              <mat-form-field>
+                <input matInput placeholder="seoTitleUrl" name="seoTitleUrl" [(ngModel)]="seoTitleUrl" />
+
+              </mat-form-field>
+            </div>
+          </div> -->
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group">
+                <!-- dropdown -->
+                <mat-form-field>
+                   
+                  <mat-select placeholder="Bid Type" name="bid_type" [(ngModel)]="bid_type">
+                    <mat-option value="RFP">RFP - Request for Proposals</mat-option>
+                    <mat-option value="RFQ">RFQ - Request for Quotation</mat-option>
+                    <mat-option value="IFQ">IFQ - Invitation for Quote</mat-option>
+                    <mat-option value="ITB">ITB - Invitation to Bid</mat-option>
+                    <mat-option value="IFB">IFB - Invitation for Bids</mat-option>
+                    <mat-option value="RFB">RFB - Request for Bids</mat-option>
+                    <mat-option value="SOQ">SOQ - Statement of Qualifications</mat-option>
+                    <mat-option value="SPL">SPL - Special Notice</mat-option>
+                    <mat-option value="SFQ">SFQ - Solicitation for Quote</mat-option>
+                    <mat-option value="RSB">RSB - Request for Sealed Bid</mat-option>
+                    <mat-option value="RSOQ">RSOQ - Request for Statement of Qualifications</mat-option>
+                    <mat-option value="RSQ">RSQ - Request for Statement of Qualifications</mat-option>
+                    <mat-option value="RFSQ">RFSQ - Request for Statement of Qualifications</mat-option>
+                    <mat-option value="RFI">RFI - Request for Information</mat-option>
+                    <mat-option value="RFB">RFB - Request for Bid</mat-option>
+                    <mat-option value="RFC">RFC - Request for Construction</mat-option>
+                    <mat-option value="CSB">CSB - Competitive Sealed Bids</mat-option>
+                    <mat-option value="DQ">DQ - Documented Quote</mat-option>
+                    <mat-option value="INF">INF - Informal Bid</mat-option>
+                    <mat-option value="LOI">LOI - Letter of Interest</mat-option>
+                    <mat-option value="NFS">NFS - Notice of Final Settlements</mat-option>
+                    <mat-option value="NIB">NIB - Notice Inviting Bids</mat-option>
+                    <mat-option value="QR">QR - Quotation Request</mat-option>
+                    <mat-option value="RCO">RCO - Request for Competitive Offering</mat-option>
+                    <mat-option value="RFO">RFO - Request for Offer</mat-option>
+                    <mat-option value="WQ">WQ - Written Quote</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group">
+
+                <mat-form-field>
+                  <input matInput placeholder="Agency Type" name="agency_type" [(ngModel)]="agency_type" />
+
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group">
+
+                <mat-form-field>
+                  <input matInput placeholder="County" name="city_or_county" [(ngModel)]="city_or_county" />
+
+                </mat-form-field>
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group">
+
+                <mat-form-field>
+                  <input matInput placeholder="City" name="city" [(ngModel)]="city" />
+
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group margin-zero1">
+
+                <mat-form-field>
+                  <!-- <input matInput placeholder="Posted Date" name="date_entered" value="{{date_entered}}" #updateddate_entered /> -->
+                  <input matInput [matDatepicker]="startPicker" (focus)="startPicker.open()" name="date_entered"
+                    [(ngModel)]="date_entered" placeholder="Posted Date" />
+                  <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                  <mat-datepicker #startPicker color="warn"></mat-datepicker>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group margin-zero1">
+
+                <mat-form-field>
+                  <!-- <input matInput placeholder="Submission Date" name="due_date" value="{{due_date}}" #u  pdateddue_date /> -->
+
+                  <input matInput [matDatepicker]="startPicker1" (focus)="startPicker1.open()" name="due_date"
+                    [(ngModel)]="due_date" placeholder="Submission Date" />
+                  <mat-datepicker-toggle matSuffix [for]="startPicker1"></mat-datepicker-toggle>
+                  <mat-datepicker #startPicker1 color="warn"></mat-datepicker>
+                </mat-form-field>
+
+              </div>
+            </div>
+
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group margin-zero1">
+                <div> <button class="btn-file">Upload File<input class="img-input" (change)="onChange($event)" 
+                  type="file"></button> </div>
+                <!-- <mat-form-field>
+
+                  <input matInput placeholder="Web Information PDF" name="web_info" [(ngModel)]="web_info" />
+
+                </mat-form-field> -->
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group margin-zero1">
+
+                <mat-form-field>
+                  <!-- <input matInput placeholder="Rfp Reference" name="rfp_reference" [(ngModel)]="rfp_reference" /> -->
+                  <mat-select name="rfp_reference" [(ngModel)]="rfp_reference" placeholder="Rfp Reference">
+
+
+                    <mat-option value="true">
+                      True</mat-option>
+                    <mat-option value="false">
+                      False</mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6">
+              <div class="input-group add-rfp-chk">
+                <!-- <input type="checkbox"  name="open_rfp" [(ngModel)]="open_rfp" >
+                      Open RFP
+                 
+                  <input type="checkbox"  name="record_added" [(ngModel)]="record_added" >
+                      Record Added -->
+                <mat-checkbox name="open_rfp" [(ngModel)]="open_rfp">
+                  Open Rfp
+                </mat-checkbox>
+                <mat-checkbox name="record_added" [(ngModel)]="record_added">
+                  Record Added
+                </mat-checkbox>
+                <!-- <mat-form-field>
+                  <input matInput placeholder="Open Rfp" name="open_rfp" #updatedopen_rfp />
+  
+                </mat-form-field> -->
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+              <div class="input-group">
+                <ckeditor [(ngModel)]="descriptionTag" name="descriptionTag">
+                  <ckbutton [name]="'saveButton'" [command]="'saveCmd'" [icon]="'save.png'" [label]="'Save Document'"
+                    [toolbar]="'clipboard,1'">
+                  </ckbutton>
+                </ckeditor>
+
+              </div>
+            </div>
+            <div class="col-md-12 col-sm-12">
+
+              <div class=" text-center">
+                <button type="submit" class="btn btn-fill" (click)="editClick()">Submit</button>
+
+
+
+              </div>
+            </div>
+
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

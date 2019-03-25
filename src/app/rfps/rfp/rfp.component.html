@@ -1,0 +1,80 @@
+<div class="main-panel rfp-component" [ngClass]="status ? 'sidebarActive' : ''">
+  <!-- <div class="navbar-minimize sidebarToggle" (click)="navbarClass()">
+    <button class="btn btn-round btn-white btn-fill btn-just-icon" id="minimizeSidebar">
+      <i class="material-icons visible-on-sidebar-regular">more_vert</i>
+      <i class="material-icons visible-on-sidebar-mini">view_list</i>
+      <div class="ripple-container"></div>
+    </button>
+    <strong>Sidebar</strong>
+  </div>
+  <div class="sidebar custom">
+
+    <app-user-sidebar></app-user-sidebar>
+  </div> -->
+  <div class="main-content custom" style="margin-top:10px;">
+    <div class="col-sm-12">
+      <div class="example-container mat-elevation-z8">
+
+        <div class="example-loading-shade" *ngIf="dataSource.isLoadingResults || dataSource.isRateLimitReached">
+          <mat-spinner *ngIf="dataSource.isLoadingResults"></mat-spinner>
+          <div class="example-rate-limit-reached" *ngIf="dataSource.isRateLimitReached">
+            Data limit has been reached. It will be reset in one minute.
+          </div>
+        </div>
+
+        <div class="find-bids-pageination">
+          <mat-paginator id="pg" [length]="dataSource.resultsLength" [pageSizeOptions]="[10, 20, 35, 50,100]" [pageSize]="50">
+          </mat-paginator>
+        </div>
+
+        <mat-table #table [dataSource]="dataSource" class="example-table" matSort matSortActive="date_entered" matSortDisableClear
+                   matSortDirection="asc">
+
+          <!--- Note that these columns can be defined in any order.
+            The actual rendered columns are set as a property on the row definition" -->
+
+          <!-- RFP Number Column -->
+          <ng-container matColumnDef="rfp_number">
+            <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">RFP#</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <a style="cursor:pointer" [routerLink]="['/rfp/', row.seoTitleUrl]">{{ row.rfpkey }}</a>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Title Column -->
+          <ng-container matColumnDef="title">
+            <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">Title</mat-header-cell>
+            <mat-cell style="cursor:pointer" (click)="singlerfp( row.seoTitleUrl)" *matCellDef="let row">{{ row.title }}</mat-cell>
+          </ng-container>
+
+          <!-- Category Column -->
+          <ng-container matColumnDef="category">
+            <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">Category</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.category }}</mat-cell>
+          </ng-container>
+
+          <ng-container matColumnDef="state">
+            <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true">State</mat-header-cell>
+            <mat-cell *matCellDef="let row">
+              <a style="cursor:pointer" (click)="staterfp( row.state)">{{ row.state }}</a>
+            </mat-cell>
+          </ng-container>
+
+          <!-- Created Column -->
+          <ng-container matColumnDef="date_entered">
+            <mat-header-cell *matHeaderCellDef mat-sort-header disableClear="true"> Posted Date </mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.date_entered }}</mat-cell>
+          </ng-container>
+
+          <!-- Expiry Date -->
+          <ng-container matColumnDef="due_date">
+            <mat-header-cell *matHeaderCellDef>Submission Deadline</mat-header-cell>
+            <mat-cell *matCellDef="let row">{{ row.due_date }}</mat-cell>
+          </ng-container>
+          <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+          <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+        </mat-table>
+      </div>
+    </div>
+  </div>
+</div>

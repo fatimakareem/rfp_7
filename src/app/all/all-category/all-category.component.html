@@ -1,0 +1,54 @@
+<app-loader></app-loader>
+
+
+<div class="main-content">
+  <div class="container">
+
+    <div class="row">
+      <!-- <div class="rfp-back">
+        <a (click)="back()"><i class="fa fa-chevron-left"></i> Back to Previous Page</a>
+      </div> -->
+      <div class="all-cats">
+        <div class="head col-sm-12">
+          <div class="row">
+            <div class="col-sm-8">
+              <h3><i class="fas fa-list-alt" aria-hidden="true"></i>All Categories</h3>
+            </div>
+            <div class="col-sm-4 text-right">
+              <input type="text" [(ngModel)]="catsearch" [ngModelOptions]="{standalone: true}" placeholder="Search RFPs"
+                class="search-allstates" #qury1 (keydown)=filter(qury1.value)>
+              <i class="fas fa-search s-icon-all-states" area-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div *ngIf="loaded==true">
+            <div class="col-sm-12 text-center" *ngIf="item==0">
+              <i class="fa fa-exclamation-triangle"></i>
+              <h3 class="text-center">No Record Found</h3>
+            </div>
+          </div>
+          <div class="col-sm-4 col" *ngFor="let rfpcat of cat; let i = index">
+            <a class="curser-pointer" (click)="catrfp(rfpcat.cat.category_name)"><i class="fab fa-superpowers"
+                aria-hidden="true"></i>{{rfpcat.cat.category_name}}</a>
+            <i class="caret pull-right view-more state collapsed" data-toggle="collapse"
+              attr.data-target="#View{{i}}" *ngIf="rfpcat.subcat !=''"></i>
+            <div attr.id="View{{i}}" class="panel-details collapse">
+              <!-- <div > -->
+              <ul>
+                <li *ngFor="let catitem of rfpcat.subcat">
+                  <a class="curser-pointer" [routerLink]="['/subcategory']"
+                    [queryParams]="{ subcat: catitem.subcategory_name}">
+                    {{catitem.subcategory_name}}</a>
+                </li>
+              </ul>
+
+              <!-- </div> -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- </div> -->

@@ -1,0 +1,374 @@
+<app-loader></app-loader>
+
+<div class="container sh-advnce-search pt-10px">
+    <div class="card one" >
+        <div class="card-header" data-background-color="red">
+            <h2>Advanced Search</h2>
+        </div>
+        <div class="card-content">
+            <form  (ngSubmit)="onSubmit(1)" class="sh-form-spaces-fix sh-signup-form-fix sh-advanceSearch sh-more-condense-spaces sh">
+                <div class="row">
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field>
+                            <mat-select [(ngModel)]="status" name="status" placeholder="Status" (change)="chang(status)">
+
+                                <mat-option *ngFor="let food of foods" [value]="food.value">
+                                    {{ food.viewValue }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field color="warn" class="sh-ad-date">
+                            <input matInput [matDatepicker]="startPicker" (focus)="startPicker.open()" name="enterdate" [(ngModel)]="enterdate"
+                                placeholder="From Posted Date" (ngModelChange)="entereddate(enterdate)" />
+                            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                            <mat-datepicker #startPicker color="warn"></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field color="warn" class="example-full-width mat-size sh-ad-date">
+                            <input matInput [matDatepicker]="startPicker1" (focus)="startPicker1.open()" name="duedate" [(ngModel)]="duedate"
+                                placeholder="To Posted Date" (ngModelChange)="dueddate(duedate)" />
+                            <mat-datepicker-toggle matSuffix [for]="startPicker1"></mat-datepicker-toggle>
+                            <mat-datepicker #startPicker1 color="warn"></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field color="warn" class="sh-ad-date">
+                            <input matInput [matDatepicker]="startPicker3" (focus)="startPicker3.open()" name="submissionfrom" [(ngModel)]="submissionfrom"
+                                placeholder="From submission Date" (ngModelChange)="Submission_from(submissionfrom)" />
+                            <mat-datepicker-toggle matSuffix [for]="startPicker3"></mat-datepicker-toggle>
+                            <mat-datepicker #startPicker3 color="warn"></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field color="warn" class="example-full-width mat-size sh-ad-date">
+                            <input matInput [matDatepicker]="startPicker4" (focus)="startPicker4.open()" name="submissionto" [(ngModel)]="submissionto"
+                                placeholder="To submission Date" (ngModelChange)="Submission_to(submissionto)" />
+                            <mat-datepicker-toggle matSuffix [for]="startPicker4"></mat-datepicker-toggle>
+                            <mat-datepicker #startPicker4 color="warn"></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field>
+                            <mat-select [(ngModel)]="states" name="states"  placeholder="Search By State" (change)="select_state()">
+                                <input class="inp" type="text" [(ngModel)]="statsearch" [ngModelOptions]="{standalone: true}"
+                                    class="search-allstates" placeholder="Search By State" >
+                                <i class="fa fa-search s-icon-all-states" area-hidden="true"></i>
+                                <mat-option value='all'>Select All</mat-option>
+                               
+                                <mat-option *ngFor="let item of state | filter:statsearch" [value]="item.state">{{item.state | titlecase}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field>
+                            <mat-select [(ngModel)]="agencies" name="agencies" placeholder="Search By Agency" (change)="select_agency()">
+                                <input class="inp" type="text" [(ngModel)]="agensearch" [ngModelOptions]="{standalone: true}"
+                                    class="search-allstates" placeholder="Search By Agency" >
+                                <i class="fa fa-search s-icon-all-states" area-hidden="true"></i>
+                                <mat-option value='all'>Select All</mat-option>
+                                <mat-option *ngFor="let item of agency | filter:agensearch" [value]="item.agencies">{{item.agencies | titlecase}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field>
+                            <mat-select [(ngModel)]=cates name="cates" placeholder="Search By Category" (change)="select_category()">
+                                <input class="inp" type="text" [(ngModel)]="catsearch" [ngModelOptions]="{standalone: true}"
+                                    placeholder="Search By Category" class="search-allstates" >
+                                <i class="fa fa-search s-icon-all-states" area-hidden="true"></i>
+                                <mat-option value='all'>Select All</mat-option>
+                                <mat-option *ngFor="let catitem of cat | filter:catsearch" [value]="catitem.category_name">{{catitem.category_name | titlecase}}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <div class="col-sm-4 col-xs-6">
+                        <mat-form-field>
+                            <mat-select  placeholder="Search By Sub Category" [(ngModel)]=subcate name="subcate" [disabled]="!cates || cates=='all'" (change)="select_category()">
+                                <input class="inp" type="text" [(ngModel)]="subcatsearch" [ngModelOptions]="{standalone: true}" placeholder="Search By sub Category"  class="search-allstates" style="width: 100%; border-radius: 7px">
+                                <i class="fa fa-search s-icon-all-states" area-hidden="true" ></i>
+                               
+                                <mat-option class="elips-mat-opt" *ngFor="let catitem of sub_categories  | filter:subcatsearch" [value]="catitem.sub_category" title="{{catitem.sub_category}}">{{catitem.sub_category | titlecase}}</mat-option>
+                            </mat-select>
+                            </mat-form-field>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                        <button title="Search Results" type="submit" class="btn btn-primary btn-rose btn-lg">Search</button>
+                        <button title="Clear" type="reset" class="btn btn-primary btn-rose btn-lg" (click)="formclear()">Clear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--Updated Layout start-->
+    <div class="card two" >
+
+        <div class="col-sm-12 text-center" *ngIf="item == 0">
+            <i class="fa fa-exclamation-triangle"></i>
+            <h3 class="text-center">No Record Found</h3>
+        </div>
+        <div  class="card-content">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="text-center srch-result">Search Results - {{length | number}} RFP Opportunities Found</h3>
+                </div>
+                <div class="col-md-6 padding-zero">
+                </div>
+            </div>
+            <div class="products-area sh-products-area">
+                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 sh-pg-container header" id="myHeader">
+                <div class="col-lg-9 col-md-8 col-sm-9 col-xs-12 text-right">
+                    <ul class="pagination" *ngIf="pager.pages && pager.pages.length">
+                            <li [ngClass]="{hide:pager.currentPage === 1}">
+                                    <a (click)="onSubmit(1)" class="view-1s" class="btn btn-fill">
+                                        <i class="fa fa-angle-double-left"></i>
+                                    </a>
+                                </li>
+                        <li [ngClass]="{hide:pager.currentPage === 1}">
+                            <a (click)="onSubmit(pager.currentPage - 1)" class="view-1s" class="btn btn-fill">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        </li>
+                        <li [ngClass]="{hide:pager.currentPage <= 30}">
+                            <a (click)="onSubmit(pager.currentPage - 30)">...</a>
+                        </li>
+                        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                            <a (click)="onSubmit(page)" class="view-plan-details">{{page | number}}</a>
+                        </li>
+
+                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}" *ngIf="(pager.startPage  + 3) <= pager.totalPages">
+                            <a (click)="onSubmit(pager.currentPage + 3)">...</a>
+                        </li>
+                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}"> <a>Of</a></li>
+                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                            <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages
+                                | number}}</a>
+                        </li>
+                        <li *ngIf="pager.currentPage === pager.totalPages"> <a>Of</a></li>
+                        <li *ngIf="pager.currentPage === pager.totalPages">
+                            <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages
+                                | number}}</a>
+                        </li>
+                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                            <a (click)="onSubmit(pager.currentPage + 1)" class="view-plan-details" class="btn bd-color"
+                                type="Next">
+                                <i class="fa fa-angle-right top-set"></i>
+                            </a>
+                        </li>
+                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                                <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" class="btn bd-color"
+                                    type="Next">
+                                    <i class="fa fa-angle-double-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+                    <div  class="col-lg-3 col-md-4 col-sm-3 col-xs-12 prod-select-list sec-list sh-select-list" *ngIf="pager.pages && pager.pages.length">
+                        <label class="product-label" >Items per page:
+                        </label>
+                        <mat-form-field>
+                            <mat-select class="width-sec" placeholder="" selected="10" (change)="page(pageSize)" value="pageSize"
+                                required [(ngModel)]="pageSize" name="pageSize">
+                                <mat-option value="10" selected="true">10</mat-option>
+                                <mat-option value="20">20 </mat-option>
+                                <mat-option value="35">35</mat-option>
+                                <mat-option value="50">50</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+                <div *ngFor="let rfp of record" class="card">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="card-header card-header-text" data-background-color="purple">
+                                <a class="curserr-pointer" [routerLink]="['/rfp']"[queryParams]="{query:rfp.seoTitleUrl}" (click)="move()">
+                                    <h4 class="card-title">{{rfp.rfpkey}}</h4>
+                                </a>
+                            </div>
+                        </div>
+                        <button *ngIf="adminlogin" class="fa btn sh fa-edit edit-del-btn" type="submit" value="Edit" type="submit" (click)="btnEditClick(rfp.id,rfp.rfpkey,rfp.rfp_number,rfp.title,rfp.descriptionTag,rfp.state,rfp.agency,rfp.date_entered,rfp.due_date,rfp.web_info,rfp.rfp_reference,rfp.new_category,rfp.sub_category,rfp.seoTitleUrl,rfp.bid_type,rfp.agency_type,rfp.city_or_county,rfp.city,rfp.open_rfp,rfp.category)"
+                        ><span >
+                            Edit </span>
+                        </button>
+                        <div class="card-content">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 plan-detail">
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 plan-detail">
+                                    <h3>
+                                        <a class="curser-pointer" [routerLink]="['/rfp']"[queryParams]="{query:rfp.seoTitleUrl}" (click)="move()">
+                                            {{rfp.title}}</a>
+                                    </h3>
+                                    
+                                    <div class="col-md-6">
+                                        <h4 class="view-more collapsed" data-toggle="collapse" attr.data-target="#View{{rfp.id}}">
+                                            Details
+                                            <i class="material-icons">arrow_drop_down</i>
+                                        </h4>
+                                    </div>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 term top-margin-25">
+                                    <!--<h4>Detail:</h4>-->
+                                    <div class="table">
+                                        <table class="table-normal">
+                                            <thead>
+                                                <tr>
+                                                    <td>
+                                                        <i class="glyphicon glyphicon-calendar"></i> Posted Date</td>
+                                                    <td>
+                                                        <i class="glyphicon glyphicon-calendar"></i> Submission
+                                                        Deadline</td>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr *ngIf="!adminlogin">
+                                                    <td *ngIf="check(rfp.date_entered) == true">{{rfp.date_entered | date:'EEEE, MMM dd, y'}}</td>
+                                                    <td *ngIf="check(rfp.date_entered) == false"></td>
+                                                    <td *ngIf="check(rfp.due_date) == true">{{rfp.due_date | date:'EEEE, MMM dd, y'}}</td>
+                                                    <td *ngIf="check(rfp.due_date) == false"></td>
+                                                  </tr>
+                                                  <tr *ngIf="adminlogin">
+                                                        <td>{{rfp.date_entered}}</td>
+                                                       
+                                                        <td>{{rfp.due_date}}</td>
+                                                       
+                                                    </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-md-6 col-sm-6 col-xs-6" *ngIf="!subscribe">
+                                        <button (click)="memberonly()" class="btn btn-rose sub" title="Subscribe Package">Subscribe
+                                            Now
+                                            <!-- <i class="material-icons">bubble_chart</i> -->
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-12">
+                                <div attr.id="View{{rfp.id}}" class="panel-details collapse">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 plan-detail">
+                                            <h5 *ngIf="rfp.agency"><i class="fa fa-building-o"></i> Agency : <a [routerLink]="['/agency']" [queryParams]="{ agency: rfp.agency}"><span><b>{{rfp.agency}}</b></span></a></h5>
+                                                            <h5>
+                                                              <i class="fa fa-university"></i> Category :
+                                                              <a [routerLink]="['/category']" [queryParams]="{ cat: rfp.new_category}"><span><b>{{ rfp.new_category}}</b></span></a>
+                                                            </h5>
+                                                            <h5>
+                                                              <i class="fa fa-fort-awesome"></i> State : <a [routerLink]="['/state']" [queryParams]="{ state: rfp.state}"><span><b> {{ rfp.state}}</b></span></a>
+                                                            </h5>
+                                    </div>
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 term top-margin-25">
+                                        <ul class="list-normal">
+                                            <li *ngIf="!subscribe; else pdf">
+                                                <a routerLink="/pricing">
+                                                    <i class="fa fa-credit-card"></i>
+                                                     Pricing/Package Details
+                                                </a>
+                                            </li>
+                                            <ng-template #pdf>
+                                                <li *ngIf="rfp.rfp_reference == 'Download File' ; else link ">
+                                                    <a href="{{rfp.web_info}}" target="_blank">
+                                                        <i class="material-icons">insert_drive_file</i>
+                                                        View Documents
+                                                    </a>
+                                                </li>
+                                                <ng-template #link>
+                                                    <li>
+                                                        <a href="{{rfp.web_info}}" target="_blank">
+                                                            <i class="material-icons">insert_drive_file</i>
+                                                            View Documents
+                                                        </a>
+                                                    </li>
+                                                </ng-template>
+                                            </ng-template>
+                                        </ul>
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 plan-detail" *ngIf="subscribe">
+                                        <div *ngIf="rfp?.descriptionTag == null">
+                                            <div [innerHTML]="rfp.deescription"></div>
+                                        </div>
+                                        <div *ngIf="rfp?.descriptionTag != null">
+                                            <div [innerHTML]="rfp?.descriptionTag"></div>
+                                        </div>
+                                        <!-- <p class="angular-with-newlines">{{rfp.deescription}}</p> -->
+                                    </div>
+                                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 plan-detail" *ngIf="!subscribe">
+                                        <h5 ><i class="fas fa-info dscrption-icon"></i>Description:
+                                           <a  (click)="memberonly()" class="memberOnly curser-pointer"><i class="fas fa-lock lock-icon"></i>Member Only</a>
+                                        </h5>
+                                        <h5 ><i class="fas fa-file-alt"></i>Bid Documents:
+                                           <a (click)="memberonly()" class="memberOnly curser-pointer"><i class="fas fa-lock lock-icon"></i>Member Only</a>
+                                        </h5>
+                                      </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <!--<mat-paginator #paginatorBottom [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions" (page)="paginatorTop.pageIndex = $event.pageIndex; pageEvent = $event; onPaginateChange($event)">-->
+                <!--</mat-paginator>-->
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 sh-pg-container">
+                        <div class="col-lg-9 col-md-8 col-sm-9 col-xs-12 text-right">
+                            <ul class="pagination" *ngIf="pager.pages && pager.pages.length">
+                                    <li [ngClass]="{hide:pager.currentPage === 1}">
+                                            <a (click)="onSubmit(1)" class="view-1s" class="btn btn-fill">
+                                                <i class="fa fa-angle-double-left"></i>
+                                            </a>
+                                        </li>
+                                <li [ngClass]="{hide:pager.currentPage === 1}">
+                                    <a (click)="onSubmit(pager.currentPage - 1)" class="view-1s" class="btn btn-fill">
+                                        <i class="fa fa-angle-left"></i>
+                                    </a>
+                                </li>
+                                <li [ngClass]="{hide:pager.currentPage <= 30}">
+                                    <a (click)="onSubmit(pager.currentPage - 30)">...</a>
+                                </li>
+                                <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                    <a (click)="onSubmit(page)" class="view-plan-details">{{page | number}}</a>
+                                </li>
+        
+                                <li [ngClass]="{hide:pager.currentPage === pager.totalPages}" *ngIf="(pager.startPage  + 3) <= pager.totalPages">
+                                    <a (click)="onSubmit(pager.currentPage + 3)">...</a>
+                                </li>
+                                <li [ngClass]="{hide:pager.currentPage === pager.totalPages}"> <a>Of</a></li>
+                                <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                                    <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages
+                                        | number}}</a>
+                                </li>
+                                <li *ngIf="pager.currentPage === pager.totalPages"> <a>Of</a></li>
+                                <li *ngIf="pager.currentPage === pager.totalPages">
+                                    <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages
+                                        | number}}</a>
+                                </li>
+                                <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                                    <a (click)="onSubmit(pager.currentPage + 1)" class="view-plan-details" class="btn bd-color"
+                                        type="Next">
+                                        <i class="fa fa-angle-right top-set"></i>
+                                    </a>
+                                </li>
+                                <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                                        <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" class="btn bd-color"
+                                            type="Next">
+                                            <i class="fa fa-angle-double-right"></i>
+                                        </a>
+                                    </li>
+                            </ul>
+                        </div>
+                            <div class="col-lg-3 col-md-4 col-sm-3 col-xs-12 prod-select-list sec-list sh-select-list" *ngIf="pager.pages && pager.pages.length">
+                                <label class="product-label" >Items per page:
+                                </label>
+                                <mat-form-field>
+                                    <mat-select class="width-sec" placeholder="" selected="10" (change)="page(pageSize)" value="pageSize"
+                                        required [(ngModel)]="pageSize" name="pageSize">
+                                        <mat-option value="10" selected="true">10</mat-option>
+                                        <mat-option value="20">20 </mat-option>
+                                        <mat-option value="35">35</mat-option>
+                                        <mat-option value="50">50</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                            </div>
+                        </div>
+            </div>
+        </div>
+    </div>
+</div>

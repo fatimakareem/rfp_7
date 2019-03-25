@@ -1,0 +1,13 @@
+<div class="card-recap">
+    <div class="main">
+        <img [src]="imgName">
+        <button class="refrash-button" type="button" (click)="resetImg()" mat-icon-button>
+          <mat-icon>cached</mat-icon>
+        </button>
+    </div>
+    <!-- <mat-form-field class="recapcha-input" floatLabel="always"> -->
+        <!-- <mat-label></mat-label> -->
+        <input placeholder="Enter above text" class="recapcha-input"
+          [(ngModel)]="capchaText" autocomplete="off" maxlength="5" (change)="checkChange()" >
+    <!-- </mat-form-field> -->
+    </div>
