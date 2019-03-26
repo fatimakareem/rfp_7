@@ -14,8 +14,13 @@ margin-right: 5px;
 .main-content {
     padding: 10px 0 0;
 }
-.sh-signup-form-fix .mat-input-element {
-    font-size: 24px;
-    color: #000;
-    padding-bottom: 8px;
+
+
+.mat-form-field-infix {
+    padding: 0 !important;
+    padding: .5em 0;
+    border-top: 0;
+}
+.form-footer{
+    padding-top: 25px;
 }
