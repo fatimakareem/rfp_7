@@ -1,4 +1,3 @@
-// IMPORTANT: this is a plugin which requires jQuery for initialisation and data manipulation
 
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import 'rxjs/add/operator/filter';
@@ -8,7 +7,6 @@ import swal from 'sweetalert2';
 import 'rxjs/Rx';
 import { SharedData } from '../../shared-service';
 import { ActivatedRoute, Router } from '@angular/router';
-// import { HeaderService } from './header/header.service';
 import * as moment from 'moment';
 import { Location } from '@angular/common';
 import { Meta, Title } from '@angular/platform-browser';
@@ -19,6 +17,7 @@ import { EditRfpComponent } from '../../edit-rfp/edit-rfp.component';
   selector: 'app-data-table-cmp',
   templateUrl: 'single-rfp.component.html',
   styleUrls: ['./single-rfp.component.css']
+
 })
 
 export class SingleRfpComponent implements OnInit, OnDestroy {
@@ -97,7 +96,7 @@ export class SingleRfpComponent implements OnInit, OnDestroy {
     this._serv.downloadFile(info).subscribe(
       data => {
         if (data.status = "200") {
-          swal.fire(
+          swal(
             'File Downloaded Successfully!',
             '',
             'success'
@@ -173,7 +172,7 @@ console.log(params)
             this._shareData.watchInfo(this.wrfp);
           }
           if (this.statuss == "This Rfp is already in your Watch List") {
-            swal.fire({
+            swal({
               type: 'info',
               title: 'This RFP Is Already In Your Watchlist',
               showConfirmButton: true,
@@ -183,7 +182,7 @@ console.log(params)
             });
           }
           else {
-            swal.fire({
+            swal({
               type: 'success',
               title: 'RFP succesfully added to your watch list',
               showConfirmButton: true,
@@ -198,7 +197,7 @@ console.log(params)
         });
     }
     else {
-      swal.fire({
+      swal({
         type: 'error',
         title: 'Please Login with RFPGurus',
         showConfirmButton: true,

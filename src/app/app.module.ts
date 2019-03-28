@@ -7,7 +7,6 @@ import { CommonModule } from '@angular/common';
 import { NgxCarouselModule } from 'ngx-carousel';
 import { ProgressHttpModule } from "angular-progress-http";
 import { UsMapModule } from 'angular-us-map';
-import { InternationalPhoneModule } from 'ng4-intl-phone';
 /////////////////////////////////Service/////////////////////////////
 import { UnsubscribeService } from './unsubscribe/unsubscribe.service';
 import { RfpService } from './rfps/single-rfp/rfp.service';
@@ -41,56 +40,28 @@ import { SharedData } from './shared-service'
 //////////////////////////////////////////////////////////End//////////////////////////////////////////////
 import 'hammerjs';
 import {
-    MatAutocompleteModule,
     MatButtonModule,
-    MatButtonToggleModule,
     MatCardModule,
     MatCheckboxModule,
     MatChipsModule,
     MatDatepickerModule,
     MatDialogModule,
-    MatExpansionModule,
-    MatGridListModule,
     MatIconModule,
     MatInputModule,
-    MatListModule,
-    MatMenuModule,
-    MatNativeDateModule,
-    MatPaginatorModule,
-    MatProgressBarModule,
-    MatProgressSpinnerModule,
-    MatRadioModule,
-    MatRippleModule,
     MatSelectModule,
-    MatSidenavModule,
-    MatSliderModule,
     MatSlideToggleModule,
-    MatSnackBarModule,
-    MatSortModule,
-    MatStepperModule,
-    MatTableModule,
     MatTabsModule,
-    MatToolbarModule,
-    MatTooltipModule,
-    DateAdapter,
+    DateAdapter, MatNativeDateModule
 
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { AllnotificationComponent } from './allnotification/allnotification.component';
 import { AppRoutes } from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SingleRfpComponent } from './rfps/single-rfp/single-rfp.component';
 import { UserSidebarComponent } from './user-sidebar/user-sidebar.component';
-import { RfpComponent } from './rfps/rfp/rfp.component';
-import { RegisteredComponent } from './registered/registered.component';
-import { AuthenticateComponent } from './authenticate/authenticate.component';
-import { LoginComponent } from './login/login.component';
-import { SuperloginComponent } from './superlogin/superlogin.component';
-import { DialogOverviewExample } from './residential/residential.component';
 import { FooterComponent } from './footer/footer.component';
-import { RecapchaComponent } from './recapcha/recapcha.component';
 import { AdminLayoutComponent } from './layouts/lyout/admin-layout.component';
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { AdminComponent } from './layouts/superadmin/admin-layout.component'
@@ -104,6 +75,8 @@ import { AgmCoreModule } from '@agm/core';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DatePipe } from '@angular/common';
+import { RecapchaModule } from './recapcha/recapcha.module';
+
 ////////////////////////for loader/////////////////////////
 export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions, preloaderService: PreloaderService) {
     return new HttpService(backend, defaultOptions, preloaderService);
@@ -134,40 +107,18 @@ export function provideConfig() {
 
 @NgModule({
     exports: [
-
-        MatAutocompleteModule,
         MatButtonModule,
-        MatButtonToggleModule,
         MatCardModule,
         MatCheckboxModule,
         MatChipsModule,
-        MatStepperModule,
         MatDatepickerModule,
         MatDialogModule,
-        MatExpansionModule,
-        MatGridListModule,
         MatIconModule,
         MatInputModule,
-        MatListModule,
-        MatMenuModule,
-        MatNativeDateModule,
-        MatPaginatorModule,
-        MatProgressBarModule,
-        MatProgressSpinnerModule,
-        MatRadioModule,
-        MatRippleModule,
         MatSelectModule,
-        MatSidenavModule,
-        MatSliderModule,
         MatSlideToggleModule,
-        MatSnackBarModule,
-        MatSortModule,
-        MatTableModule,
-        MatTabsModule,
-        MatToolbarModule,
-        MatTooltipModule,
-        MatStepperModule,
-        // BlackgeeksRecaptchaModule
+        MatTabsModule, MatNativeDateModule
+        
     ],
     
   
@@ -176,7 +127,7 @@ export function provideConfig() {
 export class MaterialModule { }
 @NgModule({
     imports: [
-        InternationalPhoneModule,
+        
         CommonModule,SlickModule,
         UsMapModule,
         BrowserAnimationsModule,
@@ -185,7 +136,6 @@ export class MaterialModule { }
         RouterModule.forRoot(AppRoutes),
         HttpModule,
         MaterialModule,
-        MatNativeDateModule,
         ProgressHttpModule,
         Ng2SearchPipeModule,
         NgxCarouselModule,CKEditorModule,
@@ -193,20 +143,15 @@ export class MaterialModule { }
             apiKey: 'AIzaSyDPnJ0zatoiPOI1GOeeS7HCj7AxIW183tg'
         }),
         ReactiveFormsModule,
-        // RecaptchaModule.forRoot(),
         MatTabsModule,
-        MatToolbarModule,
-        MatTooltipModule,
-        MatStepperModule,
         SocialLoginModule,
         LoaderModule,
+        RecapchaModule
     ],
     declarations: [
-        AdminComponent,SuperloginComponent,EditRfpComponent,
+        AdminComponent,
+        EditRfpComponent,
         SuperadminComponent,
-        // UnsubscribeComponent,
-        AllnotificationComponent,
-        // PaymentmethodsComponent,
         SidebarComponent,
         AppComponent,
         AuthLayoutComponent,
@@ -215,36 +160,7 @@ export class MaterialModule { }
         HeaderComponent,
         SingleRfpComponent,
         UserSidebarComponent,
-        RecapchaComponent,
-        // PricingComponent,
-        RfpComponent,
-        // PreloaderFull,
-        // PreloaderSmall,
-        // LoaderComponent,
-        RegisteredComponent,
-        AuthenticateComponent,
-        LoginComponent,
-        // ForgetPasswordComponent,
-        // RecaptchaComponent,
-        // StateRfpComponent,
-        // CategoryRfpComponent,
-        // AllCategoryComponent,
-        // AllStateComponent,
-        DialogOverviewExample,
-        // ProfileComponent,
-        // AllRfpsComponent,
         FooterComponent,
-        // ChangedPasswordComponent,
-        // AdvanceSearchComponent,
-        // BlogComponent,
-        // BlogComponent,
-        // SingleblogComponent,
-        // PartnershipComponent,
-        // BaseComponent,
-        // ResultsComponent,
-        // HistoryComponent,
-        // AllAgenciesComponent,
-        // AgencyRfpComponent,
         WatchlistComponent
     ],
     providers: [
@@ -253,36 +169,32 @@ export class MaterialModule { }
             useFactory: provideConfig
         },
         DatePipe,
-        // MainService,
-        // AllStateService,
+      
         RecapchaService,
         SharedData,
         AdvanceService,
         HomeService,
         HeaderService,
-        // ChangedPasswordService,
-        // AllCategoryService,
+        
         CategoryRfpService,
         StateService,
         RfpService,
         SidebarService,
         LoginService,MetaService,
-        // PricingService,
+        
         RegisterService,
-        // AllRfpsService,
-        // ForgetPasswordService,
+       
         PreloaderService,
-        // PagerService,
+        
         AuthGuard,AuthGuard1,
         BaseRequestOptions,
-        // ProfileService,
-        // ContactUsService,
+       
         FooterService,
         ResultsService,
-        // AllAgenciesService,
+       
         AgencyService,
         BlogService,
-        // partnershipservice,
+      
         SpeechRecognitionService,
         PaymentmethodsService, UnsubscribeService,
         {

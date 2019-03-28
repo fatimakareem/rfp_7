@@ -133,7 +133,7 @@ textonly='[a-zA-Z]+'
     // this.captcha.reset();
     // this.isequal = false;
     
-    swal.fire({
+    swal({
       type: 'error',
       title: 'Please confirm you are not a robot!',
       showConfirmButton: false,
@@ -145,7 +145,7 @@ textonly='[a-zA-Z]+'
     send_link(email) {
        this.endRequest= this._serv.activation_service(email).subscribe(
             data => {
-                swal.fire({
+                swal({
                     type: 'success',
                     title: 'Please check your email for account activation instructions',
                     showConfirmButton: true,

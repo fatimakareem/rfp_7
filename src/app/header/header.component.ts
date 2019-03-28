@@ -1,19 +1,16 @@
-import { Component, OnInit, AfterContentInit, ElementRef, ViewChild, Output, EventEmitter, Input } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { HeaderService } from './header.service';
 import swal from 'sweetalert2';
 import { SharedData } from '../shared-service';
-import { AuthService, SocialUser } from "angular4-social-login";
-import { Meta } from '@angular/platform-browser';
+import { AuthService } from "angular4-social-login";
 import { SpeechRecognitionService } from './speechservice';
 import { RfpService } from '../rfps/single-rfp/rfp.service';
-import { Observable, Subject } from 'rxjs/Rx';
 declare var $: any;
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
-})
+  styleUrls: ['./header.component.css']})
 export class HeaderComponent implements OnInit {
   // @ViewChild('openModal') openModal: ElementRef;
   public blink = false;
@@ -72,7 +69,7 @@ export class HeaderComponent implements OnInit {
     });
     localStorage.clear();
     sessionStorage.clear();
-    swal.fire({
+    swal({
       type: 'success',
       title: 'Successfully Logged out',
       showConfirmButton: false,
@@ -98,10 +95,7 @@ export class HeaderComponent implements OnInit {
     },
     );
   }
-  // single(query) {
-  //   let sth = 'rfp/' + query;
-  //   this._nav.navigate([sth]);
-  // }
+  
   deletenofication(id) {
     this._serv.deletenotify(id).subscribe(
       data => {
@@ -123,6 +117,7 @@ export class HeaderComponent implements OnInit {
     this._shareData.notification.subscribe(message => this.notificate = message)
     this._shareData.unreadnotification.subscribe(message => this.unread = message)
     this._shareData.currentMessage.subscribe(message => this.wrfp = message)
+    console.log(this.wrfp,'header')
     this._shareData.currentMessagetotal.subscribe(message => this.total = message)
     // this.watchlist();
     this.notification()
@@ -167,7 +162,7 @@ export class HeaderComponent implements OnInit {
   get(id, title) {
     this.id = id;
     this.title = title
-    swal.fire({
+    swal({
       title: 'Are you sure you want to delete from watchlist? <br> You will not be able to revert this!',
       type: 'question',
       showCancelButton: true,
@@ -193,12 +188,7 @@ export class HeaderComponent implements OnInit {
     // alert(localStorage.getItem('currentUser'))
     if(localStorage.getItem('loged_in')){  
       this.lacal_user=true;
-        // this.log=JSON.parse(localStorage.getItem('currentUser'))
-  
-    // if ( this.log) {
-    //   this.local = localStorage.getItem('currentUser');
-    //   let pars = JSON.parse(this.local);
-    //   this.uname = pars.username;
+      
       return true;
     } else {
       this.lacal_user=false;

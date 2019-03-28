@@ -60,7 +60,7 @@ export class SidebarComponent {
         this.authService.signOut();        
         localStorage.clear();
 
-        swal.fire({
+        swal({
             type: 'success',
             title: 'Successfully Logged out',
             showConfirmButton: false,

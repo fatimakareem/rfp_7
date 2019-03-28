@@ -27,24 +27,24 @@
     <section class="bannerCarousel">
       <div class="download-btns">
         <a href="" target="_blank">
-          <img src="https://storage.rfpgurus.com/bplrfpgurus/apple-store.png" alt="Apple Store" />
+          <img src="../../assets/img/apple-store.png" alt="Apple Store" />
         </a>
         <a href="https://play.google.com/store/apps/details?id=com.brainplow.rfpgurus" target="_blank">
-          <img src="https://storage.rfpgurus.com/bplrfpgurus/google-play.png" alt="Google Play Store" />
+          <img src="../../assets/img/google-play.png" alt="Google Play Store" />
         </a>
       </div>
       <ngx-carousel [inputs]="carouselOne" class="">
         <ngx-item NgxCarouselItem>
-          <img src="https://storage.rfpgurus.com/bplrfpgurus/1.jpg" alt="image description" />
+          <img src="../../assets/slides/1.jpg" alt="image description" />
         </ngx-item>
         <ngx-item NgxCarouselItem>
-          <img src="https://storage.rfpgurus.com/bplrfpgurus/2.jpg" alt="image description" />
+          <img src="../../assets/slides/2.jpg" alt="image description" />
         </ngx-item>
         <ngx-item NgxCarouselItem>
-          <img src="https://storage.rfpgurus.com/bplrfpgurus/3.jpg" alt="image description" />
+          <img src="../../assets/slides/3.jpg" alt="image description" />
         </ngx-item>
         <ngx-item NgxCarouselItem>
-          <img src="https://storage.rfpgurus.com/bplrfpgurus/4.jpg" alt="image description" />
+          <img src="../../assets/slides/4.jpg" alt="image description" />
         </ngx-item>
         <!-- <ngx-item NgxCarouselItem>
             <img src="https://storage.rfpgurus.com/bplrfpgurus/5.jpg" alt="image description" />
@@ -79,7 +79,7 @@
                             <img title={{ite.category_name}}  class="img cat-slide" src="https://storage.rfpgurus.com/category_images/{{ite.category_image}}@96px.png">
                           </a>
                         </div>
-                        <div class="slide-overlay" >
+                        <div class="slide-overlay">
                           <h4 class="card-title elipsis-cat-slider">
                             <a  [routerLink]="['/category']" [queryParams]="{ cat: ite.category_name}" class=".pclass " title={{ite.category_name}} >{{
                               ite.category_name }}</a>

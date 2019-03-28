@@ -90,7 +90,7 @@ onLogin(e,username,password) {
       this.isequal = true;
               this._serv.adminlogin(username, password).subscribe(
                   data => {
-                      swal.fire({
+                      swal({
                           type: 'success',
                           title: 'Successfully Logged in',
                           showConfirmButton: false,
@@ -103,7 +103,7 @@ onLogin(e,username,password) {
                       // this._location.back();
                   },
                   error => {
-                      swal.fire(
+                      swal(
                           'Invalid',
                           'Username OR Password',
                           'error'
@@ -116,7 +116,7 @@ onLogin(e,username,password) {
       // this.captcha.reset();
       // this.isequal = false;
 
-      swal.fire({
+      swal({
           type: 'error',
           title: 'Please confirm you are not a robot!',
           showConfirmButton: false,
