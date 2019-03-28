@@ -1840,9 +1840,9 @@ hr {
     background: #fefefe
 }
 
-.logo {
+/* .logo {
     margin: 0 5px
-}
+} */
 
 .inner .nav-home ul li,
 .nav-home ul li {
@@ -3817,3 +3817,10 @@ button {
 /* .disable-selectlist:disabled{
     cursor: not-allowed;
 } */
+.mat-form-field-prefix, .mat-form-field-suffix{
+    cursor: pointer;
+}
+.logo{
+    max-width: 140px;
+    margin: 5px;
+}
