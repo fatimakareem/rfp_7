@@ -5,7 +5,7 @@
     <div class="container">
       <div class="col-sm-12">
         <div class="card">
-          <form [formGroup]="register" (ngSubmit) = "onRegister(register.value)" class="sh-signup-form-fix sh">
+          <form [formGroup]="register" (ngSubmit) = "onRegister(register.value)" class="sh-signup-form-fix sh signup-form">
 
             <div class="card-header card-header-icon" data-background-color="red">
               <i class="fas fa-user-alt"></i>
@@ -175,13 +175,13 @@
                     <mat-form-field>
                       <input [disabled]="emailexist || usernameexist" maxlength="32" [type]="hide ? 'password' : 'text'" matInput type="password" id="password" formControlName="password" placeholder="Password" required />
                       <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
-                      <mat-error *ngIf="register.controls.password.value == ''">
+                      <mat-error  *ngIf="register.controls.password.value == ''">
                         <strong>Password cannot be empty</strong>
                       </mat-error>
-                      <mat-error *ngIf="register.controls.password.hasError('pattern')">
+                      <mat-error  *ngIf="register.controls.password.hasError('pattern')">
                         Password must be at least 8 characters long, have at least one number, one special character and one upper case character.
                       </mat-error>
-                      <mat-error *ngIf="register.controls.password.errors?.minlength">
+                      <mat-error  *ngIf="register.controls.password.errors?.minlength">
                         Password must be at least 8 characters long.
                       </mat-error>
                     </mat-form-field>

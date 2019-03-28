@@ -9,7 +9,7 @@
             <form  (ngSubmit)="onSubmit(1)" class="sh-form-spaces-fix sh-signup-form-fix sh-advanceSearch sh-more-condense-spaces sh">
                 <div class="row">
                     <div class="col-sm-4 col-xs-6">
-                        <mat-form-field>
+                        <mat-form-field class="adv-placeholder status">
                             <mat-select [(ngModel)]="status" name="status" placeholder="Status" (change)="chang(status)">
 
                                 <mat-option *ngFor="let food of foods" [value]="food.value">
@@ -51,8 +51,8 @@
                         </mat-form-field>
                     </div>
                     <div class="col-sm-4 col-xs-6">
-                        <mat-form-field>
-                            <mat-select [(ngModel)]="states" name="states"  placeholder="Search By State" (change)="select_state()">
+                        <mat-form-field class="adv-placeholder">
+                            <mat-select  class="adv-placeholder" [(ngModel)]="states" name="states"  placeholder="Search By State" (change)="select_state()">
                                 <input class="inp" type="text" [(ngModel)]="statsearch" [ngModelOptions]="{standalone: true}"
                                     class="search-allstates" placeholder="Search By State" >
                                 <i class="fa fa-search s-icon-all-states" area-hidden="true"></i>
@@ -63,7 +63,7 @@
                         </mat-form-field>
                     </div>
                     <div class="col-sm-4 col-xs-6">
-                        <mat-form-field>
+                        <mat-form-field class="adv-placeholder">
                             <mat-select [(ngModel)]="agencies" name="agencies" placeholder="Search By Agency" (change)="select_agency()">
                                 <input class="inp" type="text" [(ngModel)]="agensearch" [ngModelOptions]="{standalone: true}"
                                     class="search-allstates" placeholder="Search By Agency" >
@@ -74,7 +74,7 @@
                         </mat-form-field>
                     </div>
                     <div class="col-sm-4 col-xs-6">
-                        <mat-form-field>
+                        <mat-form-field class="adv-placeholder">
                             <mat-select [(ngModel)]=cates name="cates" placeholder="Search By Category" (change)="select_category()">
                                 <input class="inp" type="text" [(ngModel)]="catsearch" [ngModelOptions]="{standalone: true}"
                                     placeholder="Search By Category" class="search-allstates" >
@@ -85,7 +85,7 @@
                         </mat-form-field>
                     </div>
                     <div class="col-sm-4 col-xs-6">
-                        <mat-form-field>
+                        <mat-form-field class="adv-placeholder">
                             <mat-select  placeholder="Search By Sub Category" [(ngModel)]=subcate name="subcate" [disabled]="!cates || cates=='all'" (change)="select_category()">
                                 <input class="inp" type="text" [(ngModel)]="subcatsearch" [ngModelOptions]="{standalone: true}" placeholder="Search By sub Category"  class="search-allstates" style="width: 100%; border-radius: 7px">
                                 <i class="fa fa-search s-icon-all-states" area-hidden="true" ></i>
@@ -94,7 +94,7 @@
                             </mat-select>
                             </mat-form-field>
                     </div>
-                    <div class="col-md-4 col-sm-4 col-xs-4 text-center">
+                    <div class="col-md-12 col-sm-12 col-xs-12 text-center">
                         <button title="Search Results" type="submit" class="btn btn-primary btn-rose btn-lg">Search</button>
                         <button title="Clear" type="reset" class="btn btn-primary btn-rose btn-lg" (click)="formclear()">Clear</button>
                     </div>
@@ -118,67 +118,70 @@
                 </div>
             </div>
             <div class="products-area sh-products-area">
-                <div class=" col-lg-12 col-md-12 col-sm-12 col-xs-12 sh-pg-container header" id="myHeader">
-                <div class="col-lg-9 col-md-8 col-sm-9 col-xs-12 text-right">
-                    <ul class="pagination" *ngIf="pager.pages && pager.pages.length">
-                            <li [ngClass]="{hide:pager.currentPage === 1}">
-                                    <a (click)="onSubmit(1)" class="view-1s" class="btn btn-fill">
-                                        <i class="fa fa-angle-double-left"></i>
-                                    </a>
-                                </li>
-                        <li [ngClass]="{hide:pager.currentPage === 1}">
-                            <a (click)="onSubmit(pager.currentPage - 1)" class="view-1s" class="btn btn-fill">
-                                <i class="fa fa-angle-left"></i>
-                            </a>
-                        </li>
-                        <li [ngClass]="{hide:pager.currentPage <= 30}">
-                            <a (click)="onSubmit(pager.currentPage - 30)">...</a>
-                        </li>
-                        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
-                            <a (click)="onSubmit(page)" class="view-plan-details">{{page | number}}</a>
-                        </li>
-
-                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}" *ngIf="(pager.startPage  + 3) <= pager.totalPages">
-                            <a (click)="onSubmit(pager.currentPage + 3)">...</a>
-                        </li>
-                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}"> <a>Of</a></li>
-                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                            <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages
-                                | number}}</a>
-                        </li>
-                        <li *ngIf="pager.currentPage === pager.totalPages"> <a>Of</a></li>
-                        <li *ngIf="pager.currentPage === pager.totalPages">
-                            <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages
-                                | number}}</a>
-                        </li>
-                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                            <a (click)="onSubmit(pager.currentPage + 1)" class="view-plan-details" class="btn bd-color"
-                                type="Next">
-                                <i class="fa fa-angle-right top-set"></i>
-                            </a>
-                        </li>
-                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
-                                <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" class="btn bd-color"
-                                    type="Next">
-                                    <i class="fa fa-angle-double-right"></i>
-                                </a>
-                            </li>
-                    </ul>
+                <div class="adv-pagination header" id="myHeader">
+                        <div class=" col-sm-8 mg-0-auto sh-pg-container">
+                                <div class="col-lg-9 col-md-8 col-sm-9 col-xs-12 text-right">
+                                    <ul class="pagination" *ngIf="pager.pages && pager.pages.length">
+                                            <li [ngClass]="{hide:pager.currentPage === 1}">
+                                                    <a (click)="onSubmit(1)" class="view-1s" class="btn btn-fill">
+                                                        <i class="fa fa-angle-double-left"></i>
+                                                    </a>
+                                                </li>
+                                        <li [ngClass]="{hide:pager.currentPage === 1}">
+                                            <a (click)="onSubmit(pager.currentPage - 1)" class="view-1s" class="btn btn-fill">
+                                                <i class="fa fa-angle-left"></i>
+                                            </a>
+                                        </li>
+                                        <li [ngClass]="{hide:pager.currentPage <= 30}">
+                                            <a (click)="onSubmit(pager.currentPage - 30)">...</a>
+                                        </li>
+                                        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                            <a (click)="onSubmit(page)" class="view-plan-details">{{page | number}}</a>
+                                        </li>
+                
+                                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}" *ngIf="(pager.startPage  + 3) <= pager.totalPages">
+                                            <a (click)="onSubmit(pager.currentPage + 3)">...</a>
+                                        </li>
+                                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}"> <a>Of</a></li>
+                                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                                            <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages
+                                                | number}}</a>
+                                        </li>
+                                        <li *ngIf="pager.currentPage === pager.totalPages"> <a>Of</a></li>
+                                        <li *ngIf="pager.currentPage === pager.totalPages">
+                                            <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" type="Last">{{pager.totalPages
+                                                | number}}</a>
+                                        </li>
+                                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                                            <a (click)="onSubmit(pager.currentPage + 1)" class="view-plan-details" class="btn bd-color"
+                                                type="Next">
+                                                <i class="fa fa-angle-right top-set"></i>
+                                            </a>
+                                        </li>
+                                        <li [ngClass]="{hide:pager.currentPage === pager.totalPages}">
+                                                <a (click)="onSubmit(pager.totalPages)" class="view-plan-details" class="btn bd-color"
+                                                    type="Next">
+                                                    <i class="fa fa-angle-double-right"></i>
+                                                </a>
+                                            </li>
+                                    </ul>
+                                </div>
+                                    <div  class="col-lg-3 col-md-4 col-sm-3 col-xs-12 prod-select-list sec-list sh-select-list" *ngIf="pager.pages && pager.pages.length">
+                                        <label class="product-label" >Items per page:
+                                        </label>
+                                        <mat-form-field>
+                                            <mat-select class="width-sec" placeholder="" selected="10" (change)="page(pageSize)" value="pageSize"
+                                                required [(ngModel)]="pageSize" name="pageSize">
+                                                <mat-option value="10" selected="true">10</mat-option>
+                                                <mat-option value="20">20 </mat-option>
+                                                <mat-option value="35">35</mat-option>
+                                                <mat-option value="50">50</mat-option>
+                                            </mat-select>
+                                        </mat-form-field>
+                                    </div>
+                                </div>
                 </div>
-                    <div  class="col-lg-3 col-md-4 col-sm-3 col-xs-12 prod-select-list sec-list sh-select-list" *ngIf="pager.pages && pager.pages.length">
-                        <label class="product-label" >Items per page:
-                        </label>
-                        <mat-form-field>
-                            <mat-select class="width-sec" placeholder="" selected="10" (change)="page(pageSize)" value="pageSize"
-                                required [(ngModel)]="pageSize" name="pageSize">
-                                <mat-option value="10" selected="true">10</mat-option>
-                                <mat-option value="20">20 </mat-option>
-                                <mat-option value="35">35</mat-option>
-                                <mat-option value="50">50</mat-option>
-                            </mat-select>
-                        </mat-form-field>
-                    </div>
-                </div>
+                
                 <div *ngFor="let rfp of record" class="card">
                     <div class="row">
                         <div class="col-sm-12">
