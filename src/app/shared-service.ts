@@ -19,6 +19,8 @@ export class SharedData {
   unreadnotification = this.unreadnotiSubject.asObservable();
   watchtotalSubject=new BehaviorSubject<any>('');
   currentMessagetotal = this.watchtotalSubject.asObservable();
+  subSubject=new BehaviorSubject<any>('');
+  currentsub = this.subSubject.asObservable();
 
   constructor() {
  
@@ -33,7 +35,10 @@ export class SharedData {
   unreadnotifyInfo(message) {
     this.unreadnotiSubject.next(message)
   }
-  
+  subscribed_user(message) {
+    this.subSubject.next(message)
+    console.log( message)
+  }
   watchtotal(message) {
     this.watchtotalSubject.next(message)
     console.log( message)

@@ -2,7 +2,6 @@ import { Component, OnInit, AfterContentInit, ElementRef, ViewChild, OnDestroy }
 import { NgxCarousel } from 'ngx-carousel';
 import { Router } from '@angular/router';
 import { HomeService } from './home.service';
-import { NgForm } from '@angular/forms'
 import { SharedData } from './../shared-service';
 import * as moment from 'moment';
 import { Meta, Title } from '@angular/platform-browser';
@@ -16,7 +15,6 @@ declare var $: any;
 })
 export class HomeComponent implements OnInit, AfterContentInit, OnDestroy {
   @ViewChild('openModal') openModal: ElementRef;
-  endRequest;
   loaded = false;
   CategoryCheck = false;
   public query: any;
@@ -67,15 +65,7 @@ formats = [
     let searchUrl = 'advanced-search';
     this._nav.navigate([searchUrl], { queryParams: { state: this.dict_state[this.states] } });
   }
-  onSubmit(F: NgForm) {
-    let searchUrl = 'advanced-search';
-    this._nav.navigate([searchUrl], { queryParams: { status: this.status, enterdate: this.enterdate, duedate: this.duedate, state: this.states, cat: this.cates } });
-  }
-  catrfp(cat) {
-    this.endRequest = this._shareData.categoryInfo(cat);
-    let sth = 'category';
-    this._nav.navigate([sth], { queryParams: { cat: cat } });
-  }
+  
   public carouselOne: NgxCarousel;
   public carouselTwo: NgxCarousel;
   public carouselThree: NgxCarousel;
@@ -97,7 +87,7 @@ formats = [
   
   filter(query) {
     if (this.query !== "") {
-      this.endRequest = this._serv.searchrecord(this.query).subscribe(response => {
+      this._serv.searchrecord(this.query).subscribe(response => {
         this.Rfp = response.results;
         this.loaded = true;
       });
@@ -114,17 +104,18 @@ formats = [
     this.Rfp = '';
   }
   stateInfo(state) {
-    this.endRequest = this._shareData.stateInfo(state);
+     this._shareData.stateInfo(state);
     let sth = 'state';
     this._nav.navigate([sth], { queryParams: { state: state, } });
   }
   ngOnInit() {
     this.meta.updateTag({ property:'og:title', content: "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
+    
+    this.subscriber();
     setTimeout(() => {
       this.openModal.nativeElement.click();
     },
       20000);
-    this.subscriber();
   }
   check_login() {
     if (localStorage.getItem('currentUser')) {
@@ -136,21 +127,9 @@ formats = [
       return false;
     }
   }
-  catRfp(item) {
-    console.log("junaid", item);
-    this.endRequest = this._shareData.categoryInfo(item);
-    let sth = 'category';
-    this._nav.navigate([sth], { queryParams: { cat: item } });
-  }
+ 
   ngAfterContentInit() {
-    this.endRequest = this._serv.rfpstate().subscribe(
-      data => {
-        this.state = data.Result;
-        console.log("state", this.state);
-      },
-      error => {
-      });
-    this.endRequest = this._serv.rfpcategory().subscribe(
+    this._serv.rfpcategory().subscribe(
       data => {
         this.cat = data;
         this.CategorySlider();
@@ -160,7 +139,7 @@ formats = [
       error => {
       }
     );
-    this.endRequest = this._serv.latestrfps().subscribe(
+     this._serv.latestrfps().subscribe(
       data => {
         this.record = data.results;
         console.log(data);
@@ -168,6 +147,7 @@ formats = [
       error => {
       }
     )
+     
     this.carouselOne = {
       grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
       slide: 1,
@@ -229,11 +209,7 @@ formats = [
     let sth = 'rfp/' + query;
     this._nav.navigate([sth]);
   }
-  public myfunc(event: Event) {
-    // carouselLoad will trigger this funnction when your load value reaches
-    // it is helps to load the data by parts to increase the performance of the app
-    // must use feature to all carousel
-  }
+  
   public slideConfig;
 
   CategorySlider() {
@@ -290,10 +266,11 @@ formats = [
       this.local = localStorage.getItem('currentUser');
       let pars = JSON.parse(this.local);
       this.uname = pars.username
-      this.endRequest = this._serv.usersubscribe(this.uname).subscribe(
+       this._serv.usersubscribe(this.uname).subscribe(
         data => {
           if (data.Response == "Subscribe user") {
             this.subscribe = data.Response
+            this._shareData.subscribed_user(this.subscribe);
             return false
           }
         },

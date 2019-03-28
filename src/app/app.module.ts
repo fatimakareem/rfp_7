@@ -56,7 +56,6 @@ import {
 } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { AppRoutes } from './app.routing';
 import { HomeComponent } from './home/home.component';
 import { HeaderComponent } from './header/header.component';
 import { SingleRfpComponent } from './rfps/single-rfp/single-rfp.component';
@@ -76,6 +75,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
 import { Ng2SearchPipeModule } from 'ng2-search-filter';
 import { DatePipe } from '@angular/common';
 import { RecapchaModule } from './recapcha/recapcha.module';
+import { AppRoutingModule } from './app-routing.module';
 
 ////////////////////////for loader/////////////////////////
 export function httpServiceFactory(backend: XHRBackend, defaultOptions: RequestOptions, preloaderService: PreloaderService) {
@@ -132,8 +132,8 @@ export class MaterialModule { }
         UsMapModule,
         BrowserAnimationsModule,
         FormsModule,
-        TextMaskModule,
-        RouterModule.forRoot(AppRoutes),
+        TextMaskModule, AppRoutingModule,
+
         HttpModule,
         MaterialModule,
         ProgressHttpModule,
