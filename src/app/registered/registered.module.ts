@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { RegisteredComponent } from './registered.component';
 import { Routes, RouterModule} from '@angular/router';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { MatInputModule, MatFormFieldModule,MatSelectModule,MatIconModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule,MatSelectModule,MatIconModule,MatSlideToggleModule } from '@angular/material';
 import { TextMaskModule } from 'angular2-text-mask';
 import { RecapchaModule } from '../recapcha/recapcha.module';
 import { InternationalPhoneModule } from 'ng4-intl-phone';
@@ -21,7 +21,7 @@ const routes :Routes =[
     MatInputModule,
     MatFormFieldModule,
     MatSelectModule,
-    TextMaskModule,MatIconModule,
+    TextMaskModule,MatIconModule,MatSlideToggleModule,
     RouterModule.forChild(routes),RecapchaModule,InternationalPhoneModule
   ],
   declarations: [RegisteredComponent],
