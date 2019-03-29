@@ -54,7 +54,7 @@ export class AddRfpComponent implements OnInit {
     }
           });
       // }else{
-      //   swal(
+      //   swal.fire(
       //     'Please Enter Profile URL',
       //     'Invalid!',
       //     'error'
