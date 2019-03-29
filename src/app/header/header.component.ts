@@ -56,7 +56,7 @@ export class HeaderComponent implements OnInit {
     });
     localStorage.clear();
     sessionStorage.clear();
-    swal.fire({
+    swal({
       type: 'success',
       title: 'Successfully Logged out',
       showConfirmButton: false,
@@ -139,7 +139,7 @@ export class HeaderComponent implements OnInit {
   get(id, title) {
     this.id = id;
     this.title = title
-    swal.fire({
+    swal({
       title: 'Are you sure you want to delete from watchlist? <br> You will not be able to revert this!',
       type: 'question',
       showCancelButton: true,

@@ -223,7 +223,7 @@ export class PricingComponent implements OnInit {
           if(Data.id){
           this._serv.package_free(this.isright,this.model.defaultcard, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']).subscribe(
             data => {
-              swal.fire(
+              swal(
                 'Your payment has been transferred',
                 '',
                 'success'
@@ -253,13 +253,13 @@ export class PricingComponent implements OnInit {
             },
       
             error => {
-              swal.fire(
+              swal(
                 'Oops...',
                 'Something went wrong!',
                 'error'
               )
             });}else{
-              swal.fire(
+              swal(
                 'Oops...',
                 'Something went wrong! Please Try Again.',
                 'error'
@@ -275,7 +275,7 @@ export class PricingComponent implements OnInit {
   }else if(this.isright==false){
     this._serv.package_free(this.isright,this.model.defaultcard, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']).subscribe(
       data => {
-        swal.fire(
+        swal(
           'Your payment has been transferred',
           '',
           'success'
@@ -305,7 +305,7 @@ let agency=url.slice(0,6)
       },
 
       error => {
-        swal.fire(
+        swal(
           'Oops...',
           'Something went wrong!',
           'error'

@@ -132,7 +132,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
            
             this.endRequest = this._serv.ProfileUpdate(this.register.value).subscribe(
                 data => {
-                    swal.fire({
+                    swal({
                         type: 'success',
                         title: 'Updated Your Profile',
                         showConfirmButton: false,
@@ -144,7 +144,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                 });
         } else {
             this.validateAllFormFields(this.register);
-            swal.fire(
+            swal(
                 'Oops...',
                 'Failed to Update Profile. Inccorrect Information!',
                 'error'
@@ -174,7 +174,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                     this.endRequest = this._ser.expirePackage(enddate).subscribe(data => {
                         if (data == true) {
                             this.record[0].is_paid = false;
-                            swal.fire(
+                            swal(
                                 'Subscription',
                                 'Your package has been expired.',
                                 'success'
@@ -231,7 +231,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     logout() {
         this.authService.signOut();
         localStorage.clear();
-        swal.fire({
+        swal({
             type: 'success',
             title: 'Successfully Logged out',
             showConfirmButton: false,

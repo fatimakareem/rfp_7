@@ -67,7 +67,7 @@ export class ChangedPasswordComponent implements OnInit, OnDestroy {
         if (this.register.valid && this.register.value.oldpassword != this.register.value.password) {
             this.endRequest = this._serv.user_change_password(this.register.value.oldpassword, this.register.value.password, this.register.value.confirmPassword).subscribe(
                 data => {
-                    swal.fire({
+                    swal({
                         type: 'success',
                         title: 'Your password has been successfully changed',
                         showConfirmButton: false,
@@ -75,7 +75,7 @@ export class ChangedPasswordComponent implements OnInit, OnDestroy {
                     })
                 },
                 error => {
-                    swal.fire(
+                    swal(
                         '',
                         'Your old password is Incorrect.',
                         'error'
@@ -115,7 +115,7 @@ export class ChangedPasswordComponent implements OnInit, OnDestroy {
     logout() {
         this.authService.signOut();
         localStorage.clear();
-        swal.fire({
+        swal({
             type: 'success',
             title: 'Successfully Logged out',
             showConfirmButton: false,

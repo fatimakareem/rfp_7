@@ -73,7 +73,7 @@ export class AllnotificationComponent implements OnInit {
   deleteallnotification() {
     this._serv.deleteallnotify().subscribe(
       data => {
-        swal.fire({
+        swal({
           type: 'success',
           title: 'All Notifications Successfully Deleted.',
           showConfirmButton: false,

@@ -159,7 +159,7 @@ this.userdetail=data.reg_fk;
         this.pkg_detail['expdate'] = this.expmonth + '/' + this.expyear
         this.endRequest = this._serv.packageUpdate(this.pkg_detail).subscribe(
             data => {
-                swal.fire(
+                swal(
                     'Your payment has been transferred',
                     '',
                     'success'
@@ -169,7 +169,7 @@ this.userdetail=data.reg_fk;
             },
             error => {
               
-                swal.fire(
+                swal(
                     'Oops...',
                     'Something went wrong!',
                     'error'
@@ -190,7 +190,7 @@ this.userdetail=data.reg_fk;
     logout() {
         this.authService.signOut();
         localStorage.clear();
-        swal.fire({
+        swal({
             type: 'success',
             title: 'Successfully Logged out',
             showConfirmButton: false,

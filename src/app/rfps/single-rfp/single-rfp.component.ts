@@ -96,7 +96,7 @@ export class SingleRfpComponent implements OnInit, OnDestroy {
     this._serv.downloadFile(info).subscribe(
       data => {
         if (data.status = "200") {
-          swal.fire(
+          swal(
             'File Downloaded Successfully!',
             '',
             'success'
@@ -172,7 +172,7 @@ console.log(params)
             this._shareData.watchInfo(this.wrfp);
           }
           if (this.statuss == "This Rfp is already in your Watch List") {
-            swal.fire({
+            swal({
               type: 'info',
               title: 'This RFP Is Already In Your Watchlist',
               showConfirmButton: true,
@@ -182,7 +182,7 @@ console.log(params)
             });
           }
           else {
-            swal.fire({
+            swal({
               type: 'success',
               title: 'RFP succesfully added to your watch list',
               showConfirmButton: true,
@@ -197,7 +197,7 @@ console.log(params)
         });
     }
     else {
-      swal.fire({
+      swal({
         type: 'error',
         title: 'Please Login with RFPGurus',
         showConfirmButton: true,

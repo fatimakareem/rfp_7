@@ -57,7 +57,7 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
     if (this.register.valid) {
       this.endRequest = this._serv.change_password(this.register.value.password, this.register.value.confirmPassword, this.code).subscribe(
         data => {
-          swal.fire({
+          swal({
             type: 'success',
             title: 'Your Password has been successfully changed',
             showConfirmButton: false,
