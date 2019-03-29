@@ -2443,3 +2443,6 @@ p.state-name:hover {
 .sh-pref-selectlist >.card-content{
     padding-bottom: 0;
 }
+.memberOnly:hover{
+    cursor: pointer;
+}

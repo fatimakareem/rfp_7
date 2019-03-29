@@ -45,7 +45,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     console.log(name, email, phone, message);
     this.endRequest = this._serv.contact(name, email, phone, message).subscribe(data => {
       console.log(data);
-      swal({
+      swal.fire({
         type: 'success',
         title: 'Thank You For Contacting Us, We Will Reply Soon On Our E-mail',
         showConfirmButton: true,

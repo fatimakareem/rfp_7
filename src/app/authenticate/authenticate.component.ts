@@ -25,7 +25,7 @@ export class AuthenticateComponent implements OnInit, OnDestroy {
     this.endRequest = this._serv.authenticate_service(uid)
       .subscribe(
         data => {
-          swal({
+          swal.fire({
             type: 'success',
             title: 'Your Account is Verified',
             showConfirmButton: false,

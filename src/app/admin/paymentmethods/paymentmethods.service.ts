@@ -45,7 +45,7 @@ export class PaymentmethodsService {
         // alert(error.status);
         if (error.status === 302) {
           // if (error.status == 302) {
-            swal({
+            swal.fire({
               type: 'error',
               title: 'This Card Already Exist!',
               showConfirmButton: false,
@@ -55,7 +55,7 @@ export class PaymentmethodsService {
           return Observable.throw(new Error(error.status));
         } else if (error.status === 405) {
           
-                swal({
+                swal.fire({
                   type: 'error',
                   title: 'Invalid Card! Please Enter Correct Details!',
                   showConfirmButton: false,
@@ -64,7 +64,7 @@ export class PaymentmethodsService {
            
           return Observable.throw(new Error(error.status));
         } else {
-          swal(
+          swal.fire(
                   'Sorry',
                   'You cannot enter card more than 8 cards!',
                   'error'

@@ -30,7 +30,7 @@ export class AddRfpComponent implements OnInit {
    subcat; seoTitleUrl; bid_type; agency_type; city_or_county; city;
   date_entered; due_date; web_info; rfp_reference;
   constructor(private _http: HttpService,private _serv1: AdvanceService, private _serv: AllRfpsService,private router: Router ) {
-    swal({
+    swal.fire({
       title: 'Enter Profile URL',
       // html: ' Enter you email address to receive a link allowing you to reset your password.',
       input: 'url',
@@ -177,7 +177,7 @@ export class AddRfpComponent implements OnInit {
           this.web_info = data._body;
 
 if(data._body.substring(0,26)=="Sorry, file already exists"){
-  swal({
+  swal.fire({
     type: 'error',
     title: 'Opps! The file is already exist!',
     showConfirmButton: false,
@@ -186,14 +186,14 @@ if(data._body.substring(0,26)=="Sorry, file already exists"){
 }else{
   this._serv.add_rfp(this.rfpkey,this.governmentbidsusers,this.title,this.descriptionTag,this.states,this.agency,this.date_entered,this.due_date,this.web_info,this.rfp_reference,this.category,this.subcat,this.seoTitleUrl,this.bid_type,this.agency_type,this.city_or_county,this.city,this.open_rfp,this.record_added,this.oldcategory,this.url).subscribe(
     data => {
-      swal({
+      swal.fire({
         type: 'success',
         title: 'RFP Added successfully!',
         showConfirmButton: false,
         timer: 1500,width: '512px',
       });
     },error =>{
-      swal({
+      swal.fire({
         type: 'error',
         title: 'Opps Something went wrong!',
         showConfirmButton: false,

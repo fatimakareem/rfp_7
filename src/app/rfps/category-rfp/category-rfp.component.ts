@@ -173,7 +173,7 @@ formats = [
     this._serv.downloadFile(info).subscribe(
         data =>{
              if(data.status ="200"){
-                swal(
+                swal.fire(
                     'File Downloaded Successfully!',
                     '',
                     'success'
