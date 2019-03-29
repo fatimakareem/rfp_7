@@ -117,7 +117,7 @@ export function provideConfig() {
         MatInputModule,
         MatSelectModule,
         MatSlideToggleModule,
-        MatTabsModule, MatNativeDateModule
+        MatTabsModule, MatNativeDateModule,
         
     ],
     
@@ -143,7 +143,6 @@ export class MaterialModule { }
             apiKey: 'AIzaSyDPnJ0zatoiPOI1GOeeS7HCj7AxIW183tg'
         }),
         ReactiveFormsModule,
-        MatTabsModule,
         SocialLoginModule,
         LoaderModule,
         RecapchaModule
