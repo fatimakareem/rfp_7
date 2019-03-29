@@ -141,7 +141,7 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
     this.endRequest = this._serv.downloadFile(info).subscribe(
       data => {
         if (data.status = "200") {
-          swal.fire(
+          swal(
             'File Downloaded Successfully!',
             '',
             'success'
@@ -231,7 +231,7 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
         if (this.Rfpnum || this.title || this.status || this.postedDate || this.DueDate || this.states || this.agencies || this.cates || this.subcate || this.submissionfrom || this.submissionto) {
 
 
-          this.search = false;
+        
 
           this._serv.searchrfprecord(this.Rfpnum, this.title, this.status, this.postedDate, this.DueDate, this.states, this.agencies, this.cates, this.pageSize, page, this.subcate,this.submissionfrom,this.submissionto).subscribe(
             data => {
@@ -240,6 +240,7 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
               this.record = data.Results;
               this.item = data.TotalResult;
               this.length = this.item;
+              this.search = true;
               this.pager = this.pagerService.getPager(this.item, page, this.pageSize);
             },
             error => {
@@ -264,6 +265,7 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
               this.record = data.Results;
               this.item = data.TotalResult;
               this.length = this.item;
+              this.search = true;
               this.pager = this.pagerService.getPager(this.item, page, this.pageSize);
             },
             error => {
@@ -283,6 +285,7 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
               this.record = data.Results;
               this.item = data.TotalResult;
               this.length = this.item;
+              this.search = true;
               this.pager = this.pagerService.getPager(this.item, page, this.pageSize);
             },
             error => {

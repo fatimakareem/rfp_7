@@ -6,7 +6,7 @@
 // import { MatInputModule, MatFormFieldModule,MatSelectModule } from '@angular/material';
 // import { TextMaskModule } from 'angular2-text-mask';
 // import { Ng2SearchPipeModule } from 'ng2-search-filter';
-// import {SharedData } from '../../shared-service'
+// import { SharedData } from '../../shared-service';
 
 // const routes :Routes =[
 //   {
@@ -26,8 +26,7 @@
 //     RouterModule.forChild(routes)
 //   ],
 //   declarations: [SingleRfpComponent],
-//   providers: [SharedData],
-
+// providers:[SharedData],
 //   schemas: [
 //     CUSTOM_ELEMENTS_SCHEMA
 // ]

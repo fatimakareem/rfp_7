@@ -10,7 +10,7 @@ import { MetaService } from '../serv/meta_service';
   selector: 'app-allnotification',
   templateUrl: './allnotification.component.html',
   styleUrls: ['./allnotification.component.scss'],
-  providers: [HeaderService]
+  providers: [HeaderService,SharedData]
 })
 export class AllnotificationComponent implements OnInit {
   id;
@@ -73,7 +73,7 @@ export class AllnotificationComponent implements OnInit {
   deleteallnotification() {
     this._serv.deleteallnotify().subscribe(
       data => {
-        swal.fire({
+        swal({
           type: 'success',
           title: 'All Notifications Successfully Deleted.',
           showConfirmButton: false,

@@ -168,7 +168,7 @@ export class UserSidebarComponent implements OnInit,OnDestroy {
         delete this.submission_to;
     }
     onSubmit() {
-     
+     alert(this.status)
     
         // if (F.valid == true) {
           if(this.status){

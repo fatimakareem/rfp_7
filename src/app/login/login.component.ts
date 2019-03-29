@@ -74,7 +74,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
                 // console.log("junaid",this.jwtHelper.decodeToken(data.json().token))
-                swal.fire({
+                swal({
                     type: 'success',
                     title: 'Successfully Logged in',
                     showConfirmButton: false,
@@ -117,7 +117,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
             },
                 error => {
-                    swal.fire(
+                    swal(
                         'Invalid',
                         'Something went wrong',
                         'error'
@@ -160,7 +160,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                     //  console.log("user",data);
                     this._serv.login(this.login.value.username, this.login.value.password).subscribe(
                         data => {
-                            swal.fire({
+                            swal({
                                 type: 'success',
                                 title: 'Successfully Logged in',
                                 showConfirmButton: false,
@@ -205,7 +205,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                             // this._location.back();
                         },
                         error => {
-                            swal.fire(
+                            swal(
                                 'Invalid',
                                 'Username OR Password',
                                 'error'
@@ -215,14 +215,14 @@ export class LoginComponent implements OnInit, OnDestroy {
                 error => {
                     console.log(error.status, 'masssssagaggggg')
                     if (error.status == 400) {
-                        swal.fire(
+                        swal(
                             'Error',
                             'First, Verify your email address to Sign In.',
                             'error'
                         )
                     }
                     else if (error.status == 500) {
-                        swal.fire(
+                        swal(
                             'Error',
                             'User doesnot exists',
                             'error'
@@ -237,7 +237,7 @@ export class LoginComponent implements OnInit, OnDestroy {
             // this.captcha.reset();
             // this.isequal = false;
 
-            swal.fire({
+            swal({
                 type: 'error',
                 title: 'Please confirm you are not a robot!',
                 showConfirmButton: false,
@@ -247,7 +247,7 @@ export class LoginComponent implements OnInit, OnDestroy {
         }
     }
     foremail() {
-        swal.fire({
+        swal({
             title: 'Enter email address',
             html: ' Enter your email address to receive a link allowing you to reset your password.',
             input: 'email',
@@ -260,14 +260,14 @@ export class LoginComponent implements OnInit, OnDestroy {
     forgetPassword(pass) {
         this._serv.forget_password(pass).subscribe(
             data => {
-                swal.fire({
+                swal({
                     type: 'success',
                     html: 'Password reset instructions have been sent to your email. ',
                     width: '512px',
                 })
             },
             error => {
-                swal.fire(
+                swal(
                     'Invalid email ',
                     'Or user does not exist!',
                     'error'

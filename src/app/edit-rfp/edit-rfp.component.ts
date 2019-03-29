@@ -150,7 +150,7 @@ selectsubcate(){
           this.data.web_info = data._body;
           console.log(data._body.substring(0,26),"Sorry, file already exists.")
           if(data._body.substring(0,26)=="Sorry, file already exists"){
-            swal.fire({
+            swal({
               type: 'error',
               title: 'Opps! The file is already exist!',
               showConfirmButton: false,
@@ -161,7 +161,7 @@ selectsubcate(){
             data => {
       
               if (data) {
-                swal.fire({
+                swal({
                   type: 'success',
                   title: 'Updated Successfully',
                   showConfirmButton: false,
@@ -172,7 +172,7 @@ selectsubcate(){
               this.dialogRef.close();
       
             }, error => {
-              swal.fire({
+              swal({
                 type: 'error',
                 title: 'Something Went Wrong',
                 showConfirmButton: false,
@@ -191,7 +191,7 @@ selectsubcate(){
       data => {
 
         if (data) {
-          swal.fire({
+          swal({
             type: 'success',
             title: 'Updated Successfully',
             showConfirmButton: false,
@@ -202,7 +202,7 @@ selectsubcate(){
         this.dialogRef.close();
 
       }, error => {
-        swal.fire({
+        swal({
           type: 'error',
           title: 'Something Went Wrong',
           showConfirmButton: false,

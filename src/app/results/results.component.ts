@@ -73,7 +73,7 @@ export class ResultsComponent implements OnInit,OnDestroy {
        this.endRequest= this._serv.downloadFile(info).subscribe(
             data =>{
                 if(data.status ="200"){
-                    swal.fire(
+                    swal(
                         'File Downloaded Successfully!',
                         '',
                         'success'
