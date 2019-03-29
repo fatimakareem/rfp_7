@@ -1593,13 +1593,13 @@ a {
 }
 
 .sh-why-rfpgurus {
-    background: url(../../assets/img/banner/why_rfp.jpg) center center no-repeat;
+    background: url(../../assets/img/Why-RFP-Gurus.png) center center no-repeat;
     background-size: cover;
     text-align: center
 }
 
 .sh-ourExpertTeam {
-    background: url(../../assets/img/banner/our_experts.jpg) center center no-repeat;
+    background: url(../../assets/img/Who-are-we.png) center center no-repeat;
     background-size: cover;
     color: #fff;
     text-align: center
@@ -1622,13 +1622,8 @@ a {
 }
 
 .sh-how-it-works {
-    background: url(../../assets/img/banner/faqs.jpg) center center no-repeat;
+    background: url(../../assets/img/What-we-do.png) center center no-repeat;
     background-size: cover
-}
-
-.sh-how-it-works h2,
-.sh-how-it-works p {
-    color: #1b0f0f!important
 }
 
 .sh-btn-fixed {
@@ -2388,7 +2383,7 @@ p.state-name:hover {
 
 .sh-sidebar-more-condense .mat-form-field-label {
     top: 18px !important;
-    font-size: 13px !important;
+    font-size: .9em !important;
 }
 .sh-sidebar-date .mat-form-field-label{
     top: 10px !important;

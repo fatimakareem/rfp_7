@@ -842,7 +842,8 @@ h3 {
 
 .sidebar-user,
 .sidebar.custom label {
-    color: #212121
+    color: #000000 !important;
+    font-weight: 400 !important;
 }
 
 .sidebar-user {
@@ -1150,8 +1151,8 @@ mat-tab-group .mat-tab-label {
     top: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, .7);
-    z-index: -1
+    background: rgba(74, 74, 74, 0.7);
+    z-index: -1;
 }
 
 .about-1-sm {
