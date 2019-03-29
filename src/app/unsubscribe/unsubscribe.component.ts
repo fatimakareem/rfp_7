@@ -37,7 +37,7 @@ export class UnsubscribeComponent implements OnInit {
     this._serv.unsub(params['query1'])
       .subscribe(
       data => {
-        swal({
+        swal.fire({
           type: 'success',
           title: 'UnSubScribed Successfully',
           showConfirmButton: false,
@@ -45,7 +45,7 @@ export class UnsubscribeComponent implements OnInit {
         })
         this.router.navigate(['/']);
         // if (this.email == "Alredy UnSubScribed") {
-        //   swal({
+        //   swal.fire({
         //     type: 'success',
         //     title: 'Alredy UnSubScribed',
         //     showConfirmButton: false,

@@ -42,7 +42,7 @@ export class FooterComponent {
     onSubmit(email) {
         this._serv.subcribe(email).subscribe(
             data => {
-                swal({
+                swal.fire({
                     type: 'success',
                     title: 'Successfully subscribed!',
                     showConfirmButton: false,
@@ -50,7 +50,7 @@ export class FooterComponent {
                 });
             },
             error => {
-                swal(
+                swal.fire(
                     'Sorry',
                     'You already subscribed!',
                     'error'

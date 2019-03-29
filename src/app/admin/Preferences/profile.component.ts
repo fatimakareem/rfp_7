@@ -401,7 +401,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
         console.log("ajakkkkkk", this.UserPreference, nulllist)
         this.endRequest = this._serv.peraferanceUpdate(this.register.value, this.UserPreference, this.statePreference, this.countyPreference, this.cityPreference, this.agencyPreference).subscribe(
             data => {
-                swal({
+                swal.fire({
                     type: 'success',
                     title: 'Updated Your RFP Preferances',
                     showConfirmButton: false,
@@ -436,7 +436,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
                     this.endRequest = this._ser.expirePackage(enddate).subscribe(data => {
                         if (data == true) {
                             this.record[0].is_paid = false;
-                            swal(
+                            swal.fire(
                                 'Subscription',
                                 'Your package has been expired.',
                                 'success'
@@ -510,7 +510,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
     logout() {
         this.authService.signOut();
         localStorage.clear();
-        swal({
+        swal.fire({
             type: 'success',
             title: 'Successfully Logged out',
             showConfirmButton: false,

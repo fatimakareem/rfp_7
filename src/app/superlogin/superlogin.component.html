@@ -24,13 +24,13 @@
                         </mat-form-field>
                     </div>
                     <div class="form-group">
-                    <div class="checkbox col-sm-6 padding-0">
+                    <div class="checkbox  padding-0">
                         <label>
                             <input type="checkbox" value="" name="remember" checked> Keep me logged in
                         </label>
                     </div>
                     
-                            <app-recapcha class="pull-right"></app-recapcha>
+                            <app-recapcha ></app-recapcha>
                   
                         <!-- <div class="error-block" *ngIf="isequal==false">
                             <span>*Please Enter Valid Answer</span>
@@ -38,9 +38,9 @@
                    
                     </div>
                     
-                    <div class="form-footer col-sm-12">
+                    <div class="form-footer ">
                         <div class="form-group text-center">
-                            <button type="submit" class="btn btn-rose btn-fill btn-wd sh-signin-btn" (click)="onLogin($event,username.value,password.value)">Signin
+                            <button type="submit" class="btn btn-rose btn-fill btn-wd sh-signin-btn" (click)="onLogin($event,username.value,password.value)">Sign in
                             </button>
                         </div>
                        
