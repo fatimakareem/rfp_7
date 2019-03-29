@@ -154,13 +154,13 @@
                 Invalid Expiry Date
               </div> -->
               <!-- <div *ngIf="msg == 'Expiry Date must be greater than current'">Expiry Date must be greater than current</div> -->
-
+ 
               <mat-error *ngIf="form.controls.expirydate.hasError('pattern')">
                 Expiry date must be in MM/YY format.
               </mat-error>
             </mat-error>
           </mat-form-field>
-          <span class="card-error" *ngIf="expirydate <= '18'">
+          <span class="card-error" *ngIf="expirydate <= '19'">
             Invalid Expiry Date
           </span>
         </div>
