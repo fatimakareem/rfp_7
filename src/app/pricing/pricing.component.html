@@ -297,7 +297,7 @@
                                                 </div>
                                                 <div class="col-sm-6 col-xs-12">
                                                     <mat-form-field class=" mat-size">
-                                                        <input matInput placeholder="Expiry Date" [formControl]="ExpiryDateForm"
+                                                        <input matInput placeholder="Expiry Date (MM/YY)" [formControl]="ExpiryDateForm"
                                                             [(ngModel)]="model.expirationdate" [textMask]="{mask: mask}"
                                                             #exp (change)="chek(exp.value)" required>
                                                         <mat-error *ngIf="ExpiryDateForm.hasError('required')"> Expiry

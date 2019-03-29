@@ -473,9 +473,9 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
     if (localStorage.getItem('currentadmin')) {
       this.adminlogin = localStorage.getItem('currentadmin')
     }
-    this.meta.updateTag({ name: 'twitter:title', content: 'Advance Search | ' + "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
-    this.meta.updateTag({ property: 'og:title', content: 'Advance Search | ' + "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
-    this.Title.setTitle('Advance Search |' + ' RFP Gurus | Find RFP Bid Sites | Government Request for Proposal');
+    this.meta.updateTag({ name: 'twitter:title', content: 'Advanced Search | ' + "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
+    this.meta.updateTag({ property: 'og:title', content: 'Advanced Search | ' + "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
+    this.Title.setTitle('Advanced Search |' + ' RFP Gurus | Find RFP Bid Sites | Government Request for Proposal');
 
     // this.onPaginateChange(1);
     if(localStorage.getItem('page')){
