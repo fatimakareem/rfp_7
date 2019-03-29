@@ -126,7 +126,7 @@ card_opeation=[
   }
   zipcodeCheck(zipcode1) {
     if (zipcode1.length > 4) {
-      this.endRequest = this._serv.zipcode(zipcode1).subscribe(
+    this._serv.zipcode(zipcode1).subscribe(
         data => {
           this.form.controls['city'].setValue(data.city);
           this.form.controls['state'].setValue(data.state);
@@ -139,6 +139,7 @@ card_opeation=[
             showConfirmButton: false,
             timer: 1500,width: '512px',
           })
+         
         });
     }
   }
@@ -224,7 +225,7 @@ displayFieldCss(form: FormGroup, field: string) {
   }
   updateSingleCard(status,autopay, name, updatecardnumber, updateccv, date, updateaddress, updatezip, updatecity, updatestate, updatecountry) {
     this.endRequest = this.serv.updateCard(status,autopay, this.id, name, updatecardnumber, updateccv, date, updateaddress, updatezip, updatecity, updatestate, updatecountry).subscribe(Data => {
-      swal.fire({
+      swal({
         type: 'success',
         title: 'Credit Card Details Are Updated!',
         showConfirmButton: false,
@@ -234,7 +235,7 @@ displayFieldCss(form: FormGroup, field: string) {
     },
       error => {
         if (error.status == 400) {
-          swal.fire({
+          swal({
             type: 'error',
             title: 'Credit Card Details Are Not Correct!',
             showConfirmButton: false,
@@ -242,14 +243,14 @@ displayFieldCss(form: FormGroup, field: string) {
           })
         }
         else if (error.status == 500) {
-          swal.fire(
+          swal(
             'Sorry',
             'Server Is Under Maintenance!',
             'error'
           )
         }
         else {
-          swal.fire(
+          swal(
             'Sorry',
             'Some Thing Went Worrng!',
             'error'
@@ -258,7 +259,7 @@ displayFieldCss(form: FormGroup, field: string) {
       })
   }
   deleteSingleCard(id) {
-    swal.fire({
+    swal({
       title: 'Are you sure you want to delete this Card? <br> You will not be able to revert this!',
       type: 'question',
       showCancelButton: true,
@@ -271,7 +272,7 @@ displayFieldCss(form: FormGroup, field: string) {
       if (result==true) {
       
   this.serv.deleteCard(id).subscribe(Data => {
-      swal.fire({
+      swal({
         type: 'success',
         title: 'Credit Card Is Deleted!',
         showConfirmButton: false,
@@ -281,7 +282,7 @@ displayFieldCss(form: FormGroup, field: string) {
     },
       error => {
         if (error.status == 204) {
-          swal.fire({
+          swal({
             type: 'error',
             title: 'No Credit Card Found!',
             showConfirmButton: false,
@@ -289,14 +290,14 @@ displayFieldCss(form: FormGroup, field: string) {
           })
         }
         else if (error.status == 500) {
-          swal.fire(
+          swal(
             'Sorry',
             'Server Is Under Maintenance!',
             'error'
           )
         }
         else {
-          swal.fire(
+          swal(
             'Sorry',
             'Some Thing Went Worrng!',
             'error'
@@ -324,7 +325,7 @@ displayFieldCss(form: FormGroup, field: string) {
         && this.form.controls.expirydate.valid && this.form.controls.address.valid && this.form.controls.zip.valid
         && this.form.controls.city.valid && this.form.controls.state.valid && this.form.controls.country.valid) {
        this.serv.addCard(this.default, this.form.value['cardnickname'], this.form.value['address'], this.form.value['zip'], this.form.value['city'], this.form.value['state'], this.form.value['country'], this.form.value['cardnumber2'].split('-').join(''), this.form.value['ccv2'],this.date.split('/').join(''),this.cardtype,this.form.value['setautopay'],this.form.value['nickname']).subscribe(Data => {
-          swal.fire({
+          swal({
             type: 'success',
             title: 'Payment Method Is Listed!',
             showConfirmButton: false,
@@ -339,7 +340,7 @@ displayFieldCss(form: FormGroup, field: string) {
           })
       }
       else {
-        swal.fire({
+        swal({
           type: 'error',
           title: 'Please Enter Valid Filed',
           showConfirmButton: false,
@@ -353,7 +354,7 @@ displayFieldCss(form: FormGroup, field: string) {
         && this.form.controls.expirydate.valid && this.form.controls.address.valid && this.form.controls.zip.valid
         && this.form.controls.city.valid && this.form.controls.state.valid && this.form.controls.country.valid) {
         this.endRequest = this.serv.addCard(this.default, this.form.value['cardnickname'], this.form.value['address'], this.form.value['zip'], this.form.value['city'], this.form.value['state'], this.form.value['country'], this.form.value['cardnumber'].split('-').join(''), this.form.value['ccv'],this.date.split('/').join(''),this.cardtype,this.form.value['setautopay'],this.form.value['nickname']).subscribe(Data => {
-          swal.fire({
+          swal({
             type: 'success',
             title: 'Payment Method Is Listed!',
             showConfirmButton: false,
@@ -368,7 +369,7 @@ displayFieldCss(form: FormGroup, field: string) {
           })
       }
       else {
-        swal.fire({
+        swal({
           type: 'error',
           title: 'Please Enter Correct Details!',
           showConfirmButton: false,
@@ -387,7 +388,7 @@ displayFieldCss(form: FormGroup, field: string) {
     },
       error => {
         if (error.status == 404) {
-          swal.fire({
+          swal({
             type: 'error',
             title: 'Credit Card Not Found!',
             showConfirmButton: false,
@@ -395,7 +396,7 @@ displayFieldCss(form: FormGroup, field: string) {
           })
         }
         else if (error.status == 500) {
-          swal.fire(
+          swal(
             'Sorry',
             'Server Is Under Maintenance!',
             'error'
