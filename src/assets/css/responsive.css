@@ -472,16 +472,12 @@
     .nav-home ul {
         padding: 0
     }
-    .nav-home ul a i {
-        margin: 0;
-        margin-right: 10px;
-    }
     .navbar-nav>li>a {
         font-size: 14px!important;
         padding: 0 10px
     }
     .nav-home ul li {
-        border-top: 1px solid #ccc
+        border-top: 1px solid #333
     }
     .sh-main-options li:first-child {
         border-top: none!important
@@ -762,14 +758,11 @@
         width: 50%
     }
     .navbar-nav>li>a {
-        font-size: 12px!important;
+        font-size: 13px!important;
         padding: 18px 0 18px 1px
     }
-    .sh-signin-signup>li:last-child:before{
-        width: 1px;
-    }
     .logo {
-        width: 77px;
+        width: 90px;
         margin: 10px 0
     }
     .nav-home ul {
@@ -966,7 +959,7 @@
         display: none!important
     }
     .navbar-nav>li>a {
-        font-size: 12px!important;
+        font-size: 13px!important;
         padding: 10px 0 10px 5px
     }
     .logo {

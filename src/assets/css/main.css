@@ -227,9 +227,9 @@ h3 {
     position: relative
 }
 
-.packages-holder .heading {
+/* .packages-holder .heading {
     margin: 10px 0!important
-}
+} */
 
 .packages-holder .btn-holder {
     text-align: center
@@ -839,10 +839,10 @@ h3 {
     line-height: 65px;
     color: #e53935
 }
+
 .sidebar-user,
 .sidebar.custom label {
-    color: #000000 !important;
-    font-weight: 400 !important;
+    color: #212121
 }
 
 .sidebar-user {
@@ -1114,9 +1114,17 @@ mat-tab-group .mat-tab-label {
     line-height: 30px;
     font-weight: 700
 }
-
-.about-1 {
-    background-image: url(../../assets/img/img-03.jpg);
+.sh-how-it-works{
+    background-image: url(../../assets/img/Why-RFP-Gurus.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% auto;
+    padding: 50px 20px 10px;
+    position: relative;
+    z-index: 1
+}
+.what-we-do {
+    background-image: url(../../assets/img/What-we-do.png);
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% auto;
@@ -1125,9 +1133,16 @@ mat-tab-group .mat-tab-label {
     z-index: 1
 }
 
+.who-are-we{
+    background-image: url(../../assets/img/Who-are-we.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% auto;
+    padding: 50px 20px 10px;
+    position: relative;
+    z-index: 1
+}
 .about-1 .large {
-    font-size: 27px;
-    line-height: 45px;
     padding: 0 40px 0 0
 }
 
@@ -1150,8 +1165,8 @@ mat-tab-group .mat-tab-label {
     top: 0;
     right: 0;
     bottom: 0;
-    background: rgba(74, 74, 74, 0.7);
-    z-index: -1;
+    background: rgba(0,0,0,.3);
+    z-index: -1
 }
 
 .about-1-sm {
@@ -1840,9 +1855,9 @@ hr {
     background: #fefefe
 }
 
-/* .logo {
+.logo {
     margin: 0 5px
-} */
+}
 
 .inner .nav-home ul li,
 .nav-home ul li {
@@ -2330,7 +2345,7 @@ text tspan {
     right: 30px;
     font-size: 20px;
     color: #616161;
-    top: 8px
+    top: 12px
 }
 
 .sidebar-user .mat-select-value-text {
@@ -2373,7 +2388,10 @@ text tspan {
 }
 
 .sh-products-area {
-    padding-top: 40px
+    padding-top: 0px
+}
+.srch-result{
+    margin: 0 !important;
 }
 
 .sh-products-area .card {
@@ -2413,7 +2431,7 @@ text tspan {
     display: block;
     display: -webkit-box;
     max-width: 400px;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -2478,7 +2496,7 @@ text tspan {
 }
 
 .sh-signup-form-fix .mat-error {
-    font-size: 12px;
+    font-size: 14px;
     padding-top: 0
 }
 
@@ -3142,8 +3160,7 @@ a.sort.desc::after {
 .sh-table-date .mat-form-field-flex,
 .sh-tb-select .mat-select {
     background: #fff;
-    box-shadow: none;
-    height: 37px !important;
+    box-shadow: none
 }
 
 .sh-n-table .form-group {
@@ -3814,13 +3831,12 @@ button {
 .sh-payment .enroll-chckbox{
     padding: 0;
 }
-/* .disable-selectlist:disabled{
-    cursor: not-allowed;
-} */
-.mat-form-field-prefix, .mat-form-field-suffix{
-    cursor: pointer;
+.heading-h2{
+    font-size: 36px;
+    margin: 10px 0 0;
+    color: #000;
+    font-weight: 600;
 }
-.logo{
-    max-width: 140px;
-    margin: 5px;
+.sh-advanceSearch >.row >div{
+    min-height: 65px;
 }
