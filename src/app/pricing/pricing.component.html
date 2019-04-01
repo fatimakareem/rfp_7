@@ -148,48 +148,17 @@
                     </div>
                 </div>
             </div>
-            <!---->
-            <!-- <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12 pricing-table2 premium wow animated bounceInRight"
-                data-wow-delay="0.6s">
-                <div class="single-pricing-2 custom-package">
-                    <span class="plan-name text-center">
-                        Custom
-                    </span>
-                    <p class="plan-price custome-price" style="background-color: black !important;">
-                        <sup class="currency">For You</sup>
-                        <strong>Package</strong>
-                    </p>
-                    <ul class="list-unstyled">
-                        <li>
-                            <strong>Solution</strong> &amp; pricing</li>
-                        <li>based on
-                            <strong> your</strong>
-                        </li>
-                        <li>
-                            <strong>organization's </strong> specific</li>
-                        <li>requirements and needs</li>
-                    </ul>
-                    <div class="pricing2-button">
-                        <a class="btn btn-common" routerLink="/contact-us">
-                            <i class="fa fa-phone"></i>Establish Contact</a>
-                    </div>
-                </div>
-            </div> -->
+           
         </div>
     </div>
 </section>
 <!--3rd step-->
 <div *ngIf="pkgsub" class="pricing-sub sh-signup-form-fix" data-wow-delay=".5s">
     <div class="container">
-           
         <div class=" row sh-container-paymnt">
 
             <div class="checkout-select-box col-lg-8 col-md-9 col-sm-12 mg-0-auto">
-                    <div class="switch"> <input [(ngModel)]="isfreetrial" id="switch-toggle-pricing"
-                        class="switch-toggle switch-toggle-round" type="checkbox"> <label
-                        for="switch-toggle-pricing"></label> </div>
-            <span class="pts-right" *ngIf="!isfreetrial">Start Your Free Trial</span> <span
-                class="pts-right" *ngIf="isfreetrial" style="color: black">Start Your Free Trial</span>
+
                 <div id="section-pricing" class="text-center">
                     <div class="pricing-tenure-switcher center" data-container="#pricing-switch">
                         <div class="col-sm-4">
@@ -200,7 +169,6 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                      
 
                         <span class="pts-left" *ngIf="!isright" style="color: black">Saved Cards</span> <span class="pts-left"
                             *ngIf="isright">Saved Cards</span>
@@ -325,25 +293,24 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Cardholder Name" [formControl]="Holdername"
                                                             maxlength="15" [(ngModel)]="model.holdername" required>
-                                                            <mat-error *ngIf="Holdername.hasError('required')">
-                                                                Cardholder Name cannot be empty
-                                                            </mat-error>
+                                                        
                                                     </mat-form-field>
                                                 </div>
                                                 <div class="col-sm-6 col-xs-12">
                                                     <mat-form-field class=" mat-size"> <input
-                                                            matInput placeholder="Street Address" [formControl]="Address"
+                                                            matInput placeholder="Street Address" [formControl]="address"
                                                             maxlength="300" type="text" [(ngModel)]="model.address" required>
-                                                        <mat-error *ngIf="Address.hasError('required')">
+                                                        <mat-error *ngIf="address.errors.required">
                                                             Street Address cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
                                                 </div>
                                                 <div class="col-sm-6 col-xs-12">
-                                                    <mat-form-field class=" mat-size"> <input
+                                                    <mat-form-field class=" mat-size"> 
+                                                        <input
                                                             matInput placeholder="Zip Code" maxlength="5" type="text" [formControl]="zipcode"
                                                              [(ngModel)]="model.zipcode" required (ngModelChange)="zipcodeCheck(zipcode1.value)" #zipcode1>
-                                                        <mat-error *ngIf="zipcode.hasError('required')">
+                                                        <mat-error *ngIf="zipcode.errors.required">
                                                             Zipcode cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -352,7 +319,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="City"  type="text" [formControl]="city"
                                                              [(ngModel)]="model.city" required  >
-                                                        <mat-error *ngIf="city.hasError('required')">
+                                                        <mat-error *ngIf="city.errors.required">
                                                             City cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -361,7 +328,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="State"  type="text" [formControl]="state"
                                                              [(ngModel)]="model.state" required  >
-                                                        <mat-error *ngIf="state.hasError('required')">
+                                                        <mat-error *ngIf="state.errors.required">
                                                             State cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -370,7 +337,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Country"  type="text" [formControl]="country"
                                                              [(ngModel)]="model.country" required  >
-                                                        <mat-error *ngIf="country.hasError('required')">
+                                                        <mat-error *ngIf="country.errors.required">
                                                             Country cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -379,7 +346,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Nick Name"  type="text" [formControl]="nickname"
                                                              [(ngModel)]="model.nickname" required  >
-                                                        <mat-error *ngIf="nickname.hasError('required')">
+                                                        <mat-error *ngIf="nickname.errors.required">
                                                             Nick Name cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -389,223 +356,22 @@
                                                     </mat-slide-toggle>
                                                     <p>Enroll in Autopay set as recurring payment method</p>
                                                 </div>
-                                               
-                                              
-
                                             </div>
                                         </div>
                                     </div>
                                 </form>
                             </div>
                         </div>
-                        <!-- <div class="col-sm-6"> -->
+                       
                             <button type="submit"
                                     class="btn-file btn btn-rose" (click)="proceed()">Place
                                     Order</button> 
-                        <!-- </div> -->
+                       
                     </div>
                 </div>
             </div>
 
         </div>
-
-
-        <!-- <div class="row">
-            <div class="col-lg-6 col-md-6 col-sm-6 sh-container-paymnt">
-                <div class="dropdown mydropdown">
-                    <select (change)="next_stepdetail($event)" class="btn btn-success record-btn-mail dropdown-toggle text-left"
-                        data-toggle="dropdown" value="{{valuee}}">
-                        <option value="PY">Yearly Subscription</option>
-                        <option value="BM">Monthly Subscription</option>
-                    </select>
-                </div>
-               
-            </div>
-            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12 sh-plan-form">
-
-                <div class="checkout ">
-                    <div [className]="flipclass">
-                        <div class="flip">
-                            <div class="front">
-                                <div class="chip"></div>
-                                <div class="logo">
-                                    <svg version="1.1" id="visa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        x="0px" y="0px" width="47.834px" height="47.834px" viewBox="0 0 47.834 47.834"
-                                        style="enable-background:new 0 0 47.834 47.834;">
-                                        <g>
-                                            <g>
-
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                                <div class="number"> {{cardnumber1}} {{cardnumber2}} {{cardnumber3}} {{cardnumber4}}</div>
-                                <div class="card-holder">
-                                    <label>Card holder</label>
-                                    <div>{{cardholdername}}</div>
-                                </div>
-                                <div class="card-expiration-date">
-                                    <label>Expires</label>
-                                    <div>{{expmonth}}/{{expyear}}</div>
-                                </div>
-                            </div>
-                            <div class="back">
-                                <div class="strip"></div>
-                                <div class="logo">
-                                    <svg version="1.1" id="visa" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                                        x="0px" y="0px" width="47.834px" height="47.834px" viewBox="0 0 47.834 47.834"
-                                        style="enable-background:new 0 0 47.834 47.834;">
-                                        <g>
-                                            <g>
-                                            </g>
-                                        </g>
-                                    </svg>
-
-                                </div>
-                                <div class="ccv">
-                                    <label>CCV</label>
-                                    <div>{{ccv}}</div>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <form class="form " autocomplete="off" novalidate>
-                        <fieldset>
-                            <label for="card-number" >Card Number</label>
-
-
-                            <input type="num" (keypress)="keyPresszip($event)" id="card-number " tabindex="1" class="input-cart-number"
-                                required name="cardnumber1" minlength="4" maxlength="4" [(ngModel)]="cardnumber1"
-                                #cardnumber="ngModel" />
-
-                            <input type="num" id="card-number-1" (keypress)="keyPresszip($event)" tabindex="1" class="input-cart-number"
-                                minlength="4" maxlength="4" required name="cardnumber2" #cardnumbercard2="ngModel"
-                                [(ngModel)]="cardnumber2" />
-
-                            <input type="num" id="card-number-2" (keypress)="keyPresszip($event)" tabindex="1" class="input-cart-number"
-                                minlength="4" maxlength="4" required name="cardnumber3" #cardnumbercard3="ngModel"
-                                [(ngModel)]="cardnumber3" />
-
-                            <input type="num" id="card-number-3" (keypress)="keyPresszip($event)" tabindex="1" class="input-cart-number"
-                                minlength="4" maxlength="4" required name="cardnumber4" #cardnumbercard4="ngModel"
-                                [(ngModel)]="cardnumber4" />
-
-                        </fieldset>
-                       
-                        <div class="col-sm-6 padding-left-0">
-                                <fieldset>
-                                        <label for="card-holder" >Card holder</label>
-                                        <input (keypress)="keyPressnamezip($event)" type="text" name="cardholdername" maxlength="20"
-                                            required #cardholde1="ngModel" [(ngModel)]="cardholdername" id="card-holder" />
-                                      
-                                    </fieldset>
-                        </div>
-                        <div class="col-sm-6 padding-left-0 ">
-                        <fieldset>
-                                <label for="card-holder" >Card Type</label>
-                                <select placeholder="Type Card" [(ngModel)]="cardtype" name="cardtype" #cardtype1="ngModel" class="pricing-card-type">
-                                        <option *ngFor="let card_get_datat of card_opeation" [value]="card_get_datat.value">{{card_get_datat.viewValue}}</option>
-                                      </select>
-                               
-                            </fieldset>
-    </div>
-
-
-                        <fieldset class="fieldset-expiration">
-                            <label for="card-expiration-month" >Expiration date</label>
-                            <div class="select text-center">
-                                <select id="card-expiration-month" name="expmonth" required #expmonth1="ngModel"
-                                    [(ngModel)]="expmonth">
-                                    <option value="" disabled selected>Month</option>
-                                    <option>01</option>
-                                    <option>02</option>
-                                    <option>03</option>
-                                    <option>04</option>
-                                    <option>05</option>
-                                    <option>06</option>
-                                    <option>07</option>
-                                    <option>08</option>
-                                    <option>09</option>
-                                    <option>10</option>
-                                    <option>11</option>
-                                    <option>12</option>
-                                </select>
-                            </div>
-                            <div class="select text-center">
-                                <select id="card-expiration-year" required #expyear1="ngModel" name="expyear"
-                                    [(ngModel)]="expyear">
-                                    <option value="" disabled selected>Year</option>
-                                    <option>19</option>
-                                    <option>20</option>
-                                    <option>21</option>
-                                    <option>22</option>
-                                    <option>23</option>
-                                    <option>24</option>
-                                    <option>25</option>
-                                    <option>26</option>
-                                    <option>27</option>
-                                    <option>28</option>
-                                    <option>29</option>
-                                    <option>30</option>
-                                    <option>31</option>
-                                </select>
-
-                            </div>
-                            <br><br>
-                           
-                        </fieldset>
-
-
-
-                        <fieldset class="fieldset-ccv">
-                            <label for="card-ccv" >CCV</label>
-                            <input type="text" (keypress)="keyPresszip($event)" id="card-ccv" minlength="3" maxlength="4"
-                                required name="ccv" #ccv1="ngModel" (focusout)="flipagain()" (focus)="flip()"
-                                [(ngModel)]="ccv" />
-                           
-                        </fieldset>
-                      
-                        <button class="btn sh" (click)="proceed()">
-
-                            <i class="fa fa-lock"></i> Continue</button>
-
-
-
-                    </form>
-
-                
-
-
-                </div>
-            </div>
-
-        </div> -->
 
     </div>
 </div>
-
-<!-- <div id="myModal4" class="modal fade" role="dialog">
-    <div class="modal-dialog">
-
-      
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal"><i class="fa fa-times btn-dismiss"></i></button>
-         
-            </div>
-            <div class="modal-body text-center padding-zero">
-                <h4>I Agree to terms and condition.</h4>
-            </div>
-            <div class="modal-footer">
-                <div class="modal-buttons">
-                    <button type="button" class="btn btn-default" data-dismiss="modal" (click)="setautopay(status.default,status.id,status.name,status.number,status.cvc,status.expDate,status.street_address,status.zipcode,status.city,status.state,status.country,status.autopay)">Yes</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div> -->
