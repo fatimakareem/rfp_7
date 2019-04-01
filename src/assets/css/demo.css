@@ -849,7 +849,7 @@ svg:not(:root) {
 }
 
 .card-content .mat-input-infix {
-    border-top: 10px solid transparent
+    border-top: 5px solid transparent
 }
 
 .search-results {

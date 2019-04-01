@@ -119,8 +119,8 @@
             </div>
             <div class="products-area sh-products-area">
                 <div class="adv-pagination header" id="myHeader">
-                        <div class=" col-sm-8 mg-0-auto sh-pg-container">
-                                <div class="col-lg-9 col-md-8 col-sm-9 col-xs-12 text-right">
+                        <div class=" col-sm-11 mg-0-auto sh-pg-container">
+                                <div class="col-lg-8 col-md-8 col-sm-9 col-xs-12 text-right">
                                     <ul class="pagination" *ngIf="pager.pages && pager.pages.length">
                                             <li [ngClass]="{hide:pager.currentPage === 1}">
                                                     <a (click)="onSubmit(1)" class="view-1s" class="btn btn-fill">
@@ -166,7 +166,7 @@
                                             </li>
                                     </ul>
                                 </div>
-                                    <div  class="col-lg-3 col-md-4 col-sm-3 col-xs-12 prod-select-list sec-list sh-select-list" *ngIf="pager.pages && pager.pages.length">
+                                    <div  class="col-lg-4 col-md-4 col-sm-3 col-xs-12 prod-select-list sec-list sh-select-list" *ngIf="pager.pages && pager.pages.length">
                                         <label class="product-label" >Items per page:
                                         </label>
                                         <mat-form-field>

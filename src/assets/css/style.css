@@ -1923,6 +1923,7 @@ button {
 .sh-n-table .mat-select-value {
     font-size: 16px;
     font-weight: 400;
+    line-height: 24px;
     color: #000!important
 }
 
@@ -2336,4 +2337,29 @@ p.state-name:hover {
     margin: 10px 0 0!important;
     max-height: 36px;
     min-height: 36px;
+}
+.signup-form-row >div{
+    min-height: 89px;
+}
+.signup-form-row .mat-form-field-empty.mat-form-field-placeholder{
+    font-size: 23px;
+}
+.sh-n-table .mat-input-element{
+    padding: 0 !important;
+}
+.edit-profile >.card-content{
+    padding-bottom: 0 !important;
+}
+.edit-profile >.form-footer{
+    padding-top: 0 !important;
+}
+.contact-section textarea{
+    height: 148px;
+}
+.rfp-as-service .com-table .table>thead>tr>th {
+    font-size: 16px;
+}
+.sh-container-paymnt .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
+    transform: translateY(-15px) scale(.75) perspective(100px) translateZ(0)!important;
+    -ms-transform: translateY(15px) scale(.75)!important;
 }
