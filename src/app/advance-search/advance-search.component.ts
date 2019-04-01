@@ -206,11 +206,6 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
     }
   }
   dueddate(duedate) {
-    // if (duedate == 'Invalid Date') {
-    //   delete this.DueDate;
-    //   delete this.duedate;
-    //   this.onSubmit(1);
-    // }
     if (duedate) {
       this.DueDate = moment(duedate).format('YYYY-MM-DD');
       // this.onSubmit(1);
@@ -229,10 +224,6 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
           delete this.status;
         }
         if (this.Rfpnum || this.title || this.status || this.postedDate || this.DueDate || this.states || this.agencies || this.cates || this.subcate || this.submissionfrom || this.submissionto) {
-
-
-        
-
           this._serv.searchrfprecord(this.Rfpnum, this.title, this.status, this.postedDate, this.DueDate, this.states, this.agencies, this.cates, this.pageSize, page, this.subcate,this.submissionfrom,this.submissionto).subscribe(
             data => {
               this.record = "";
@@ -511,6 +502,34 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
     });
    
   }
+  doc;
+  check_trial(url){
+    if( this.subscribe=="Trial Subscription user"){
+      this._serv.trial_document().subscribe(
+        data => {
+ 
+  if(data.status=='True'){
+    this.doc=data.status;
+    window.open(url,'_blank');
+  }else{
+    swal({
+      type: 'error',
+      title: "You can't download more documents" ,
+      showConfirmButton: true,
+      width: '512px',
+      confirmButtonColor: "#090200",
+    });
+  
+  }
+ 
+        })
+    }else if(this.subscribe== "Subscribe user"){
+     
+      window.open(url,'_blank');
+     
+    }
+   
+  }
   check_login() {
     if (localStorage.getItem('currentadmin')) {
       this.subscribe = localStorage.getItem('currentadmin')
@@ -522,7 +541,7 @@ export class AdvanceSearchComponent implements OnInit, OnDestroy {
 
       this._serv.usersubscribe(this.uname).subscribe(
         data => {
-          if (data.Response == "Subscribe user") {
+          if (data.Response == "Subscribe user" || data.Response== "Trial Subscription user") {
             this.subscribe = data.Response
             return false
           }

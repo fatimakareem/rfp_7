@@ -108,41 +108,7 @@ formats = [
 
            ]
        };
-     
-    // $('.CategorySlider').fadeOut(0);
-    // setTimeout(function () {
-    //   $('.CategorySlider').slick({
-    //     infinite: true,
-    //     slidesToShow: 6,
-    //     slidesToScroll: 3,
-    //     autoplay: false,
-    //     prevArrow: '<button class="leftRsBanner">&lt;</button>',
-    //     nextArrow: '<button class="rightRsBanner">&lt;</button>',
-    //     responsive: [
-    //       {
-    //         breakpoint: 1199,
-    //         settings: {
-    //           slidesToShow: 5,
-    //           infinite: true
-    //         }
-    //       },
-    //       {
-    //         breakpoint: 778,
-    //         settings: {
-    //           slidesToShow: 3,
-    //         }
-    //       },
-    //       {
-    //         breakpoint: 639,
-    //         settings: {
-    //           slidesToShow: 1,
-    //           slidesToScroll: 1
-    //         }
-    //       }
-    //     ]
-    //   });
-    // }, 100);
-    // $('.CategorySlider').fadeIn(500).delay(200);
+   
   }
   move(){
     this.route.queryParams
@@ -257,6 +223,34 @@ setpage(page){
     let sth = 'rfp/'+query;
     this._nav.navigate([sth]);
   }
+  doc;
+  check_trial(url){
+    if( this.subscribe=="Trial Subscription user"){
+      this._serv.trial_document().subscribe(
+        data => {
+ 
+  if(data.status=='True'){
+    this.doc=data.status;
+    window.open(url,'_blank');
+  }else{
+    swal({
+      type: 'error',
+      title: "You can't download more documents" ,
+      showConfirmButton: true,
+      width: '512px',
+      confirmButtonColor: "#090200",
+    });
+  
+  }
+ 
+        })
+    }else if(this.subscribe== "Subscribe user"){
+     
+      window.open(url,'_blank');
+     
+    }
+   
+  }
   check_login() {if(localStorage.getItem('currentadmin')){
     this.subscribe =localStorage.getItem('currentadmin')
   }
@@ -266,7 +260,7 @@ setpage(page){
      this.uname = pars.username
     this._serv.usersubscribe(this.uname).subscribe(
         data =>{
-          if(data.Response == "Subscribe user"){
+          if(data.Response == "Subscribe user" || data.Response== "Trial Subscription user"){
              this.subscribe = data.Response
             return false
           }

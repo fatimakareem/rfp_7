@@ -16,12 +16,7 @@
                         </div>
                         <div id="MYHeader" class="col-lg-12 col-md-12 col-sm-12 col-xs-12 header sh-pg-container">
 
-                            <!-- <mat-paginator #paginator
-                           [length]="length"
-                           [pageSize]="pageSize"
-                           [pageSizeOptions]="pageSizeOptions"
-                           (page)="pageEvent = $event; onPaginateChange($event)">
-            </mat-paginator> -->
+                       
                         <div class="col-lg-9 col-md-9 col-sm-6 col-xs-12 text-right">
                             <ul class=" pagination" *ngIf="pager.pages && pager.pages.length">
                                     <li [ngClass]="{hide:pager.currentPage === 1}">
@@ -177,20 +172,21 @@
                                                                     </a>
                                                                 </li>
                                                                 <ng-template #pdf>
-    
-                                                                    <li *ngIf="rfp.rfp_reference == 'Download File' ; else link ">
-                                                                        <a href="{{rfp.web_info}}" target="_blank">
+                                                                    <li (click)="check_trial(rfp.web_info)" *ngIf=" rfp.rfp_reference == 'Download File' ; else link ">
+                                                                        <a>
                                                                             <i class="material-icons">insert_drive_file</i>
                                                                             View Documents
-                                                                        </a>
+                                                                          </a>
+                                                                     
                                                                     </li>
                                                                     <ng-template #link>
-                                                                        <li>
-                                                                            <a href="{{rfp.web_info}}" target="_blank">
-                                                                                <i class="material-icons">insert_drive_file</i>
-                                                                                View Documents
-                                                                            </a>
-                                                                        </li>
+                                                                      <li (click)="check_trial(rfp.web_info)">
+                                                                        
+                                                                        <a>
+                                                                          <i class="material-icons">insert_drive_file</i>
+                                                                          View Documents
+                                                                        </a>
+                                                                      </li>
                                                                     </ng-template>
                                                                 </ng-template>
                                                             </ul>

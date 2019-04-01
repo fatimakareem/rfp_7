@@ -1,26 +1,12 @@
-<!-- <app-header class="inner" ></app-header> -->
-<!-- <app-loader></app-loader> -->
-      
+    
 <div class="main-panel">
-  <!-- <div class="navbar-minimize sidebarToggle" (click)="navbarClass()">
-          <button class="btn btn-round btn-white btn-fill btn-just-icon" id="minimizeSidebar">
-          <i class="material-icons visible-on-sidebar-regular">more_vert</i>
-          <i class="material-icons visible-on-sidebar-mini">view_list</i>
-          <div class="ripple-container"></div></button>
-          <strong>Sidebar</strong>
-      </div>
-<div class="sidebar custom">
 
-  <app-user-sidebar></app-user-sidebar>
-</div> -->
 <div class="main-content custom">
 <div class="container-fluid">
    
   <div class="row">
       <div class="col-sm-12"> 
-          <!-- <div class="page-title" style="margin:10px 0px">
-              <span>Watchlist</span>
-          </div> -->
+        
           <div   class="col-sm-6 page-title"  >
                 <span>Watchlist</span>
                
@@ -99,15 +85,17 @@
                             </li>
                             <ng-template #pdf>
     
-                              <li *ngIf=" rfp?.wrfp.rfp_reference == 'Download File' ; else link ">
-                                <a href="{{ rfp?.wrfp.web_info}}" target="_blank">
-                                  <i class="material-icons">insert_drive_file</i>
-                                  View Documents
-                                </a>
+                              <li (click)="check_trial(rfp?.wrfp.web_info)" *ngIf=" rfp?.wrfp.rfp_reference == 'Download File' ; else link ">
+                                  <a>
+                                      <i class="material-icons">insert_drive_file</i>
+                                      View Documents
+                                    </a>
+                               
                               </li>
                               <ng-template #link>
-                                <li>
-                                  <a href="{{ rfp?.wrfp.web_info}}" target="_blank">
+                                <li (click)="check_trial(rfp?.wrfp.web_info)">
+                                  
+                                  <a>
                                     <i class="material-icons">insert_drive_file</i>
                                     View Documents
                                   </a>

@@ -116,7 +116,6 @@ export class ResultsComponent implements OnInit,OnDestroy {
       this.meta.updateTag({ name:'twitter:title', content:'Search | '+ "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
         this.meta.updateTag({ property:'og:title', content: 'Search | '+ "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
         this.Title.setTitle( 'Search |' +' RFP Gurus | Find RFP Bid Sites | Government Request for Proposal');
-        // this.onPaginateChange(1);
         if(localStorage.getItem('resultspage')){
             var page_num:number=Number(localStorage.getItem('resultspage'));
             this.onPaginateChange(page_num);
@@ -192,6 +191,34 @@ export class ResultsComponent implements OnInit,OnDestroy {
         let sth = 'rfp/'+query;
         this._nav.navigate([sth]);
     }
+    doc;
+    check_trial(url){
+      if( this.subscribe=="Trial Subscription user"){
+        this._serv.trial_document().subscribe(
+          data => {
+   
+    if(data.status=='True'){
+      this.doc=data.status;
+      window.open(url,'_blank');
+    }else{
+      swal({
+        type: 'error',
+        title: "You can't download more documents" ,
+        showConfirmButton: true,
+        width: '512px',
+        confirmButtonColor: "#090200",
+      });
+    
+    }
+   
+          })
+      }else if(this.subscribe== "Subscribe user"){
+       
+        window.open(url,'_blank');
+       
+      }
+     
+    }
     check_login() {if(localStorage.getItem('currentadmin')){
         this.subscribe =localStorage.getItem('currentadmin')
       }
@@ -201,7 +228,7 @@ export class ResultsComponent implements OnInit,OnDestroy {
             this.uname = pars.username
            this.endRequest= this._serv.usersubscribe(this.uname).subscribe(
                 data =>{
-                    if(data.Response == "Subscribe user"){
+                    if(data.Response == "Subscribe user" || data.Response== "Trial Subscription user"){
                         this.subscribe = data.Response
                         return false
                     }

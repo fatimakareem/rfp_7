@@ -234,14 +234,14 @@
                 long.
               </mat-error>
               <mat-error *ngIf="form.controls.cardnickname.errors.maxlength">
-                Nick name must be at atmost {{form.controls.cardnickname.errors.maxlength.requiredLength}} characters
+                Cardholder Name must be at atmost {{form.controls.cardnickname.errors.maxlength.requiredLength}} characters
                 long.
               </mat-error>
               <!-- <mat-error *ngIf="form.controls.cardnickname.errors.cannotContainSpace">
                         Nick name cannot contain spaces
                       </mat-error> -->
               <mat-error *ngIf="form.controls.cardnickname.hasError('pattern')">
-                Nick Name must be only in Alphabet.
+                Cardholder Name must be only in Alphabet.
               </mat-error>
             </mat-error>
           </mat-form-field>
@@ -250,7 +250,7 @@
           <mat-form-field>
             <input matInput placeholder="Nick Name" type="text" formControlName="nickname">
             <mat-error *ngIf="form.controls.nickname.touched && form.controls.nickname.invalid">
-              <mat-error *ngIf="form.controls.country.errors.required">
+              <mat-error *ngIf="form.controls.nickname.errors.required">
                 Nick Name cannot be empty
               </mat-error>
             </mat-error>

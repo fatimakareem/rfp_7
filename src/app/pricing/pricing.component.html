@@ -181,10 +181,15 @@
 <!--3rd step-->
 <div *ngIf="pkgsub" class="pricing-sub sh-signup-form-fix" data-wow-delay=".5s">
     <div class="container">
+           
         <div class=" row sh-container-paymnt">
 
             <div class="checkout-select-box col-lg-8 col-md-9 col-sm-12 mg-0-auto">
-
+                    <div class="switch"> <input [(ngModel)]="isfreetrial" id="switch-toggle-pricing"
+                        class="switch-toggle switch-toggle-round" type="checkbox"> <label
+                        for="switch-toggle-pricing"></label> </div>
+            <span class="pts-right" *ngIf="!isfreetrial">Start Your Free Trial</span> <span
+                class="pts-right" *ngIf="isfreetrial" style="color: black">Start Your Free Trial</span>
                 <div id="section-pricing" class="text-center">
                     <div class="pricing-tenure-switcher center" data-container="#pricing-switch">
                         <div class="col-sm-4">
@@ -195,12 +200,7 @@
                                 </mat-select>
                             </mat-form-field>
                         </div>
-                       
-                        <!-- <mat-select (change)="next_stepdetail($event)" class="btn  dropdown-toggle text-left" data-toggle="dropdown"
-                            value="{{valuee}}">
-                            <option value="PY">Yearly Subscription</option>
-                            <option value="BM">Monthly Subscription</option>
-                        </select> -->
+                      
 
                         <span class="pts-left" *ngIf="!isright" style="color: black">Saved Cards</span> <span class="pts-left"
                             *ngIf="isright">Saved Cards</span>
@@ -325,14 +325,16 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Cardholder Name" [formControl]="Holdername"
                                                             maxlength="15" [(ngModel)]="model.holdername" required>
-                                                        
+                                                            <mat-error *ngIf="Holdername.hasError('required')">
+                                                                Cardholder Name cannot be empty
+                                                            </mat-error>
                                                     </mat-form-field>
                                                 </div>
                                                 <div class="col-sm-6 col-xs-12">
                                                     <mat-form-field class=" mat-size"> <input
-                                                            matInput placeholder="Street Address" [formControl]="address"
+                                                            matInput placeholder="Street Address" [formControl]="Address"
                                                             maxlength="300" type="text" [(ngModel)]="model.address" required>
-                                                        <mat-error *ngIf="address.errors.required">
+                                                        <mat-error *ngIf="Address.hasError('required')">
                                                             Street Address cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -341,7 +343,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Zip Code" maxlength="5" type="text" [formControl]="zipcode"
                                                              [(ngModel)]="model.zipcode" required (ngModelChange)="zipcodeCheck(zipcode1.value)" #zipcode1>
-                                                        <mat-error *ngIf="zipcode.errors.required">
+                                                        <mat-error *ngIf="zipcode.hasError('required')">
                                                             Zipcode cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -350,7 +352,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="City"  type="text" [formControl]="city"
                                                              [(ngModel)]="model.city" required  >
-                                                        <mat-error *ngIf="city.errors.required">
+                                                        <mat-error *ngIf="city.hasError('required')">
                                                             City cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -359,7 +361,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="State"  type="text" [formControl]="state"
                                                              [(ngModel)]="model.state" required  >
-                                                        <mat-error *ngIf="state.errors.required">
+                                                        <mat-error *ngIf="state.hasError('required')">
                                                             State cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -368,7 +370,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Country"  type="text" [formControl]="country"
                                                              [(ngModel)]="model.country" required  >
-                                                        <mat-error *ngIf="country.errors.required">
+                                                        <mat-error *ngIf="country.hasError('required')">
                                                             Country cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -377,7 +379,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Nick Name"  type="text" [formControl]="nickname"
                                                              [(ngModel)]="model.nickname" required  >
-                                                        <mat-error *ngIf="nickname.errors.required">
+                                                        <mat-error *ngIf="nickname.hasError('required')">
                                                             Nick Name cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -388,15 +390,7 @@
                                                     <p>Enroll in Autopay set as recurring payment method</p>
                                                 </div>
                                                
-                                                <!-- <div class="col-sm-6">
-                                                    <button type="submit"
-                                                            class="btn-file btn btn-rose" (click)="proceed()">Place
-                                                            Order</button> 
-                                                </div> -->
-
-
-
-
+                                              
 
                                             </div>
                                         </div>

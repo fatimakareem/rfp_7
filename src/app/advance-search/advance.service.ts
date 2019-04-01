@@ -9,6 +9,16 @@ export class AdvanceService {
   constructor(private _http: HttpService, private _http5: Http) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
   }
+  trial_document()
+  {
+    let headers = new Headers();
+    if(localStorage.getItem('currentUser')){
+      headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
+      }  
+      headers.append('Content-Type', 'application/json');
+    return this._http5.get('https://apis.rfpgurus.com/document_trial/',
+    {headers: headers}).map((res: Response) => res.json() ) 
+  } 
   searchrecord(obj) {
     let headers = new Headers();
     headers.append('Content-Type', 'application/json');
