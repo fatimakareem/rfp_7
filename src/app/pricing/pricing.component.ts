@@ -45,7 +45,7 @@ export class PricingComponent implements OnInit {
     this.meta.updateTag({ property:'og:title', content: 'Pricing | '+ "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
     this.Title.setTitle( 'Pricing |' +' RFP Gurus | Find RFP Bid Sites | Government Request for Proposal');
 
-    if (localStorage.getItem('currentUser')){ this.endRequest = this._serv.get_card_info().subscribe(Data => {
+    if (localStorage.getItem('currentUser')){ this._serv.get_card_info().subscribe(Data => {
       this.res = Data;})
     this.route.queryParams
 
@@ -91,7 +91,7 @@ export class PricingComponent implements OnInit {
       Validators.required,
       
     ]);
-    address = new FormControl('', [
+    Address = new FormControl('', [
       Validators.required,
       
     ]);
@@ -183,6 +183,7 @@ export class PricingComponent implements OnInit {
        }
     }
     isright:boolean=false;
+    isfreetrial:boolean=false;
     set_default:boolean=false;
     Add_new(){
     if(this.set_default==true){
@@ -214,104 +215,204 @@ export class PricingComponent implements OnInit {
     let pars = JSON.parse(this.local);
     this.uname = pars.username
     this.date = this.model.expirationdate;
-    if(this.isright==true){
+    if(this.isfreetrial==true){
+      if(this.isright==true){
     
       
-       this._http6.addCard(this.default, this.model.holdername, this.model.address, this.model.zipcode, this.model.city, this.model.state, this.model.country, this.model.cardNumber.split('-').join(''), this.model.cardcod,this.date.split('/').join(''),this.model.cardtype,this.model.setautopay,this.model.nickname).subscribe(Data => {
-
-          this.model.defaultcard=Data.id
-          if(Data.id){
-          this._serv.package_free(this.isright,this.model.defaultcard, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']).subscribe(
-            data => {
-              swal(
-                'Your payment has been transferred',
-                '',
-                'success'
-              )
-              if(localStorage.getItem('member')){
-                let url =localStorage.getItem('member')
-                let last=url.length
-      let ur =url.slice(0,13)
-      let state=url.slice(0,5)
-      let category=url.slice(0,8)
-      let agency=url.slice(0,6)
-            
-            if(ur == 'searched-data'){ this._nav.navigate([ur], { queryParams: { keyword: url.slice(13,last) } });  }
-            else if(state == 'state'){
-                this._nav.navigate([state], { queryParams: { state: url.slice(5,last) } });  }
-                else if(category == 'category'){
-                 this._nav.navigate([category], { queryParams: { cat: url.slice(8,last) } });  }
-                 else if(agency == 'agency'){
-                   
-                     this._nav.navigate([agency], { queryParams: { agency: url.slice(6,last) } });  }
-            else{
-                this._nav.navigate([url]);
-            }
-        }else{
-            this._nav.navigate(['/']);
-        }
-            },
-      
-            error => {
-              swal(
-                'Oops...',
-                'Something went wrong!',
-                'error'
-              )
-            });}else{
-              swal(
-                'Oops...',
-                'Something went wrong! Please Try Again.',
-                'error'
-              )
-            }
-        },
-          error => {
+        this._http6.addCard(this.default, this.model.holdername, this.model.address, this.model.zipcode, this.model.city, this.model.state, this.model.country, this.model.cardNumber.split('-').join(''), this.model.cardcod,this.date.split('/').join(''),this.model.cardtype,this.model.setautopay,this.model.nickname).subscribe(Data => {
+ 
+           this.model.defaultcard=Data.id
+           if(Data.id){
+           this._serv.package_free_trial(this.isright,this.model.defaultcard, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']).subscribe(
+             data => {
+               swal(
+                 'Your payment has been transferred',
+                 '',
+                 'success'
+               )
+               if(localStorage.getItem('member')){
+                 let url =localStorage.getItem('member')
+                 let last=url.length
+       let ur =url.slice(0,13)
+       let state=url.slice(0,5)
+       let category=url.slice(0,8)
+       let agency=url.slice(0,6)
+             
+             if(ur == 'searched-data'){ this._nav.navigate([ur], { queryParams: { keyword: url.slice(13,last) } });  }
+             else if(state == 'state'){
+                 this._nav.navigate([state], { queryParams: { state: url.slice(5,last) } });  }
+                 else if(category == 'category'){
+                  this._nav.navigate([category], { queryParams: { cat: url.slice(8,last) } });  }
+                  else if(agency == 'agency'){
+                    
+                      this._nav.navigate([agency], { queryParams: { agency: url.slice(6,last) } });  }
+             else{
+                 this._nav.navigate([url]);
+             }
+         }else{
+             this._nav.navigate(['/']);
+         }
+             },
+       
+             error => {
+               swal(
+                 'Oops...',
+                 'Something went wrong!',
+                 'error'
+               )
+             });}else{
+               swal(
+                 'Oops...',
+                 'Something went wrong! Please Try Again.',
+                 'error'
+               )
+             }
+         },
+           error => {
+          
+           })
+       
          
-          })
+    
+   }else if(this.isright==false){
+     this._serv.package_free_trial(this.isright,this.model.defaultcard, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']).subscribe(
+       data => {
+         swal(
+           'Your payment has been transferred',
+           '',
+           'success'
+         )
+         if(localStorage.getItem('member')){
+           let url =localStorage.getItem('member')
+           let last=url.length
+ let ur =url.slice(0,13)
+ let state=url.slice(0,5)
+ let category=url.slice(0,8)
+ let agency=url.slice(0,6)
+       
+       if(ur == 'searched-data'){ this._nav.navigate([ur], { queryParams: { keyword: url.slice(13,last) } });  }
+       else if(state == 'state'){
+           this._nav.navigate([state], { queryParams: { state: url.slice(5,last) } });  }
+           else if(category == 'category'){
+            this._nav.navigate([category], { queryParams: { cat: url.slice(8,last) } });  }
+            else if(agency == 'agency'){
+              
+                this._nav.navigate([agency], { queryParams: { agency: url.slice(6,last) } });  }
+       else{
+           this._nav.navigate([url]);
+       }
+   }else{
+       this._nav.navigate(['/']);
+   }
+       },
+ 
+       error => {
+         swal(
+           'Oops...',
+           'Something went wrong!',
+           'error'
+         )
+       });
+     }
+    }else{ if(this.isright==true){
+    
       
+      this._http6.addCard(this.default, this.model.holdername, this.model.address, this.model.zipcode, this.model.city, this.model.state, this.model.country, this.model.cardNumber.split('-').join(''), this.model.cardcod,this.date.split('/').join(''),this.model.cardtype,this.model.setautopay,this.model.nickname).subscribe(Data => {
+
+         this.model.defaultcard=Data.id
+         if(Data.id){
+         this._serv.package_free(this.isright,this.model.defaultcard, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']).subscribe(
+           data => {
+             swal(
+               'Your payment has been transferred',
+               '',
+               'success'
+             )
+             if(localStorage.getItem('member')){
+               let url =localStorage.getItem('member')
+               let last=url.length
+     let ur =url.slice(0,13)
+     let state=url.slice(0,5)
+     let category=url.slice(0,8)
+     let agency=url.slice(0,6)
+           
+           if(ur == 'searched-data'){ this._nav.navigate([ur], { queryParams: { keyword: url.slice(13,last) } });  }
+           else if(state == 'state'){
+               this._nav.navigate([state], { queryParams: { state: url.slice(5,last) } });  }
+               else if(category == 'category'){
+                this._nav.navigate([category], { queryParams: { cat: url.slice(8,last) } });  }
+                else if(agency == 'agency'){
+                  
+                    this._nav.navigate([agency], { queryParams: { agency: url.slice(6,last) } });  }
+           else{
+               this._nav.navigate([url]);
+           }
+       }else{
+           this._nav.navigate(['/']);
+       }
+           },
+     
+           error => {
+             swal(
+               'Oops...',
+               'Something went wrong!',
+               'error'
+             )
+           });}else{
+             swal(
+               'Oops...',
+               'Something went wrong! Please Try Again.',
+               'error'
+             )
+           }
+       },
+         error => {
         
-   
-  }else if(this.isright==false){
-    this._serv.package_free(this.isright,this.model.defaultcard, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']).subscribe(
-      data => {
-        swal(
-          'Your payment has been transferred',
-          '',
-          'success'
-        )
-        if(localStorage.getItem('member')){
-          let url =localStorage.getItem('member')
-          let last=url.length
+         })
+     
+       
+  
+ }else if(this.isright==false){
+   this._serv.package_free(this.isright,this.model.defaultcard, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']).subscribe(
+     data => {
+       swal(
+         'Your payment has been transferred',
+         '',
+         'success'
+       )
+       if(localStorage.getItem('member')){
+         let url =localStorage.getItem('member')
+         let last=url.length
 let ur =url.slice(0,13)
 let state=url.slice(0,5)
 let category=url.slice(0,8)
 let agency=url.slice(0,6)
-      
-      if(ur == 'searched-data'){ this._nav.navigate([ur], { queryParams: { keyword: url.slice(13,last) } });  }
-      else if(state == 'state'){
-          this._nav.navigate([state], { queryParams: { state: url.slice(5,last) } });  }
-          else if(category == 'category'){
-           this._nav.navigate([category], { queryParams: { cat: url.slice(8,last) } });  }
-           else if(agency == 'agency'){
-             
-               this._nav.navigate([agency], { queryParams: { agency: url.slice(6,last) } });  }
-      else{
-          this._nav.navigate([url]);
-      }
-  }else{
-      this._nav.navigate(['/']);
-  }
-      },
+     
+     if(ur == 'searched-data'){ this._nav.navigate([ur], { queryParams: { keyword: url.slice(13,last) } });  }
+     else if(state == 'state'){
+         this._nav.navigate([state], { queryParams: { state: url.slice(5,last) } });  }
+         else if(category == 'category'){
+          this._nav.navigate([category], { queryParams: { cat: url.slice(8,last) } });  }
+          else if(agency == 'agency'){
+            
+              this._nav.navigate([agency], { queryParams: { agency: url.slice(6,last) } });  }
+     else{
+         this._nav.navigate([url]);
+     }
+ }else{
+     this._nav.navigate(['/']);
+ }
+     },
 
-      error => {
-        swal(
-          'Oops...',
-          'Something went wrong!',
-          'error'
-        )
-      });
-    }
+     error => {
+       swal(
+         'Oops...',
+         'Something went wrong!',
+         'error'
+       )
+     });
+   }}
+   
      
     }
 constructor(private route: ActivatedRoute, private _serv1: RfpService, private _nav: Router, private _serv: PricingService,private _serv2: RegisterService, private http: Http, private _http6: PaymentmethodsService,private _location: Location,private Title: Title, private meta: Meta,private metaService: MetaService) {  this.metaService.createCanonicalURL();this.metaService.metacreateCanonicalURL();}

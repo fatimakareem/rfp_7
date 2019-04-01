@@ -130,10 +130,7 @@ formats = [
   }
 setpage(page){
   localStorage.setItem('subcatpage',page);
-  // this._shareData.returnCategory().subscribe(
-  //   data => {
-  //     this.cat = data;
-  //       if(!data) {
+
             this.route.queryParams
                 .subscribe(params => {
                     this.subcat = params.subcat
@@ -142,8 +139,7 @@ setpage(page){
                     this.meta.updateTag({ property:'og:title', content: params.subcat +' | '+ "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
 
                     this.Title.setTitle(  params.subcat +' | RFP Gurus | Find RFP Bid Sites | Government Request for Proposal');
-        //         })
-        // }
+       
   this._serv.subcatrfprecord(this.subcat, this.pageSize,page).subscribe(
       data => {
           this.record = data.Results;
@@ -172,6 +168,34 @@ setpage(page){
     let sth = 'rfp/'+query;
     this._nav.navigate([sth]);
   }
+  doc;
+  check_trial(url){
+    if( this.subscribe=="Trial Subscription user"){
+      this._serv.trial_document().subscribe(
+        data => {
+ 
+  if(data.status=='True'){
+    this.doc=data.status;
+    window.open(url,'_blank');
+  }else{
+    swal({
+      type: 'error',
+      title: "You can't download more documents" ,
+      showConfirmButton: true,
+      width: '512px',
+      confirmButtonColor: "#090200",
+    });
+  
+  }
+ 
+        })
+    }else if(this.subscribe== "Subscribe user"){
+     
+      window.open(url,'_blank');
+     
+    }
+   
+  }
   check_login() {if(localStorage.getItem('currentadmin')){
     this.subscribe =localStorage.getItem('currentadmin')
   }
@@ -181,7 +205,7 @@ setpage(page){
      this.uname = pars.username
     this._serv.usersubscribe(this.uname).subscribe(
         data =>{
-          if(data.Response == "Subscribe user"){
+          if(data.Response == "Subscribe user" || data.Response== "Trial Subscription user"){
              this.subscribe = data.Response
             return false
           }

@@ -268,7 +268,7 @@ formats = [
       this.uname = pars.username
        this._serv.usersubscribe(this.uname).subscribe(
         data => {
-          if (data.Response == "Subscribe user") {
+          if (data.Response == "Subscribe user"||data.Response == "Trial Subscription user") {
             this.subscribe = data.Response
             this._shareData.subscribed_user(this.subscribe);
             return false

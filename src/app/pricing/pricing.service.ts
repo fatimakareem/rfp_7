@@ -8,15 +8,16 @@ import { FormBuilder, FormGroup, Validators, FormControl, AbstractControl } from
 @Injectable()
 export class PricingService {
     currentUser;
-    constructor(private _http5: HttpService ) {
+    constructor(private _http5: HttpService) {
         this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
     }
     get_card_info() {
-        if(localStorage.getItem('currentUser')){
-        let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
-        headers.append('Content-Type', 'application/json');
-        return this._http5.get('https://apis.rfpgurus.com/payment/cardinfo/', { headers: headers }).map((response: Response) => response.json());
-    }}
+        if (localStorage.getItem('currentUser')) {
+            let headers = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
+            headers.append('Content-Type', 'application/json');
+            return this._http5.get('https://apis.rfpgurus.com/payment/cardinfo/', { headers: headers }).map((response: Response) => response.json());
+        }
+    }
     loaded: boolean = false;
     login(username: string, password: string) {
         const headers = new Headers();
@@ -68,59 +69,60 @@ export class PricingService {
         }).map((res: Response) => res.json())
     }
     // this.isright,this.model.cardNumber, this.model.expirationdate,this.model.cardcod,this.var_get_id,this.data.course_id,this.model.cardtype,this.model.holdername,this.pkg_detail['type'],this.pkg_detail['dur']
-    package_free(isright,cardNumber,expirationdate,cardcod,var_get_id,cardtype,holdername,pkg_type,pkg_dur) {
+    package_free(isright, cardNumber, expirationdate, cardcod, var_get_id, cardtype, holdername, pkg_type, pkg_dur) {
 
         let headers = new Headers({ 'Authorization': 'JWT ' + this.currentUser.token });
         headers.append('Content-Type', 'application/json');
-        if(isright==true){
-       
-            return this._http5.post("https://apis.rfpgurus.com/package/",
-                JSON.stringify({
-                    // 'username': username,
-                    "id":cardNumber,
-                    // "username":username,
-                    "pricepackage":pkg_type,
-                    "duration": pkg_dur
 
-                 
-                }),
-                { headers: headers }).map((res: Response) => res.json())
-        // }
-    }
-        else {
-            return this._http5.post("https://apis.rfpgurus.com/package/",
+
+        return this._http5.post("https://apis.rfpgurus.com/package/",
             JSON.stringify({
-               
-                "id":cardNumber,
-                // "username":username,
-                "pricepackage":pkg_type,
+                "id": cardNumber,
+                "pricepackage": pkg_type,
                 "duration": pkg_dur
 
-               
             }),
             { headers: headers }).map((res: Response) => res.json())
-        }
+
+
     }
-    updateCard(var_status,id, name, cardno, ccv, expiryDate, address, zip, city, state, country,set_auto_pay) {
+    package_free_trial(isright, cardNumber, expirationdate, cardcod, var_get_id, cardtype, holdername, pkg_type, pkg_dur) {
+
+        let headers = new Headers({ 'Authorization': 'JWT ' + this.currentUser.token });
+        headers.append('Content-Type', 'application/json');
+
+
+        return this._http5.post("https://apis.rfpgurus.com/free_Trail/",
+            JSON.stringify({
+
+                "package_detail": pkg_type,
+                "card_info": cardNumber
+
+            }),
+            { headers: headers }).map((res: Response) => res.json())
+
+
+    }
+    updateCard(var_status, id, name, cardno, ccv, expiryDate, address, zip, city, state, country, set_auto_pay) {
         let header = new Headers({ 'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token });
         header.append('Content-Type', 'application/json');
         return this._http5.put('https://apis.rfpgurus.com/payment/cardinfo/',
-          JSON.stringify({
-            // "cardNumber": cardno,
-            "default": var_status,
-            "cid": id,
-            "name": name,
-            // "pinCode": pin,
-            "street_address": address,
-            "zipcode": zip,
-            "city": city,
-            "state": state,
-            "country": country,
-            "number": cardno,
-            "cvc": ccv,
-            "expDate": expiryDate,
-            "autopay": set_auto_pay
-          }),
-          { headers: header }).map((response: Response) => response.json());
-      }
+            JSON.stringify({
+                // "cardNumber": cardno,
+                "default": var_status,
+                "cid": id,
+                "name": name,
+                // "pinCode": pin,
+                "street_address": address,
+                "zipcode": zip,
+                "city": city,
+                "state": state,
+                "country": country,
+                "number": cardno,
+                "cvc": ccv,
+                "expDate": expiryDate,
+                "autopay": set_auto_pay
+            }),
+            { headers: header }).map((response: Response) => response.json());
+    }
 }

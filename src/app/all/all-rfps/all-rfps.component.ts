@@ -47,13 +47,7 @@ export class AllRfpsComponent implements OnInit {
     local;
     uname;
     subscribe;date;
-    // MatPaginator Output
-    // pageEvent: PageEvent;
-    // endRequest;
-    // setPageSizeOptions(setPageSizeOptionsInput: string) {
-    //     this.matpageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-
-    // }
+   
     check(date){
        
            this.date= moment(date, this.formats, true).isValid()
@@ -155,7 +149,34 @@ function myFunction() {
         let sth = 'rfp/' + query;
         this._nav.navigate([sth]);
     }
-    paginator(pageEvent) { }
+    doc;
+    check_trial(url){
+      if( this.subscribe=="Trial Subscription user"){
+        this._serv.trial_document().subscribe(
+          data => {
+   
+    if(data.status=='True'){
+      this.doc=data.status;
+      window.open(url,'_blank');
+    }else{
+      swal({
+        type: 'error',
+        title: "You can't download more documents" ,
+        showConfirmButton: true,
+        width: '512px',
+        confirmButtonColor: "#090200",
+      });
+    
+    }
+   
+          })
+      }else if(this.subscribe== "Subscribe user"){
+       
+        window.open(url,'_blank');
+       
+      }
+     
+    }
     check_login() {if(localStorage.getItem('currentadmin')){
         this.subscribe =localStorage.getItem('currentadmin')
       }
@@ -165,7 +186,7 @@ function myFunction() {
             this.uname = pars.username
             this._serv.usersubscribe(this.uname).subscribe(
                 data => {
-                    if (data.Response == "Subscribe user") {
+                    if (data.Response == "Subscribe user" || data.Response== "Trial Subscription user") {
                         this.subscribe = data.Response
                         return false
                     }

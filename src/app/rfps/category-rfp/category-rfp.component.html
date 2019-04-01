@@ -210,19 +210,21 @@
                                                     </li>
                                                     <ng-template #pdf>
 
-                                                        <li *ngIf="rfp.rfp_reference == 'Download File' ; else link ">
-                                                            <a href="{{rfp.web_info}}" target="_blank">
+                                                        <li (click)="check_trial(rfp.web_info)" *ngIf=" rfp.rfp_reference == 'Download File' ; else link ">
+                                                            <a>
                                                                 <i class="material-icons">insert_drive_file</i>
                                                                 View Documents
-                                                            </a>
+                                                              </a>
+                                                         
                                                         </li>
                                                         <ng-template #link>
-                                                            <li>
-                                                                <a href="{{rfp.web_info}}" target="_blank">
-                                                                    <i class="material-icons">insert_drive_file</i>
-                                                                    View Documents
-                                                                </a>
-                                                            </li>
+                                                          <li (click)="check_trial(rfp.web_info)">
+                                                            
+                                                            <a>
+                                                              <i class="material-icons">insert_drive_file</i>
+                                                              View Documents
+                                                            </a>
+                                                          </li> 
                                                         </ng-template>
                                                     </ng-template>
                                                 </ul>

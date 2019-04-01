@@ -132,6 +132,31 @@ export class WatchlistComponent implements OnInit {
   local;
   uname;
   subscribe;
+  doc;
+  check_trial(url){
+    alert(url);
+    if( this.subscribe=="Trial Subscription user"){
+      this._serv1.trial_document().subscribe(
+        data => {
+ 
+  if(data.status=='True'){
+    this.doc=data.status;
+    window.open(url,'_blank');
+    return true
+    
+  }else{
+   
+    return false;
+  }
+ 
+        })
+    }else if(this.subscribe== "Subscribe user"){
+     
+      window.open(url,'_blank');
+      return true
+    }
+   
+  }
   check_login() {
     if (localStorage.getItem('currentUser')) {
       this.local = localStorage.getItem('currentUser');
@@ -140,7 +165,7 @@ export class WatchlistComponent implements OnInit {
       this._serv1.usersubscribe(this.uname).subscribe(
         data => {
           //   console.log(data.Response);
-          if (data.Response == "Subscribe user") {
+          if (data.Response == "Subscribe user" || data.Response== "Trial Subscription user") {
             this.subscribe = data.Response
             return false
           }

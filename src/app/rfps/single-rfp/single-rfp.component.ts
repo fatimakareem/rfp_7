@@ -217,6 +217,34 @@ console.log(params)
 
 
   }
+  doc;
+  check_trial(url){
+    if( this.subscribe=="Trial Subscription user"){
+      this._serv.trial_document().subscribe(
+        data => {
+ 
+  if(data.status=='True'){
+    this.doc=data.status;
+    window.open(url,'_blank');
+  }else{
+    swal({
+      type: 'error',
+      title: "You can't download more documents" ,
+      showConfirmButton: true,
+      width: '512px',
+      confirmButtonColor: "#090200",
+    });
+  
+  }
+ 
+        })
+    }else if(this.subscribe== "Subscribe user"){
+     
+      window.open(url,'_blank');
+     
+    }
+   
+  }
   check_login() {
     if (localStorage.getItem('currentadmin')) {
       this.subscribe = localStorage.getItem('currentadmin')
@@ -228,7 +256,7 @@ console.log(params)
       this._serv.usersubscribe(this.uname).subscribe(
         data => {
           //   console.log(data.Response);
-          if (data.Response == "Subscribe user") {
+          if (data.Response == "Subscribe user" ||data.Response== "Trial Subscription user") {
             this.subscribe = data.Response
             return false
           }

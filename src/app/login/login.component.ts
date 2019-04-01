@@ -152,8 +152,6 @@ export class LoginComponent implements OnInit, OnDestroy {
     onLogin() {
         // console.log(this.login);
         if (this.login.valid && this.recapcha.check()) {
-            // console.log(this.login.value);
-            // console.log('form submitted');
             this.isequal = true;
             this._serv.login_authenticate(this.login.value.username).subscribe(
                 data => {
@@ -166,9 +164,7 @@ export class LoginComponent implements OnInit, OnDestroy {
                                 showConfirmButton: false,
                                 timer: 1500, width: '512px',
                             });
-                            // let url = 'profile';
-                            // this._nav.navigate([url]);
-                            // if(localStorage.getItem('member')){
+                          
                             if (localStorage.getItem('member')) {
                                 let url = localStorage.getItem('member')
                                 let last = url.length

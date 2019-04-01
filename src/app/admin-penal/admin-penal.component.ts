@@ -150,7 +150,6 @@ export class AdminPanelComponent implements OnInit {
                     this.item = this.Res.json()['TotalResult'];
                     console.log(this.record, this.Res.json()['TotalResult'], 'eee')
                     this.pager = this.pagerService.getPager(this.item, page, this.pageSize);
-                    // this.search = false;
 
                 });
                 }
@@ -159,7 +158,6 @@ export class AdminPanelComponent implements OnInit {
 
     select() {
         if (this.selected_model == false) {
-            // alert(this.selected_model)
             localStorage.setItem('selected_model', 'false')
         }
     }
@@ -224,16 +222,7 @@ export class AdminPanelComponent implements OnInit {
             return true
         }
     }
-    // input;
-    // onChange(event: EventTarget) {
-
-    //     this.input = new FormData();
-    //     const eventObj: MSInputMethodContext = <MSInputMethodContext>event;
-    //     const target: HTMLInputElement = <HTMLInputElement>eventObj.target;
-    //     this.input.append('fileToUpload', target.files[0]);
-    //   }
-
-
+  
     btnEditClick(id, rfpkey, rfp_number, title, descriptionTag, state, agency, date_entered, due_date, web_info, rfp_reference, category, sub_category, seoTitleUrl, bid_type, agency_type, city_or_county, city, openrfp,oldcategory) {
         if(agency){
 var agen =agency.toLowerCase( );
@@ -278,32 +267,6 @@ var agen =agency.toLowerCase( );
 
     }
     model: any = {};
-    // uploadfiles() {
-    //     this.http.post(Config.uploadfile, this.input, { responseType: 'text' }).subscribe(data => {
-    //       if (data === 'sorry ,  your file was not uploaded') {
-    //         this.CourseFailure();
-    //       }
-    //       else {
-    //         this.model.datafile = data;
-    //         console.log(this.model.datafile);
-    //       }
-    //     })
-    //   }
-
-    // editClick(updatedtitle,updatedrfp_number,uprfpkey,updateddescriptionTag,updatedstates,updatedagency,updateddate_entered,updateddue_date,updatedrfp_reference,updatedcategory,updatedsubcat,updatedseoTitleUrl,updatedbid_type,updatedagency_type,updatedcity_or_county,updatedcity,updatedweb_info,updatedopen_rfp){
-    //     // if(this.input){
-    //     // this.http.post('https://storage.rfpgurus.com/bplrfpgurus/',this.input,{ responseType: 'text' }).subscribe(data => { 
-    //     //       console.log(data);
-
-    //     //       this.model.web_info = data;
-
-
-
-    //     //   });}
-    //     this._serv.update_rfp(this.id,updatedtitle,updatedrfp_number,uprfpkey,updateddescriptionTag,updatedstates,updatedagency,updateddate_entered,updateddue_date,updatedweb_info,updatedrfp_reference,updatedcategory,updatedsubcat,updatedseoTitleUrl,updatedbid_type,updatedagency_type,updatedcity_or_county,updatedcity,updatedopen_rfp).subscribe(
-    //         data => {
-
-    //         });
-    // }
+   
 }
 
