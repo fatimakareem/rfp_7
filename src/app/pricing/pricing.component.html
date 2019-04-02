@@ -158,16 +158,16 @@
         <div class=" row sh-container-paymnt">
 
             <div class="checkout-select-box col-lg-8 col-md-9 col-sm-12 mg-0-auto">
-                    <div class="switch" class="free-trial-switch">
+                    <!-- <div class="switch" class="free-trial-switch">
                          <input [(ngModel)]="isfreetrial" id="switch-toggle-pricing"
                         class="switch-toggle switch-toggle-round" type="checkbox"> <label
                         for="switch-toggle-pricing"></label> 
-                    </div>
-                    <div class="dp-inline free-trial">
+                    </div> -->
+                    <!-- <div class="dp-inline free-trial">
                             <span class="pts-right " *ngIf="!isfreetrial">Start Your Free Trial</span>
                             <span
                                class="pts-right " style="color: black" *ngIf="isfreetrial" >Start Your Free Trial</span>
-                    </div>
+                    </div> -->
             
                 <div id="section-pricing" class="text-center col-sm-12 padding-zero">
                     <div class="pricing-tenure-switcher center" data-container="#pricing-switch">
@@ -384,4 +384,46 @@
         </div>
 
     </div>
+</div>
+<button id="openModal " type="button" #openModal [hidden]="true" class="btn btn-primary modal-hide" data-toggle="modal" data-target="#exampleModalCenter">
+</button>
+<!-- Modal -->
+<div  class="modal fade login-or-signup" id="exampleModalCenter" tabindex="-1" role="dialog"
+  aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered custom-model" style="animation-delay: 15s" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="float: top; float: right">
+          <button type="button" class="close sh" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <h5 class="modal-title must-login Halvetica" id="exampleModalCenterTitle">Join RfpGurus for 7 Days Free Trial</h5>
+      </div>
+      <div class="modal-body">
+            <ul class="checkedList"><li class="bullet">You won't be charged until after your free days.</li><li class="bullet">We'll remind you three days before your trial ends.</li><li class="bullet">No commitments, cancel anytime.</li></ul>
+        <div class="custom-popup-img">
+          <img src="../../assets/img/RFPGurus-Home-Screen-Logo.png">
+        </div>
+      </div>
+      <div class="modal-footer">
+            <a *ngIf="check_login(); else free" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Free Trial For 7 Day's</a>
+            <ng-template #free>
+                <a (click)="free()" class="btn btn-rose " >Free Trial For 7 Day's</a>
+            </ng-template>
+        <!-- <a>
+          <button title="Member Login" type="button" (click)="free()"  class="btn btn-primary btn-must-login"
+            data-dismiss="modal">Free Trial For 7 Day's</button>
+        </a> -->
+        <a *ngIf="check_login(); else payed" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Subscribe Now</a>
+        <ng-template #payed>
+            <a (click)="payed()" class="btn btn-rose " >Subscribe Now</a>
+        </ng-template>
+        <!-- <a>
+          <button title="Subscribe Now" type="button" (click)="payed()"  class="btn btn-primary btn-must-signup"
+            data-dismiss="modal">Subscribe Now</button>
+        </a> -->
+      </div>
+    </div>
+  </div>
 </div>

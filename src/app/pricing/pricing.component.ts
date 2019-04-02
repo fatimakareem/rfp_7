@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, ViewChild } from '@angular/core';
 import { Http, Headers, Response } from '@angular/http';
 import { PricingService } from './pricing.service';
 import swal from 'sweetalert2';
@@ -10,6 +10,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { MetaService } from '../serv/meta_service';
 import {FormGroup, FormBuilder, Validators, NgForm, FormControl} from '@angular/forms';
 import { RegisterService } from '../registered/register.service';
+declare var $: any;
 
 @Component({
   selector: 'app-pricing',
@@ -18,6 +19,13 @@ import { RegisterService } from '../registered/register.service';
   providers: [PricingService, RfpService]
 })
 export class PricingComponent implements OnInit {
+  @ViewChild('openModal') openModal: ElementRef;
+  free(){
+    this.isfreetrial=true;
+  }
+  payed(){
+    this.isfreetrial=false;
+  }
   pkgsub = false;
   pkg_detail = {};
   valuee;
@@ -41,6 +49,7 @@ export class PricingComponent implements OnInit {
     this.pkgsub = true;
   }
   ngOnInit() {
+    this.openModal.nativeElement.click();
     this.meta.updateTag({ name:'twitter:title', content:'Pricing | '+ "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
     this.meta.updateTag({ property:'og:title', content: 'Pricing | '+ "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
     this.Title.setTitle( 'Pricing |' +' RFP Gurus | Find RFP Bid Sites | Government Request for Proposal');
@@ -193,6 +202,7 @@ export class PricingComponent implements OnInit {
     
     }
     }
+    
     check_login() {
       if (localStorage.getItem('currentUser')) {
         this.local = localStorage.getItem('currentUser');
@@ -416,4 +426,7 @@ let agency=url.slice(0,6)
      
     }
 constructor(private route: ActivatedRoute, private _serv1: RfpService, private _nav: Router, private _serv: PricingService,private _serv2: RegisterService, private http: Http, private _http6: PaymentmethodsService,private _location: Location,private Title: Title, private meta: Meta,private metaService: MetaService) {  this.metaService.createCanonicalURL();this.metaService.metacreateCanonicalURL();}
+ngOnDestroy() {
+  $('#exampleModalCenter').modal('hide');
+}
 }
