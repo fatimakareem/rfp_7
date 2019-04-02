@@ -388,7 +388,7 @@
 <button id="openModal " type="button" #openModal [hidden]="true" class="btn btn-primary modal-hide" data-toggle="modal" data-target="#exampleModalCenter">
 </button>
 <!-- Modal -->
-<div  class="modal fade login-or-signup" id="exampleModalCenter" tabindex="-1" role="dialog"
+<div  class="modal free-trial-modal fade login-or-signup" id="exampleModalCenter" tabindex="-1" role="dialog"
   aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered custom-model" style="animation-delay: 15s" role="document">
     <div class="modal-content">
@@ -398,15 +398,18 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <h5 class="modal-title must-login Halvetica" id="exampleModalCenterTitle">Join RfpGurus for 7 Days Free Trial</h5>
+        <h5 class="modal-title must-login Halvetica" id="exampleModalCenterTitle">Join RFPGurus for 7 Days Free Trial</h5>
       </div>
       <div class="modal-body">
-            <ul class="checkedList"><li class="bullet">You won't be charged until after your free days.</li><li class="bullet">We'll remind you three days before your trial ends.</li><li class="bullet">No commitments, cancel anytime.</li></ul>
-        <div class="custom-popup-img">
+            <ul class="checkedList">
+                <li class="bullet"><i class="fa fa-check"></i> You won't be charged until after your free days.</li>
+                <li class="bullet"><i class="fa fa-check"></i> We'll remind you three days before your trial ends. </li>
+                    <li class="bullet"><i class="fa fa-check"></i> No commitments, cancel anytime.</li></ul>
+        <div class="custom-popup-img text-center">
           <img src="../../assets/img/RFPGurus-Home-Screen-Logo.png">
         </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer padding-zero">
             <a *ngIf="check_login(); else free" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Free Trial For 7 Day's</a>
             <ng-template #free>
                 <a (click)="free()" class="btn btn-rose " >Free Trial For 7 Day's</a>
