@@ -308,9 +308,9 @@
                                                 </div>
                                                 <div class="col-sm-6 col-xs-12">
                                                     <mat-form-field class=" mat-size"> <input
-                                                            matInput placeholder="Street Address" [formControl]="address"
+                                                            matInput placeholder="Street Address" [formControl]="Address"
                                                             maxlength="300" type="text" [(ngModel)]="model.address" required>
-                                                        <mat-error *ngIf="address.errors.required">
+                                                        <mat-error *ngIf="Address.hasError('required')">
                                                             Street Address cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -320,7 +320,7 @@
                                                         <input
                                                             matInput placeholder="Zip Code" maxlength="5" type="text" [formControl]="zipcode"
                                                              [(ngModel)]="model.zipcode" required (ngModelChange)="zipcodeCheck(zipcode1.value)" #zipcode1>
-                                                        <mat-error *ngIf="zipcode.errors.required">
+                                                        <mat-error *ngIf="zipcode.hasError('required')">
                                                             Zipcode cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -329,7 +329,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="City"  type="text" [formControl]="city"
                                                              [(ngModel)]="model.city" required  >
-                                                        <mat-error *ngIf="city.errors.required">
+                                                        <mat-error *ngIf="city.hasError('required')">
                                                             City cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -338,7 +338,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="State"  type="text" [formControl]="state"
                                                              [(ngModel)]="model.state" required  >
-                                                        <mat-error *ngIf="state.errors.required">
+                                                        <mat-error *ngIf="state.hasError('required')">
                                                             State cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -347,7 +347,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Country"  type="text" [formControl]="country"
                                                              [(ngModel)]="model.country" required  >
-                                                        <mat-error *ngIf="country.errors.required">
+                                                        <mat-error *ngIf="country.hasError('required')">
                                                             Country cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -356,7 +356,7 @@
                                                     <mat-form-field class=" mat-size"> <input
                                                             matInput placeholder="Nick Name"  type="text" [formControl]="nickname"
                                                              [(ngModel)]="model.nickname" required  >
-                                                        <mat-error *ngIf="nickname.errors.required">
+                                                        <mat-error *ngIf="nickname.hasError('required')">
                                                             Nick Name cannot be empty
                                                         </mat-error>
                                                     </mat-form-field>
@@ -412,7 +412,7 @@
       <div class="modal-footer padding-zero">
             <a *ngIf="check_login(); else free" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Free Trial For 7 Day's</a>
             <ng-template #free>
-                <a (click)="free()" class="btn btn-rose " >Free Trial For 7 Day's</a>
+                <a (click)="free()" class="btn btn-rose " data-dismiss="modal" >Free Trial For 7 Day's</a>
             </ng-template>
         <!-- <a>
           <button title="Member Login" type="button" (click)="free()"  class="btn btn-primary btn-must-login"
@@ -420,7 +420,7 @@
         </a> -->
         <a *ngIf="check_login(); else payed" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Subscribe Now</a>
         <ng-template #payed>
-            <a (click)="payed()" class="btn btn-rose " >Subscribe Now</a>
+            <a (click)="payed()" class="btn btn-rose " data-dismiss="modal">Subscribe Now</a>
         </ng-template>
         <!-- <a>
           <button title="Subscribe Now" type="button" (click)="payed()"  class="btn btn-primary btn-must-signup"
