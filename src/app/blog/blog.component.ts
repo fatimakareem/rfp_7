@@ -12,7 +12,6 @@ export class BlogComponent implements OnInit {
   blog: any = [];
   constructor(private _serv: BlogService, private _nav: Router, private http: Http) { }
   sendid(bid) {
-    console.log(bid);
     let sth = 'single-blog';
     this._nav.navigate([sth], { queryParams: { blogid: bid } });
   }
@@ -20,7 +19,6 @@ export class BlogComponent implements OnInit {
     this._serv.blogRecord().subscribe(
       data => {
         this.blog = data;
-        console.log(this.blog)
       }, error => {
       }
     )

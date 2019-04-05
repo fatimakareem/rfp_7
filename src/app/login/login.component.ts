@@ -67,13 +67,11 @@ export class LoginComponent implements OnInit, OnDestroy {
                 user
             }, { headers: headers })
             createUser.subscribe(data => {
-                console.log(data['token'], "data", data.json());
                 let user = { userid: this.jwtHelper.decodeToken(data.json().token).user_id, username: this.jwtHelper.decodeToken(data.json().token).username, token: data.json().token };
                 if (user && user.token) {
                     localStorage.setItem('loged_in', '1');
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
-                // console.log("junaid",this.jwtHelper.decodeToken(data.json().token))
                 swal({
                     type: 'success',
                     title: 'Successfully Logged in',
@@ -147,15 +145,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         };
     }
     resolved(captchaResponse: string) {
-        console.log(`Resolved captcha with response ${captchaResponse}:`);
     }
     onLogin() {
-        // console.log(this.login);
         if (this.login.valid && this.recapcha.check()) {
             this.isequal = true;
             this._serv.login_authenticate(this.login.value.username).subscribe(
                 data => {
-                    //  console.log("user",data);
                     this._serv.login(this.login.value.username, this.login.value.password).subscribe(
                         data => {
                             swal({
@@ -209,7 +204,6 @@ export class LoginComponent implements OnInit, OnDestroy {
                         });
                 },
                 error => {
-                    console.log(error.status, 'masssssagaggggg')
                     if (error.status == 400) {
                         swal(
                             'Error',

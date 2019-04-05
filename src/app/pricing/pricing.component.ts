@@ -34,7 +34,6 @@ export class PricingComponent implements OnInit {
   ExpiryDate= '([0-9]{2}[/]?){2}';
 
   firststep(value) {
-    console.log(value)
     this.valuee = value;
     if (value == "BM") {
       this.prv_stepdetail("B", "M")
@@ -135,7 +134,6 @@ export class PricingComponent implements OnInit {
     setautopay:boolean=false;
 
     changed(val) {
-      console.log(val.checked)
      this.setautopay=val.checked
     }
     zipcodeCheck(zipcode1) {
@@ -154,7 +152,6 @@ export class PricingComponent implements OnInit {
     chek(val){
       // this.expirydate=val.toString().slice(3,7);
       this.expirydate=val.toString().slice(3,5);
-      console.log(this.expirydate,'jj')
     }
     public mask=function(rawValue) {
      

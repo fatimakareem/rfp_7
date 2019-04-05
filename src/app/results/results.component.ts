@@ -63,13 +63,11 @@ export class ResultsComponent implements OnInit,OnDestroy {
 
     setPageSizeOptions(setPageSizeOptionsInput: string) {
         this.pageSizeOptions = setPageSizeOptionsInput.split(',').map(str => +str);
-        // console.log(this.pageSizeOptions);
     }
 
 
 
     download(info){
-        console.log(info);
        this.endRequest= this._serv.downloadFile(info).subscribe(
             data =>{
                 if(data.status ="200"){
@@ -78,23 +76,19 @@ export class ResultsComponent implements OnInit,OnDestroy {
                         '',
                         'success'
                     )
-                    //  console.log("dsdasd");
                 }
             } ,
             error=>{
 
             });
     }
-    // order="asc"
     sort(sorted,page){
         this.route.queryParams
         .subscribe(params => {
             this.cat = params.keyword
-        console.log(sorted)
         this._serv.sortby(sorted,this.cat,page,this.pageSize).subscribe(
             data => {
                 this.record = data.results;
-                console.log(data.results)
                 this.item = data.totalItems
                 this.pager = this.pagerService.getPager(data['totalItems'], page,this.pageSize);
             })
@@ -130,7 +124,6 @@ export class ResultsComponent implements OnInit,OnDestroy {
     }
     page(pageSize){
         if (pageSize) {
-          console.log(pageSize);
           this.pageSize = pageSize;
           if(localStorage.getItem('resultspage')){
             var page_num:number=Number(localStorage.getItem('resultspage'));
@@ -140,9 +133,7 @@ export class ResultsComponent implements OnInit,OnDestroy {
           }
       }
       else {
-          console.log()
           delete this.pageSize;
-          console.log(this.pageSize)
       }
       }
       move(){
@@ -182,7 +173,6 @@ export class ResultsComponent implements OnInit,OnDestroy {
                      
                     },
                     error => {
-                        console.log(error);
                     })
             })
   
@@ -234,7 +224,6 @@ export class ResultsComponent implements OnInit,OnDestroy {
                     }
                 },
                 error =>{
-                    // console.log(error);
                 });
 
         }

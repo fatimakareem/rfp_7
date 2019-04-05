@@ -62,10 +62,8 @@ export class WatchlistComponent implements OnInit {
           this._shareData.watchtotal(this.total);
           this._shareData.watchInfo(this.wrfp);
         }
-        console.log(this.wrfp);
       },
       error => {
-        // console.log(error);
       });
   }
 
@@ -94,7 +92,6 @@ export class WatchlistComponent implements OnInit {
 
       },
       error => {
-        // console.log(error);
       });
     }})
   }
@@ -122,7 +119,6 @@ export class WatchlistComponent implements OnInit {
         this.watchlist();
       },
       error => {
-        // console.log(error);
       });}})
   }
   singlerfp(query) {
@@ -164,14 +160,12 @@ export class WatchlistComponent implements OnInit {
       this.uname = pars.username
       this._serv1.usersubscribe(this.uname).subscribe(
         data => {
-          //   console.log(data.Response);
           if (data.Response == "Subscribe user" || data.Response== "Trial Subscription user") {
             this.subscribe = data.Response
             return false
           }
         },
         error => {
-          // console.log(error);
         });
 
     }

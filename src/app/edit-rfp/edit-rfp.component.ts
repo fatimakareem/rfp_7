@@ -30,14 +30,11 @@ export class EditRfpComponent implements OnInit {
   constructor(private shared:SharedData, private http: HttpService,private _http: HttpService, private _serv1: AdvanceService, private _serv: AllRfpsService, public dialogRef: MatDialogRef<AdminPanelComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
   }
   remove1(val, index){
-    console.log(val);
     this.data.subcat.splice(index, 1);
   }
   remove(val, index) {
-    console.log(val);
     this.data.category.splice(index, 1);
-    // this.valueSelected(preference, status);
-    // console.log(this.tempUserPreference);
+   
 }
 hide1:boolean=false;
 selectsubcate(){
@@ -104,13 +101,13 @@ selectsubcate(){
         this.Statess = data.Result;
       },
       error => {
-        // console.log(error);
+        
       }); this._serv1.rfpcategory().subscribe(
         data => {
           this.cat = data;
         },
         error => {
-          // console.log(error);
+         
         }
       )
     this._serv1.rfpagen().subscribe(
@@ -145,10 +142,10 @@ selectsubcate(){
   editClick() {
     if(this.input){
     this._http.post('https://storage.rfpgurus.com/upload.php/',this.input).subscribe(data => { 
-          console.log(data);
+         
 
           this.data.web_info = data._body;
-          console.log(data._body.substring(0,26),"Sorry, file already exists.")
+         
           if(data._body.substring(0,26)=="Sorry, file already exists"){
             swal({
               type: 'error',

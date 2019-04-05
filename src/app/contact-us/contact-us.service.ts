@@ -15,7 +15,6 @@ export class ContactUsService {
         'phone': phone,
         'address': message
       }).map((res: Response) => {
-        console.log(res);
       })
 
   }

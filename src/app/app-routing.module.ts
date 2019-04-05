@@ -9,7 +9,7 @@ import {SuperadminComponent} from './layouts/admin/superadmin.component'
 import { AuthLayoutComponent } from './layouts/auth/auth-layout.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import {AuthLogin} from './_guards/auth.login';
 const routes: Routes = [
   {
     path: '',
@@ -69,11 +69,11 @@ const routes: Routes = [
     children: [
         {
             path: 'adminlogin',
-            loadChildren: '../app/superlogin/superlogin.module#SuperLoginModule'
+            loadChildren: '../app/superlogin/superlogin.module#SuperLoginModule',canActivate: [AuthLogin]
           },
      
         { path: 'unsubscribe/:query1', loadChildren: '../app/unsubscribe/unsubscribe.module#UnsubscribeModule' },
-        { path: 'login', loadChildren: '../app/login/login.module#LoginModule' },
+        { path: 'login', loadChildren: '../app/login/login.module#LoginModule' ,canActivate: [AuthLogin]},
        
         { path: 'rfp-as-service', loadChildren: '../app/rfp-as-service/rfp-as-service.module#RfpAsServiceModule' },
         { path: 'blog', loadChildren: '../app/blog/blog.module#BlogModule' },

@@ -31,7 +31,6 @@ export class LoginService {
                     localStorage.setItem('exp', this.exp_time);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
-                // console.log("junaid",this.jwtHelper.decodeToken(response.json().token))
             });
     }
     adminlogin(username: string, password: string) {
@@ -45,7 +44,6 @@ export class LoginService {
                     localStorage.setItem('currentadmin', username);
                     localStorage.setItem('currentUser', JSON.stringify(user));
                 }
-                // console.log("junaid",this.jwtHelper.decodeToken(response.json().token))
             });
     }
 
@@ -62,7 +60,6 @@ export class LoginService {
         }).map((res: Response) => res.json());
     }
     activation_service(email) {
-        console.log(email);
         return this._http5.post("https://apis.rfpgurus.com/ac_code/", {
             'email': email
         }).map((res: Response) => res.json())

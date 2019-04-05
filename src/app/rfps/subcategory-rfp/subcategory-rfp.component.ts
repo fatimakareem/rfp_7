@@ -86,7 +86,6 @@ formats = [
   }
 
   download(info){
-    console.log(info);
     this._serv.downloadFile(info).subscribe(
         data =>{
              if(data.status ="200"){
@@ -148,7 +147,6 @@ setpage(page){
          this.pager = this.pagerService.getPager(data['totalItems'], page,this.pageSize);
       },
       error => {
-          console.log(error);
       });
 })
 }
@@ -161,7 +159,6 @@ setpage(page){
          this.length = this.item;
       },
       error => {
-          // console.log(error);
       });
   }
   single(query){
@@ -211,7 +208,6 @@ setpage(page){
           }
         },
         error =>{
-        // console.log(error);
         });
      
     }

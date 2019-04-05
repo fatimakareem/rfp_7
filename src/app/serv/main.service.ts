@@ -12,7 +12,6 @@ export class MainService {
 
     constructor(private _http5: HttpService ,private _http: Http ) {
         this.currentUser=JSON.parse(localStorage.getItem('currentUser'));
-        console.log(this.currentUser)
     }
     purchaseHistory() {
 
@@ -22,7 +21,22 @@ export class MainService {
             {headers: headers}).map((response: Response) => response.json());
 
     }
+    trialHistory() {
 
+        let headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
+        headers.append('Content-Type', 'application/json');
+        return this._http5.get('https://apis.rfpgurus.com/trail_history/',
+            {headers: headers}).map((response: Response) => response.json());
+
+    }
+    deactivetrial() {
+
+        let headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
+        headers.append('Content-Type', 'application/json');
+        return this._http5.get('https://apis.rfpgurus.com/deactivate_trail/',
+            {headers: headers}).map((response: Response) => response.json());
+
+    }
 
     expirePackage(expDate){
         let headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});

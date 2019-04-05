@@ -308,7 +308,6 @@ displayFieldCss(form: FormGroup, field: string) {
   }
   date;
   changed(val) {
-    console.log(val.checked)
    this.setautopay=val.checked
   }
   public removeValidators(form: FormGroup) {

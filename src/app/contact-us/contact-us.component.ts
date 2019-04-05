@@ -42,9 +42,7 @@ export class ContactUsComponent implements OnInit, OnDestroy {
     });
   }
   onSubmit(name, email, phone, message) {
-    console.log(name, email, phone, message);
     this.endRequest = this._serv.contact(name, email, phone, message).subscribe(data => {
-      console.log(data);
       swal({
         type: 'success',
         title: 'Thank You For Contacting Us, We Will Reply Soon On Our E-mail',

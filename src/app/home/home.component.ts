@@ -134,7 +134,7 @@ formats = [
         this.cat = data;
         this.CategorySlider();
         this.CategoryCheck = true;
-        console.log(data);
+       
       },
       error => {
       }
@@ -142,7 +142,7 @@ formats = [
      this._serv.latestrfps().subscribe(
       data => {
         this.record = data.results;
-        console.log(data);
+       
       },
       error => {
       }

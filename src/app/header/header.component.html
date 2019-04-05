@@ -243,15 +243,25 @@
                   </div>
                   <div class="heart-main-div">
                     <div class="heart-contact">
-                        <a [routerLink]="['/rfp']"[queryParams]="{query:item.target}"> <div class="heart-heading curser-pointer" >
+                        <a *ngIf="item.type_of_notification =='Free Trial Alert' || item.type_of_notification =='Subscription Alert'" routerLink="/purchase-history"> <div class="heart-heading curser-pointer" >
                             {{item.type_of_notification}}
-                         </div></a>
-                      <div class="heart-detail plan-detail curser-pointer"*ngIf="item.read == false">
-                        <h5   (click)="single(item.target);updatenofication(item.id)"> {{item.description}}</h5>
-                      </div>
-                      <div class="heart-detail plan-detail sh-notification-seen" *ngIf="item.read == true">
-                        <h5 (click)="single(item.target);updatenofication(item?.id)"> {{item.description}}</h5>
-                      </div>
+                         </div>
+                         <div class="heart-detail plan-detail curser-pointer"*ngIf="item.read == false">
+                            <h5   (click)="updatenofication(item.id)"> {{item.description}}</h5>
+                          </div>
+                          <div class="heart-detail plan-detail sh-notification-seen" *ngIf="item.read == true">
+                            <h5 (click)="updatenofication(item?.id)"> {{item.description}}</h5>
+                          </div></a>
+                        <a *ngIf="item.type_of_notification !='Free Trial Alert' && item.type_of_notification !='Subscription Alert'" [routerLink]="['/rfp']"[queryParams]="{query:item.target}"> <div class="heart-heading curser-pointer" >
+                            {{item.type_of_notification}}
+                         </div>
+                         <div class="heart-detail plan-detail curser-pointer"*ngIf="item.read == false">
+                            <h5   (click)="updatenofication(item.id)"> {{item.description}}</h5>
+                          </div>
+                          <div class="heart-detail plan-detail sh-notification-seen" *ngIf="item.read == true">
+                            <h5 (click)="updatenofication(item?.id)"> {{item.description}}</h5>
+                          </div></a>
+                      
                     </div>
                   </div>
                 </div>

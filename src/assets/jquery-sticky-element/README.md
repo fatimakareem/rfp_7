@@ -76,7 +76,6 @@ $('#sticky').sticky('setOffset', 50);
 ### Example usage:
 ```javascript
 $('#sticky').on('sticky-created', function(event){
-  console.log('Sticky element created', event.target);
 });
 ```
 

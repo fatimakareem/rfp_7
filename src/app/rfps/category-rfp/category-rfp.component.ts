@@ -135,7 +135,6 @@ formats = [
   }
 
   download(info){
-    console.log(info);
     this._serv.downloadFile(info).subscribe(
         data =>{
              if(data.status ="200"){
@@ -187,7 +186,6 @@ setpage(page){
                       data => {
                         this.sub_categories = data.sub_categories;
                         this.CategorySlider();
-                        console.log(this.sub_categories);
                       }
                     )
                     this.meta.updateTag({ name:'twitter:title', content: params.cat +' | '+ "RFP Gurus | Find RFP Bid Sites | Government Request for Proposal" });
@@ -203,7 +201,6 @@ setpage(page){
          this.pager = this.pagerService.getPager(data['totalItems'], page,this.pageSize);
       },
       error => {
-          console.log(error);
       });
 })
 }
@@ -216,7 +213,6 @@ setpage(page){
          this.length = this.item;
       },
       error => {
-          // console.log(error);
       });
   }
   single(query){
@@ -266,7 +262,6 @@ setpage(page){
           }
         },
         error =>{
-        // console.log(error);
         });
      
     }

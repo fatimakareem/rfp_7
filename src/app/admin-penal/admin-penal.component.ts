@@ -78,7 +78,6 @@ export class AdminPanelComponent implements OnInit {
     
     page(pageSize) {
         if (pageSize) {
-            console.log(pageSize);
             this.pageSize = pageSize;
             if(localStorage.getItem('adminpage')){
                 var page_num:number=Number(localStorage.getItem('adminpage'));
@@ -88,9 +87,7 @@ export class AdminPanelComponent implements OnInit {
               }
         }
         else {
-            console.log()
             delete this.pageSize;
-            console.log(this.pageSize)
         }
     }
     Res:any;
@@ -111,7 +108,6 @@ export class AdminPanelComponent implements OnInit {
                             this.Res=Res;
                             this.record = this.Res['Results'];
                             this.item = this.Res['TotalResult'];
-                            console.log(this.record, this.Res['TotalResult'], 'eee')
                             this.pager = this.pagerService.getPager(this.item, page, this.pageSize);
                         })
                 }else{
@@ -121,7 +117,6 @@ export class AdminPanelComponent implements OnInit {
                         this.Res=Res;
                         this.record = this.Res.json()['Results'];
                         this.item = this.Res.json()['TotalResult'];
-                        console.log(this.record, this.Res.json()['TotalResult'], 'eee')
                         this.pager = this.pagerService.getPager(this.item, page, this.pageSize);
                         // this.search = false;
     
@@ -135,11 +130,10 @@ export class AdminPanelComponent implements OnInit {
                 if(this.filter){
                     this._serv.fiter_rfp(this.filter,'old',page).subscribe(
                         Res => {
-                    console.log(Res);
+                    
                             this.Res=Res;
                             this.record = this.Res['Results'];
                             this.item = this.Res['TotalResult'];
-                            console.log(this.record, this.Res['TotalResult'], 'eee')
                             this.pager = this.pagerService.getPager(this.item, page, this.pageSize);
                         })
                 }else{
@@ -148,7 +142,6 @@ export class AdminPanelComponent implements OnInit {
                     this.Res=Res;
                     this.record = this.Res.json()['Results'];
                     this.item = this.Res.json()['TotalResult'];
-                    console.log(this.record, this.Res.json()['TotalResult'], 'eee')
                     this.pager = this.pagerService.getPager(this.item, page, this.pageSize);
 
                 });
@@ -194,7 +187,6 @@ export class AdminPanelComponent implements OnInit {
                 this.Statess = data.Result;
             },
             error => {
-                // console.log(error);
             });
     }
     single(query) {
@@ -215,7 +207,6 @@ export class AdminPanelComponent implements OnInit {
                     }
                 },
                 error => {
-                    // console.log(error);
                 });
         }
         else {

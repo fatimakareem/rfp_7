@@ -60,7 +60,6 @@ resolved(captchaResponse: string) {
       this.partnership.controls.email.value,
       this.partnership.controls.cName.value, this.partnership.controls.Partner_description.value).subscribe(
         data => {
-          console.log(data);
           swal({
             type: 'success',
             title: 'Thank You For Showing Your interest to Become a Partner',

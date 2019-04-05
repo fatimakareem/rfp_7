@@ -4,7 +4,34 @@
             <div class="history-header" *ngIf="result">
                 <h2>Subscription</h2>
             </div>
-           
+            <div class="history-header" *ngIf="trial">
+                    <h2>Trial Subscription</h2>
+                </div>
+            <table class="table table-striped history-table" *ngIf="trial">
+                    <thead >
+                        <tr>
+                            <th>Subscription Name</th>
+                            <th>Price</th>
+                            <th>Start Date</th>
+                            <th>Expiry Date</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr >
+                            <td *ngIf="trial.package_detail.duration == 'M' "> MONTHLY PLAN</td>
+                            <td *ngIf="trial.package_detail.duration  == 'Q'">Quater PLAN</td>
+                            <td *ngIf="trial.package_detail.duration == 'S'"> SixMonths PLAN</td>
+                            <td *ngIf="trial.package_detail.duration  == 'Y'"> Yearly PLAN</td>
+                            <td><span>$</span>{{trial.package_detail.pkg_price}} </td>
+                            <td>{{trial.timecreated | date:'EEEE, MMM dd, y'}}</td>
+                            <td>{{trial.endtime | date:'EEEE, MMM dd, y'}}</td>
+                        <td ><button class="btn btn-success sh-btn-success" title="Active">Active
+                                </button></td>
+                           
+                        </tr>
+                    </tbody>
+                </table>
             <table class="table table-striped history-table" *ngIf="result">
                 <thead >
                     <tr>
@@ -31,6 +58,9 @@
                     </tr>
                 </tbody>
             </table>
+            <button class="btn btn-rose pull-right " *ngIf="trial" (click)="deactive()">
+                    Deactivate Trail 
+            </button>
             <button class="btn btn-rose pull-right "  data-target="#myModal5" data-toggle="modal" *ngIf="result" (click)="get(record.pay_date,record.end_date)">
                     Generate Invoice
             </button>

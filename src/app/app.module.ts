@@ -32,6 +32,8 @@ import { XHRBackend, RequestOptions } from '@angular/http';
 import { HttpService } from './serv/http-service';
 import { AuthGuard } from './_guards/auth.guard';
 import { AuthGuard1 } from './_guards/auth.guard1';
+import { AuthLogin } from './_guards/auth.login';
+
 import { RecapchaService } from './recapcha/recapcha.service';
 import { ResultsService } from './results/results.service';
 import { AgencyService } from './rfps/agency-rfp/agency.service';
@@ -185,7 +187,7 @@ export class MaterialModule { }
        
         PreloaderService,
         
-        AuthGuard,AuthGuard1,
+        AuthGuard,AuthGuard1,AuthLogin,
         BaseRequestOptions,
        
         FooterService,

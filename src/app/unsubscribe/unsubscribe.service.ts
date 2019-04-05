@@ -6,12 +6,10 @@ export class UnsubscribeService {
 
   constructor(private http: Http) { }
   unsub(uid) {
-    console.log(uid)
     let headers = new Headers();
     return this.http.delete('https://apis.rfpgurus.com/unsubscribe/' + uid +'/', { headers: headers }).map((response: Response) => response.json());
 }
 qurey(uid,comment) {
-  console.log(uid)
   let headers = new Headers();
   return this.http.post('https://apis.rfpgurus.com/unsubscribe_query/',{
     "email":uid,

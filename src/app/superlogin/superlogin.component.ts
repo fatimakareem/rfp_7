@@ -127,11 +127,9 @@ onLogin(e,username,password) {
 }
   checked(event, i) {
     if (event.target.checked == true) {
-        console.log(event.target.checked)
         this.staySignedIn=true;
     }
     else if (event.target.checked == false) {
-        console.log(event.target.checked)
         this.staySignedIn=false;
 
     }

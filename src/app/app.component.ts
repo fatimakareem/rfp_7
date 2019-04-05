@@ -1,9 +1,6 @@
-import { Component, OnInit, Inject, ElementRef } from '@angular/core';
-import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, NavigationEnd } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import 'rxjs/add/operator/filter';
-import { DOCUMENT } from '@angular/platform-browser';
-// import { networkInterfaces } from 'os';
 declare var $: any;
 
 @Component({
@@ -18,18 +15,18 @@ export class AppComponent implements OnInit {
 
     private _router: Subscription;
     time;
-    constructor(private _nav: Router, private router: Router, @Inject(DOCUMENT) private document: any) { }
+    constructor( private router: Router) { }
 
     ngOnInit() {
         // $.material.options.autofill = true;
         // $.material.init();
-        // this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
-        //     if (window.outerWidth > 991) {
-        //         window.document.children[0].scrollTop = 0;
-        //     } else {
-        //         window.document.activeElement.scrollTop = 0;
-        //     }
-        // });
+        this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
+            if (window.outerWidth > 991) {
+                window.document.children[0].scrollTop = 0;
+            } else {
+                window.document.activeElement.scrollTop = 0;
+            }
+        });
 
         window.onbeforeunload = function () {
             $(this).scrollTop(0);

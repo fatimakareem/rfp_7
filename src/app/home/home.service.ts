@@ -40,7 +40,6 @@ export class HomeService {
       headers = new Headers({ 'Authorization': 'JWT ' + this.currentUser.token });
     }
     headers.append('Content-Type', 'application/json');
-    console.log(enterdate, duedate);
     return this._http.put('https://apis.rfpgurus.com/rf_p/filters/' + items + '/?page=' + page,
       JSON.stringify({
         "status": status,

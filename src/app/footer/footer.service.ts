@@ -10,7 +10,7 @@ export class FooterService {
             {
                 'email': email
             }).map((res: Response) => {
-                console.log(res);
+             
             })
     }
 }

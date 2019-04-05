@@ -23,7 +23,7 @@ export class SpeechRecognitionService {
                     const transcript = result[0].transcript;
                     if (result.isFinal) {
                         if (result[0].confidence < 0.3) {
-                            console.log('Unrecognized result - Please try again');
+                           
                         } else {
                             term = transcript;
                         }

@@ -19,9 +19,7 @@ export class SingleblogComponent implements OnInit {
     this._serv.singleblog(params.blogid).subscribe(
       data => {
         this.blog = data ;
-console.log(this.blog)
       },error =>{
-// console.log(error);
       });
     })
 

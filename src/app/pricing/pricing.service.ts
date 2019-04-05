@@ -28,7 +28,6 @@ export class PricingService {
                 let user = { username: username, token: response.json().token };
                 if (user && user.token) {
                     localStorage.setItem('currentUser', JSON.stringify(user));
-                    console.log(localStorage.getItem('currentUser'))
                 }
             });
     }
@@ -38,14 +37,11 @@ export class PricingService {
         }).map((res: Response) => res.json())
     }
     post_service(obj) {
-        console.log('service');
-        console.log(obj);
         return this._http5.post("https://apis.rfpgurus.com/register/", {
             'obj': obj
         }).map((res: Response) => res.json());
     }
     activation_service(email) {
-        console.log(email);
         return this._http5.post("https://apis.rfpgurus.com/ac_code/", {
             'email': email
         }).map((res: Response) => res.json())

@@ -59,7 +59,6 @@ export class UserSidebarComponent implements OnInit,OnDestroy {
       this._serv1.rfpcategory_subsat().subscribe(
         data => {
           this.cat_subcat = data;
-          console.log(this.cat)
           this.loaded = true;
         },
         error => {
@@ -211,7 +210,6 @@ export class UserSidebarComponent implements OnInit,OnDestroy {
   }
   
   rfpState(state) {
-    console.log("sssssssssssssss", state);
     this._shareData.stateInfo(state); 
     this.formclear();         
             
@@ -223,7 +221,6 @@ export class UserSidebarComponent implements OnInit,OnDestroy {
     this._adserv.rfpsinglesubcat(value).subscribe(
       data => {
         this.sub_categories = data.sub_categories;
-        console.log(this.sub_categories);
       }
     )
   }
@@ -241,24 +238,19 @@ export class UserSidebarComponent implements OnInit,OnDestroy {
 this.endRequest= this._adserv.rfpstate().subscribe(
   data => {
   this.state = data.Result;
-  console.log(this.state);
   },
   error => {
-  // console.log(error);
   });
   this.endRequest=this._adserv.rfpcategory().subscribe(
   data => {
   this.cat = data;
-  // console.log(data);
   },
   error => {
-  // console.log(error);
   }
   )
       this.endRequest=this._adserv.rfpagen().subscribe(
           data=>{
               this.agency=data.Result;
-              console.log(this.agency);
           }
       )
 

@@ -89,7 +89,6 @@ textonly='[a-zA-Z]+'
                     this.vin_Data = data
                 },
                 error => {
-                    // console.log(error)
                 });
         }
     }
@@ -100,18 +99,15 @@ textonly='[a-zA-Z]+'
 
             },
             error => {
-                //  console.log(error)
             }
         );
     }
     emailCheck(email1) {
-        // console.log("sdfsdfsdfsdfsdf",email1);
        this.endRequest= this._serv.email_exist(email1).subscribe(
             data => {
                 this.emailexist = data;
             },
             error => {
-                //  console.log("dsadas",error)
             }
         );
     }

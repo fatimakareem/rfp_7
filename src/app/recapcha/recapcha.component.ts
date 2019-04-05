@@ -14,7 +14,7 @@ export class RecapchaComponent implements OnInit {
 
   ngOnInit() {
     this.recapchaService.resetImg()
-    this.recapchaService.img.subscribe(res => { this.imgName = res; console.log(res) })
+    this.recapchaService.img.subscribe(res => { this.imgName = res;  })
   }
 
   resetImg() {
@@ -26,6 +26,5 @@ export class RecapchaComponent implements OnInit {
   checkChange() {
     // alert(this.capchaText)
     this.recapchaService.changeData(this.capchaText)
-    console.log(this.capchaText)
   }
 }

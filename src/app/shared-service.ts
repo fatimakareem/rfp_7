@@ -27,7 +27,6 @@ export class SharedData {
   }
   updateInfo(message) {
     this.update.next(message)
-    console.log(message)
   }
   notifyInfo(message) {
     this.notiSubject.next(message)
@@ -37,16 +36,13 @@ export class SharedData {
   }
   subscribed_user(message) {
     this.subSubject.next(message)
-    console.log( message)
   }
   watchtotal(message) {
     this.watchtotalSubject.next(message)
-    console.log( message)
 
   }
   watchInfo(message) {
     this.watchSubject.next(message)
-    console.log( message)
   }
   returnCategory(){
     return this.categorySubject;

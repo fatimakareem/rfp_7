@@ -163,7 +163,6 @@ export class HttpService extends Http {
    * @returns {ErrorObservable}
    */
   private onCatch(error: any): Observable<any> {
-    console.log('onCatch');
     return Observable.throw(error);
   }
 
