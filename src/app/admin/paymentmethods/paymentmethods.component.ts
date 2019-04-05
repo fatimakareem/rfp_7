@@ -175,8 +175,8 @@ displayFieldCss(form: FormGroup, field: string) {
     this.form = this.formBuilder.group({
       cardnumber: ['', Validators.compose([Validators.required])],
       cardnumber2: ['', Validators.compose([Validators.required])],
-      ccv: ['', Validators.compose([Validators.required])],
-      ccv2: ['', Validators.compose([Validators.required])],
+      ccv: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
+      ccv2: ['', Validators.compose([Validators.required,Validators.pattern('^[0-9]*$')])],
       expirydate: ['', Validators.compose([Validators.required, Validators.pattern('(0[1-9]|10|11|12)/[0-9]{2}$')])],
       city: ['', Validators.compose([Validators.required])],
       country: ['', Validators.compose([Validators.required])],
