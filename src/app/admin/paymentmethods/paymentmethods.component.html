@@ -129,11 +129,11 @@
               <mat-error *ngIf="form.controls.ccv2.errors.required">
                 CCV cannot be empty
               </mat-error>
-              <mat-error *ngIf="form.controls.ccv.errors.minlength">
-                CCV must be atleast {{form.controls.ccv.errors.minlength.requiredLength}} digits long.
+              <mat-error *ngIf="form.controls.ccv2.errors.minlength">
+                CCV must be atleast {{form.controls.ccv2.errors.minlength.requiredLength}} digits long.
               </mat-error>
-              <mat-error *ngIf="form.controls.ccv.errors.maxlength">
-                CCV must be at atmost {{form.controls.ccv.errors.maxlength.requiredLength}} digits long.
+              <mat-error *ngIf="form.controls.ccv2.errors.maxlength">
+                CCV must be at atmost {{form.controls.ccv2.errors.maxlength.requiredLength}} digits long.
               </mat-error>
               <mat-error *ngIf="form.controls.ccv2.hasError('pattern')">
                 CCV must be only in digits.
@@ -158,11 +158,14 @@
               <mat-error *ngIf="form.controls.expirydate.hasError('pattern')">
                 Expiry date must be in MM/YY format.
               </mat-error>
+              <mat-error *ngIf="expirydate <= '19'">
+                  Invalid Expiry Date
+              </mat-error>
             </mat-error>
           </mat-form-field>
-          <span class="card-error" *ngIf="expirydate <= '19'">
-            Invalid Expiry Date
-          </span>
+          <!-- <span class="card-error" >
+           
+          </span> -->
         </div>
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" [ngClass]="displayFieldCss(form, 'address')">
           <mat-form-field>
