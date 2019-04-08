@@ -122,7 +122,7 @@
                       Phone No
                     </label> -->
                     <!-- <mat-form-field> -->
-                      <int-phone-prefix  [(ngModel)]="phone" class="phonee" formControlName="phone" placeholder="Phone No" required> </int-phone-prefix>
+                      <int-phone-prefix type="number" [(ngModel)]="phone" class="phonee"  formControlName="phone" placeholder="Phone No" required> </int-phone-prefix>
                     <!-- </mat-form-field> -->
                     <!-- <ngx-intl-tel-input 
                     [cssClass]="'custom'" 
@@ -181,9 +181,7 @@
                       <mat-error  *ngIf="register.controls.password.hasError('pattern')">
                         Password must be at least 8 characters long, have at least one number, one special character and one upper case character.
                       </mat-error>
-                      <mat-error  *ngIf="register.controls.password.errors?.minlength">
-                        Password must be at least 8 characters long.
-                      </mat-error>
+                     
                     </mat-form-field>
 
                   </div>

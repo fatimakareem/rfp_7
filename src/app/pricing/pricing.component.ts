@@ -20,11 +20,23 @@ declare var $: any;
 })
 export class PricingComponent implements OnInit {
   @ViewChild('openModal') openModal: ElementRef;
+  isfreetrial:boolean=false;
+
   free(){
+    if (localStorage.getItem('currentUser')) {
     this.isfreetrial=true;
+    $('#exampleModalCenter').modal('hide');}
+    else{
+      this._nav.navigate(['login']);
+    }
   }
   payed(){
+    if (localStorage.getItem('currentUser')) {
     this.isfreetrial=false;
+    $('#exampleModalCenter').modal('hide');}
+    else{
+      this._nav.navigate(['login']);
+    }
   }
   pkgsub = false;
   pkg_detail = {};
@@ -175,21 +187,28 @@ export class PricingComponent implements OnInit {
       if (var_type_atm == "American Express") {
        this.cardmask = [/[3]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]
        this.ccvmask=[/[0-9]/, /\d/, /\d/,/\d/]
+       this.model.cardNumber='';
+       this.model.cardcod='';
       }
       else if (var_type_atm == "Visa") {
        this.cardmask=[/[4]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
        this.ccvmask=[/[0-9]/, /\d/, /\d/]
+       this.model.cardNumber='';
+      this.model.cardcod='';
       }
       else if (var_type_atm == "Mastercard") {
         this.cardmask=[/[5]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
         this.ccvmask=[/[0-9]/, /\d/, /\d/]
+        this.model.cardNumber='';
+        this.model.cardcod='';
        } else{
         this.cardmask=[/[6]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
         this.ccvmask=[/[0-9]/, /\d/, /\d/]
+        this.model.cardNumber='';
+        this.model.cardcod='';
        }
     }
     isright:boolean=false;
-    isfreetrial:boolean=false;
     set_default:boolean=false;
     Add_new(){
     if(this.set_default==true){

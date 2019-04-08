@@ -184,7 +184,7 @@ console.log(params)
           else {
             swal({
               type: 'success',
-              title: 'RFP succesfully added to your watch list',
+              title: 'RFP successfully added to your watch list',
               showConfirmButton: true,
               confirmButtonColor: "#090200",
               width: '512px',

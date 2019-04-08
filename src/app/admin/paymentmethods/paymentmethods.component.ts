@@ -71,6 +71,8 @@ card_opeation=[
   currentProducts;
   ccv2;
   form: FormGroup;
+  form2: FormGroup;
+
   cardnumber2;
   var_box_check: boolean = false;
   destroy_value;
@@ -85,13 +87,13 @@ card_opeation=[
     this.ccv = true;
     this.ccv2 = false;
   }
-  ShowButton(var_type_atm) {
-    // alert(var_type_atm)
+  ShowButton(var_type_atm,f:NgForm) {
     this.cardtype = var_type_atm;
     if (var_type_atm == "American Express") {
      this.cardmask = [/[3]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/]
       this.cardnumber = false;
-      this.form.controls.cardnumber.reset();
+      f.resetForm();
+      // this.form.controls.cardnumber.reset();
       this.cardnumber2 = true;
       this.ccv = false;
       this.form.controls.ccv.reset();
@@ -100,7 +102,8 @@ card_opeation=[
     else if (var_type_atm == "Visa") {
      this.cardsmask=[/[4]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
       this.cardnumber2 = false;
-      this.form.controls.cardnumber2.reset();
+      f.resetForm();
+      // this.form.controls.cardnumber2.reset();
       this.cardnumber = true;
       this.ccv2 = false;
       this.form.controls.ccv2.reset();
@@ -109,7 +112,8 @@ card_opeation=[
     else if (var_type_atm == "Mastercard") {
       this.cardsmask=[/[5]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
        this.cardnumber2 = false;
-       this.form.controls.cardnumber2.reset();
+       f.resetForm();
+      //  this.form.controls.cardnumber2.reset();
        this.cardnumber = true;
        this.ccv2 = false;
        this.form.controls.ccv2.reset();
@@ -117,7 +121,8 @@ card_opeation=[
      } else{
       this.cardsmask=[/[6]/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
        this.cardnumber2 = false;
-       this.form.controls.cardnumber2.reset();
+       f.resetForm();
+      //  this.form.controls.cardnumber2.reset();
        this.cardnumber = true;
        this.ccv2 = false;
        this.form.controls.ccv2.reset();
@@ -189,8 +194,12 @@ displayFieldCss(form: FormGroup, field: string) {
       state: ['', Validators.compose([Validators.required])],
      
      
-      var_type_atm:['', Validators.compose([Validators.required])],
+      // var_type_atm:['', Validators.compose([Validators.required])],
   });
+  this.form2 = this.formBuilder.group({
+   
+    var_type_atm:['', Validators.compose([Validators.required])],
+});
   }
   cardid = "";
   card;
