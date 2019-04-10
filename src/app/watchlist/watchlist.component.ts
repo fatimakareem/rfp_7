@@ -83,7 +83,6 @@ export class WatchlistComponent implements OnInit {
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
-      // alert(result)
       if (result==true) {
     this._serv.deleteWatchlist(this.id).subscribe(
 
@@ -130,7 +129,6 @@ export class WatchlistComponent implements OnInit {
   subscribe;
   doc;
   check_trial(url){
-    alert(url);
     if( this.subscribe=="Trial Subscription user"){
       this._serv1.trial_document().subscribe(
         data => {

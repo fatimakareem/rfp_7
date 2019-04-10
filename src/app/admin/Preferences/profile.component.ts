@@ -403,7 +403,7 @@ export class ProfileComponent implements OnInit, OnDestroy {
             data => {
                 swal({
                     type: 'success',
-                    title: 'Updated Your RFP Preferances',
+                    title: 'Updated Your RFP preferences',
                     showConfirmButton: false,
                     timer: 1500,width: '512px',
                 })

@@ -159,10 +159,14 @@
               <mat-error *ngIf="form.controls.expirydate.hasError('pattern')">
                 Expiry date must be in MM/YY format.
               </mat-error>
-              <mat-error *ngIf="expirydate <= '19'">
-                  Invalid Expiry Date
-              </mat-error>
+             
             </mat-error>
+            <p *ngIf="expirydate <= '19'" class="clr_red">
+                Invalid Expiry Date
+              </p>
+            <!-- <div *ngIf="expirydate <= '19'">
+                Invalid Expiry Date
+            </div> -->
           </mat-form-field>
           <!-- <span class="card-error" >
            
