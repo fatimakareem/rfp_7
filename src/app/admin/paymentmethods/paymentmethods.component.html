@@ -52,24 +52,25 @@
 
       <!-- <input type="checkbox" [(ngModel)]="check_value" name="check_value"  (change)="ShowButton(check_value,$event)"> -->
 
-      <form class=" sh-signup-form-fix edit-profile" [formGroup]="form" #f="ngForm">
+      <form class=" sh-signup-form-fix edit-profile" [formGroup]="form2" #f="ngForm">
         <div class="col-md-12 padding-0">
-          <div class="col-md-4" [ngClass]="displayFieldCss(form, 'var_type_atm')">
+          <div class="col-md-4" [ngClass]="displayFieldCss(form2, 'var_type_atm')">
             <mat-form-field>
               <mat-select placeholder="Card Type" formControlName="var_type_atm" #val
-                (change)="ShowButton(val.value)">
+                (change)="ShowButton(val.value,f)">
                 <mat-option style="font-size: 16px;" *ngFor="let card_get_datat of card_opeation"
                   [value]="card_get_datat.value">{{card_get_datat.viewValue}}</mat-option>
               </mat-select>
             </mat-form-field>
           </div>
         </div>
-
+      </form>
+        <form class=" sh-signup-form-fix edit-profile" [formGroup]="form" #f="ngForm">
         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12" *ngIf="cardnumber"
           [ngClass]="displayFieldCss(form, 'cardnumber')">
           <mat-form-field>
             <input matInput type="text" [textMask]="{mask: cardsmask}" placeholder="Credit Card Number"
-              formControlName="cardnumber">
+              formControlName="cardnumber" >
             <mat-error *ngIf="form.controls.cardnumber.touched && form.controls.cardnumber.invalid">
               <mat-error *ngIf="form.controls.cardnumber.errors.required">
                 Card number cannot be empty
@@ -158,10 +159,14 @@
               <mat-error *ngIf="form.controls.expirydate.hasError('pattern')">
                 Expiry date must be in MM/YY format.
               </mat-error>
-              <mat-error *ngIf="expirydate <= '19'">
-                  Invalid Expiry Date
-              </mat-error>
+             
             </mat-error>
+            <p *ngIf="expirydate <= '19'" class="clr_red">
+                Invalid Expiry Date
+              </p>
+            <!-- <div *ngIf="expirydate <= '19'">
+                Invalid Expiry Date
+            </div> -->
           </mat-form-field>
           <!-- <span class="card-error" >
            

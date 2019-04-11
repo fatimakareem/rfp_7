@@ -2341,9 +2341,11 @@ p.state-name:hover {
 .signup-form-row>div {
     min-height: 75px
 }
-.form-foote.reg{
-    padding-top: 40px;
+
+.form-foote.reg {
+    padding-top: 40px
 }
+
 .signup-form-row .mat-form-field-empty.mat-form-field-placeholder {
     font-size: 23px
 }
@@ -2395,11 +2397,13 @@ p.state-name:hover {
 }
 
 .nav-home ul li {
-    margin: 0;
+    margin: 0
 }
+
 .sidebar-subcat .s-icon-all-states {
-    right: 15px;
+    right: 15px
 }
+
 .sidebar-subcat .search-allstates {
-    width: 85% !important;
+    width: 85%!important
 }

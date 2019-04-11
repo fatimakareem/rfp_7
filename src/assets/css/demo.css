@@ -808,7 +808,7 @@ svg:not(:root) {
 }
 
 .sh-advnce-search .mat-select {
-    background: 0 0;
+    background: 0 0
 }
 
 .sh-advnce-search .mat-option {
@@ -1309,7 +1309,7 @@ svg:not(:root) {
 }
 
 .lock-icon {
-    color: #ffbc00 !important;
+    color: #ffbc00!important;
     width: auto;
     margin-right: 5px
 }

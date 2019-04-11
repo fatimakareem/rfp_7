@@ -5,6 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">
+                    <h2 *ngIf="isfreetrial" class="pricing_heading">Join RFPGurus for a 7-day risk-free trial period</h2>
                 <h2 class="pricing_heading">Our Unbeatable Pricing Model </h2>
                 <p><b>Unbeatable Pricing. One-Package-Includes-All Features & RFPs Nationwide.
                         Subscribe to Monthly or Yearly democratized
@@ -17,6 +18,7 @@
                         District
                         and
                         other Agencies.</b></p>
+                       
             </div>
 
             <div class="col-lg-4 col-md-5 col-lg-offset-2 col-md-offset-1 col-sm-6 col-xs-12 pricing-table2 featured "
@@ -156,8 +158,9 @@
 <div *ngIf="pkgsub" class="pricing-sub sh-signup-form-fix" data-wow-delay=".5s">
     <div class="container">
         <div class=" row sh-container-paymnt">
-
+               
             <div class="checkout-select-box col-lg-8 col-md-9 col-sm-12 mg-0-auto">
+                    <h2 *ngIf="isfreetrial" class="pricing_heading" style="text-align:center">Join RFPGurus for a 7-day risk-free trial period</h2>
                     <!-- <div class="switch" class="free-trial-switch">
                          <input [(ngModel)]="isfreetrial" id="switch-toggle-pricing"
                         class="switch-toggle switch-toggle-round" type="checkbox"> <label
@@ -410,18 +413,20 @@
         </div>
       </div>
       <div class="modal-footer padding-zero">
-            <a *ngIf="check_login(); else free" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Free Trial For 7 Day's</a>
-            <ng-template #free>
-                <a (click)="free()" class="btn btn-rose " data-dismiss="modal" >Free Trial For 7 Day's</a>
-            </ng-template>
+            <!-- <a *ngIf="check_login(); else free" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Free Trial For 7 Day's</a>
+            <ng-template #free> -->
+                <button title="Member Login" type="button" (click)="free()"  class="btn btn-primary btn-must-login"
+                    >Free Trial For 7 Day's</button>
+            <!-- </ng-template> -->
         <!-- <a>
           <button title="Member Login" type="button" (click)="free()"  class="btn btn-primary btn-must-login"
             data-dismiss="modal">Free Trial For 7 Day's</button>
         </a> -->
-        <a *ngIf="check_login(); else payed" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Subscribe Now</a>
-        <ng-template #payed>
-            <a (click)="payed()" class="btn btn-rose " data-dismiss="modal">Subscribe Now</a>
-        </ng-template>
+        <!-- <a *ngIf="check_login(); else payed" routerLink='/sign-up' class="btn btn-rose" title="Subscribe Package">Subscribe Now</a>
+        <ng-template #payed> -->
+            <button title="Subscribe Now" type="button" (click)="payed()"  class="btn btn-primary btn-must-signup"
+                data-dismiss="modal">Subscribe Now</button>
+        <!-- </ng-template> -->
         <!-- <a>
           <button title="Subscribe Now" type="button" (click)="payed()"  class="btn btn-primary btn-must-signup"
             data-dismiss="modal">Subscribe Now</button>

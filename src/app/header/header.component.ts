@@ -214,9 +214,12 @@ export class HeaderComponent implements OnInit {
       this.local = localStorage.getItem('currentUser');
       let pars = JSON.parse(this.local);
       this.uname = pars.username;
-      this._shareData.subSubject.subscribe(message => {
-        if (message == "Subscribe user" || message == "Trial Subscription user") {
-        this.subscribe =message
+      this._serv.usersubscribe(this.uname).subscribe(
+        data => {
+          if (data.Response == "Subscribe user"||data.Response == "Trial Subscription user") {
+            this.subscribe = data.Response
+            this._shareData.subscribed_user(this.subscribe);
+     
         return false
       }});}
     else {

@@ -139,27 +139,33 @@ export class HistoryComponent implements OnInit {
                         },
                         error => {
             
-                            if (error.status = 404) {
-                                this.nofound = true;
-                            }
+                            this.nofound = true;
+                          alert(this.nofound)
+                               
+                           
             
                         })
                  
                 }else if(data.Response == "Trial Subscription user"){
                     this._serv.trialHistory().subscribe(
                         data => {
-                            this.nofound=false;
+                            // this.nofound=false;
                             this.trial=data;
                         }, error => {
             
-                            if (error.status = 400) {
+                          
                                 this.nofound = true;
-                            }
+                                alert(this.nofound)
             
                         })
+                }else{
+                    this.nofound = true;
+                    alert(this.nofound)
                 }
               },
               error => {
+                this.nofound = true;
+                alert(this.nofound)
               });
           }
        

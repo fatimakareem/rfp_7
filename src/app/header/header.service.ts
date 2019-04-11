@@ -44,6 +44,16 @@ export class HeaderService {
     return this._http5.put('https://apis.rfpgurus.com/read_delete/'+id +'/', JSON.stringify({}),
     {headers: headers}).map((response: Response) => response.json());
   }
+  usersubscribe(username) {
+    let headers = new Headers();
+    if(localStorage.getItem('currentUser')){
+      headers = new Headers({'Authorization': 'JWT ' + JSON.parse(localStorage.getItem('currentUser')).token});
+      }  
+    headers.append('Content-Type', 'application/json');
+    return this._http5.post('https://apis.rfpgurus.com/pkg_sub/', {
+      'username': username
+    },{headers: headers}).map((res: Response) => res.json())
+  }
 Watchlist(){
   let headers = new Headers();
   if(localStorage.getItem('currentUser')){
