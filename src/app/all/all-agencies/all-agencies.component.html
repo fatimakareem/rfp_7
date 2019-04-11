@@ -45,7 +45,7 @@
             <div class="col-sm-4 col-xs-12 text-right tab-text-center">
               <input type="text" [(ngModel)]="agensearch" [ngModelOptions]="{standalone: true}" placeholder="Search RFPs"
                 class="search-allstates" >
-              <i class="fas fa-search s-icon-all-states" area-hidden="true"></i>
+              <!-- <i class="fas fa-search s-icon-all-states" area-hidden="true"></i> -->
             </div>
           </div>
         </div> <div *ngIf="loaded==true"> <div class="col-sm-12 text-center" *ngIf="(agency | filter:agensearch).length==0">

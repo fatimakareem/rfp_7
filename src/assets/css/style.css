@@ -262,7 +262,7 @@ a {
 }
 
 .list-contact a:hover {
-    color: #c00;
+    color: #fff;
     text-decoration: none
 }
 
@@ -1282,7 +1282,6 @@ a {
 }
 
 .com-table .table>thead>tr>th {
-    font-size: 22px;
     font-weight: 500
 }
 
@@ -1437,7 +1436,6 @@ a {
 
 .addtocart-btn {
     color: #fff!important;
-    background: #c00;
     padding: 3px;
     font-size: 17px;
     border-radius: 50px;
@@ -1445,9 +1443,9 @@ a {
 }
 
 .addtocart-btn:hover {
-    box-shadow: 0 0 10px #6d6969;
-    background-color: #000;
-    transition: .3s ease-in-out
+    background-color: #c00;
+    transition: .1s ease-in-out;
+    text-decoration: none;
 }
 
 .addtocart-time {

@@ -757,11 +757,6 @@ svg:not(:root) {
     padding: 5px;
     background: #ebebeb!important
 }
-
-.modal.in .modal-dialog {
-    width: 800px
-}
-
 .sh-modal-body .modal-v2__main-heading {
     border-bottom: 1px #4f4f4f solid;
     margin-bottom: 30px
@@ -1609,12 +1604,6 @@ svg:not(:root) {
 .card.one {
     margin-bottom: 0!important
 }
-
-.search-allstates {
-    width: 80%;
-    border-radius: 7px
-}
-
 .fa-exclamation-triangle {
     font-size: 35px;
     padding: 15px 0 0

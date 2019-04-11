@@ -65,7 +65,7 @@
                                 (change)="select_state()">
                                 <input class="inp" type="text" [(ngModel)]="statsearch"
                                     [ngModelOptions]="{standalone: true}" class="search-allstates"
-                                    placeholder="Search By State" style="width: 100%; border-radius: 7px">
+                                    placeholder="Search By State" >
                                 <i class="fa fa-search s-icon-all-states" area-hidden="true"></i>
                                 <mat-option value='all'>Select All</mat-option>
                                 <mat-option class="elips-mat-opt" *ngFor="let item of state |filter:statsearch"
@@ -80,7 +80,7 @@
                                 (change)="select_agency()">
                                 <input class="inp" type="text" [(ngModel)]="agensearch"
                                     [ngModelOptions]="{standalone: true}" placeholder="Search By Agency"
-                                    class="search-allstates" style="width: 100%; border-radius: 7px;position: sticky">
+                                    class="search-allstates" >
                                 <i class="fa fa-search s-icon-all-states" area-hidden="true"></i>
                                 <mat-option value='all'>Select All</mat-option>
                                 <mat-option class="elips-mat-opt" *ngFor="let item of agency| filter:agensearch"
@@ -104,7 +104,7 @@
                                 (change)="select_category()">
                                 <input class="inp" type="text" [(ngModel)]="catsearch"
                                     [ngModelOptions]="{standalone: true}" placeholder="Search By Category"
-                                    class="search-allstates" style="width: 100%; border-radius: 7px">
+                                    class="search-allstates of-sidebar">
                                 <i class="fa fa-search s-icon-all-states" area-hidden="true"></i>
                                 <mat-option value='all'>Select All</mat-option>
                                 <mat-option class="elips-mat-opt" *ngFor="let catitem of cat| filter:catsearch"

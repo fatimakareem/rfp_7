@@ -1000,7 +1000,8 @@ h3 {
 
 .products-area .panel-details .list-normal li a {
     color: #333;
-    font-weight: 600
+    font-weight: 600;
+    cursor: pointer;
 }
 
 .list-normal li a i,
@@ -1114,9 +1115,6 @@ mat-tab-group .mat-tab-label {
 .sh-how-it-works {
     background-image: url(../../assets/img/Why-RFP-Gurus.png);
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% auto;
-    padding: 50px 20px 10px;
     position: relative;
     z-index: 1
 }
@@ -1124,9 +1122,6 @@ mat-tab-group .mat-tab-label {
 .what-we-do {
     background-image: url(../../assets/img/What-we-do.png);
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% auto;
-    padding: 50px 20px 10px;
     position: relative;
     z-index: 1
 }
@@ -1134,8 +1129,6 @@ mat-tab-group .mat-tab-label {
 .rfp-as-service {
     background-image: url(../../assets/img/What-we-do.png);
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% auto;
     padding: 20px;
     position: relative;
     z-index: 1
@@ -1144,9 +1137,6 @@ mat-tab-group .mat-tab-label {
 .who-are-we {
     background-image: url(../../assets/img/Who-are-we.png);
     background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% auto;
-    padding: 50px 20px 10px;
     position: relative;
     z-index: 1
 }
@@ -1294,8 +1284,7 @@ mat-tab-group .mat-tab-label {
 
 .count-on {
     background: #fff;
-    padding: 50px 9999px 40px;
-    margin: 0 -9999px
+    padding: 20px 50px;
 }
 
 .count-on .title {
@@ -2342,14 +2331,13 @@ text tspan {
 .search-allstates {
     border: 1px solid #ccc!important;
     margin-bottom: 5px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 600;
     position: relative;
-    padding: 7px 20px;
+    padding: 7px 20px 7px 7px;
     border: none;
-    border-radius: 50px;
     color: #757575;
-    width: 100%
+    width: 100%;
 }
 
 .search-allstates:focus {
@@ -2358,10 +2346,10 @@ text tspan {
 
 .s-icon-all-states {
     position: absolute;
-    right: 30px;
-    font-size: 20px;
+    right: 5px;
+    font-size: 15px;
     color: #616161;
-    top: 12px
+    top: 10px;
 }
 
 .sidebar-user .mat-select-value-text {
@@ -2974,7 +2962,7 @@ a.sort.desc::after {
 .mat-select-value,
 .sh-more-condense-spaces .mat-select-trigger,
 .sh-more-condense-spaces input.mat-input-element {
-    font-size: 18px
+    font-size: 16px
 }
 
 .sh-sidebar-more-condense .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder,
@@ -3800,8 +3788,8 @@ button {
 }
 
 .sh-signup-form-fix.add-new-card .mat-form-field-can-float.mat-form-field-should-float .mat-form-field-placeholder {
-    transform: translateY(-20px) scale(.75) perspective(100px) translateZ(0)!important;
-    -ms-transform: translateY(5px) scale(.75)!important
+    transform: translateY(-12px) scale(.75) perspective(100px) translateZ(0)!important;
+    -ms-transform: translateY(-12px) scale(.75)!important
 }
 
 .yearly-monthly {
@@ -3880,4 +3868,7 @@ button {
 }
 .mat-form-field-prefix, .mat-form-field-suffix{
     cursor: pointer;
+}
+.width-sec .mat-select-value{
+    line-height: 23px;
 }
